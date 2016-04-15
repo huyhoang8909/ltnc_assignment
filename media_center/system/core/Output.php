@@ -431,7 +431,7 @@ class CI_Output {
 		// can determine by the existence of the $CI object above
 		if ($this->cache_expiration > 0 && isset($CI) && ! method_exists($CI, '_output'))
 		{
-			$this->_write_cache($output);
+			$this->_write_cache($output); log_message('info', 'cached');
 		}
 
 		// --------------------------------------------------------------------
@@ -521,13 +521,13 @@ class CI_Output {
 		// If so send the output there.  Otherwise, echo it.
 		if (method_exists($CI, '_output'))
 		{
-			$CI->_output($output);
+			$CI->_output($output); log_message('info', 'test');
 		}
 		else
 		{
 			echo $output; // Send it to the browser!
 		}
-
+		// log_message('debug', print_r($output, true));
 		log_message('info', 'Final output sent to browser');
 		log_message('debug', 'Total execution time: '.$elapsed);
 	}
