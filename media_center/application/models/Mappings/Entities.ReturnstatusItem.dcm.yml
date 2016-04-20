@@ -1,0 +1,23 @@
+Entities\ReturnstatusItem:
+    type: entity
+    table: RETURNSTATUS_ITEM
+    indexes:
+        FK_RETURNSTATUS_ITEM2:
+            columns:
+                - ITEM_ID
+    id:
+        returnId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: RETURN_ID
+        itemId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: ITEM_ID
+    lifecycleCallbacks: {  }

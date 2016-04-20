@@ -1,0 +1,37 @@
+Entities\Returnstatus:
+    type: entity
+    table: RETURNSTATUS
+    indexes:
+        FK_USER_RETURN:
+            columns:
+                - USER_ID
+    id:
+        returnId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: RETURN_ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        userId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: USER_ID
+        startDate:
+            type: date
+            nullable: false
+            column: START_DATE
+        endDate:
+            type: date
+            nullable: false
+            column: END_DATE
+        status:
+            type: boolean
+            nullable: false
+            column: STATUS
+    lifecycleCallbacks: {  }

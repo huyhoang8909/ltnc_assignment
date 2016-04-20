@@ -1,0 +1,23 @@
+Entities\ItemSupplier:
+    type: entity
+    table: ITEM_SUPPLIER
+    indexes:
+        FK_ITEM_SUPPLIER2:
+            columns:
+                - ITEM_ID
+    id:
+        supplierId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: SUPPLIER_ID
+        itemId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: ITEM_ID
+    lifecycleCallbacks: {  }

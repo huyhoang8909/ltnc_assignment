@@ -1,0 +1,23 @@
+Entities\UserItemFavourite:
+    type: entity
+    table: USER_ITEM_FAVOURITE
+    indexes:
+        FK_USER_ITEM_FAVOURITE2:
+            columns:
+                - ITEM_ID
+    id:
+        userId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: USER_ID
+        itemId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: ITEM_ID
+    lifecycleCallbacks: {  }

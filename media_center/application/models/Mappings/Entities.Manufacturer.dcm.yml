@@ -1,0 +1,22 @@
+Entities\Manufacturer:
+    type: entity
+    table: MANUFACTURER
+    id:
+        manufacturerId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: MANUFACTURER_ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        manufacturerName:
+            type: string
+            nullable: false
+            length: 50
+            options:
+                fixed: false
+            column: MANUFACTURER_NAME
+    lifecycleCallbacks: {  }

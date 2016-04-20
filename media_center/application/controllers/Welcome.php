@@ -20,6 +20,18 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
+		$user = new Entities\User;
+		$user->setUserName('Joel');
+		$user->setName('Verhagen');
+		$user->setPassword(md5('12345678'));
+		$user->setEmailAdress('joel@joelverhagen.com');
+		$user->setPhone('0123456789');
+
+		// standard way in CodeIgniter to access a library in a controller: $this->library_name->member->memberFunction()
+		// save the object to database, so that it can obtain its ID
+		$this->doctrine->em->persist($user);
+		$this->doctrine->em->flush();
+		var_dump($user->getUserId());
 		$this->load->view('welcome_message');
 	}
 }

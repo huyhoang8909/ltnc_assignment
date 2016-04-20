@@ -1,0 +1,91 @@
+Entities\Orders:
+    type: entity
+    table: ORDERS
+    indexes:
+        FK_ORDER_CUSTOMERADDRESS:
+            columns:
+                - ADDRESS_ID
+        FK_ORDER_PAYMENT:
+            columns:
+                - PAYMENT_ID
+        FK_ORDER_PAYMENTTYPE:
+            columns:
+                - PAYMENT_TYPE_ID
+        FK_ORDER_SHIPPING:
+            columns:
+                - SHIPPING_TYPE_ID
+        FK_ORDER_USER:
+            columns:
+                - USER_ID
+    id:
+        orderId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: ORDER_ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        shippingTypeId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: SHIPPING_TYPE_ID
+        paymentTypeId:
+            type: boolean
+            nullable: true
+            column: PAYMENT_TYPE_ID
+        userId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: USER_ID
+        addressId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: ADDRESS_ID
+        paymentId:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: PAYMENT_ID
+        orderStatus:
+            type: boolean
+            nullable: false
+            column: ORDER_STATUS
+        orderDate:
+            type: datetime
+            nullable: false
+            column: ORDER_DATE
+        deliveryDate:
+            type: datetime
+            nullable: false
+            column: DELIVERY_DATE
+        total:
+            type: float
+            nullable: false
+            precision: 8
+            scale: 2
+            column: TOTAL
+        paymentKey:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+            column: PAYMENT_KEY
+        paymentCode:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+            column: PAYMENT_CODE
+    lifecycleCallbacks: {  }

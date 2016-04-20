@@ -1,0 +1,23 @@
+Entities\OrderItem:
+    type: entity
+    table: ORDER_ITEM
+    indexes:
+        FK_ORDER_ITEM2:
+            columns:
+                - ORDER_ID
+    id:
+        itemId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: ITEM_ID
+        orderId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: ORDER_ID
+    lifecycleCallbacks: {  }

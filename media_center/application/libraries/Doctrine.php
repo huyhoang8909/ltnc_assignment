@@ -43,7 +43,7 @@ class Doctrine {
 
         // Set up logger
         $logger = new EchoSQLLogger;
-        $config->setSQLLogger($logger);
+        ENVIRONMENT !== 'development' ?:$config->setSQLLogger($logger);
 
         $config->setAutoGenerateProxyClasses( TRUE );
 

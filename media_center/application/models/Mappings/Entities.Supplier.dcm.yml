@@ -1,0 +1,29 @@
+Entities\Supplier:
+    type: entity
+    table: SUPPLIER
+    id:
+        supplierId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: SUPPLIER_ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        supplierName:
+            type: string
+            nullable: false
+            length: 50
+            options:
+                fixed: false
+            column: SUPPLIER_NAME
+        supplierType:
+            type: string
+            nullable: false
+            length: 50
+            options:
+                fixed: false
+            column: SUPPLIER_TYPE
+    lifecycleCallbacks: {  }
