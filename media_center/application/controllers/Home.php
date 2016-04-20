@@ -17,5 +17,6 @@ class Home extends Public_Controller {
     {
         // The output of this view will be wrapped in the base template
         $this->load->view('user/home');
+		$this->load->view('user/category-grid');
     }
 }
