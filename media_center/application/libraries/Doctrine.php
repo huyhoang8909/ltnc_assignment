@@ -3,7 +3,8 @@ use Doctrine\Common\ClassLoader,
     Doctrine\ORM\Configuration,
     Doctrine\ORM\EntityManager,
     Doctrine\Common\Cache\ArrayCache,
-    Doctrine\DBAL\Logging\EchoSQLLogger;
+    Doctrine\DBAL\Logging\EchoSQLLogger,
+    Doctrine\ORM\Tools\Setup;
 
 class Doctrine {
 
@@ -35,9 +36,9 @@ class Doctrine {
         $config->setQueryCacheImpl($cache);
 
         $config->setQueryCacheImpl($cache);
-
+        $config = Setup::createYAMLMetadataConfiguration(array(APPPATH."models/Mappings"), (ENVIRONMENT !== 'production'));
         // Proxy configuration
-        $config->setProxyDir(APPPATH.'/models/proxies');
+        $config->setProxyDir(APPPATH.'/models/Proxies');
         $config->setProxyNamespace('Proxies');
 
         // Set up logger
@@ -57,5 +58,7 @@ class Doctrine {
 
         // Create EntityManager
         $this->em = EntityManager::create($connectionOptions, $config);
+        $platform = $this->em->getConnection()->getDatabasePlatform();
+        $platform->registerDoctrineTypeMapping('enum', 'string');
     }
 }
