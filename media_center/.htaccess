@@ -3,7 +3,7 @@
 #     development
 #     testing
 #     production
-SetEnv CI_ENV production
+SetEnv CI_ENV development
 
 RewriteEngine on
 RewriteCond $1 !^(index\.php|images|assets|robots\.txt)
