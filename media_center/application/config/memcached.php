@@ -3,11 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------------
-| Memcached settings
+| Memcached settings (CI3)
 | -------------------------------------------------------------------------
 | Your Memcached servers can be specified below.
 |
-|	See: https://codeigniter.com/user_guide/libraries/caching.html#memcached
+|	See: http://codeigniter.com/user_guide/libraries/caching.html#memcached
 |
 */
 $config = array(

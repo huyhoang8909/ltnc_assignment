@@ -1,10 +1,2 @@
-# This environment can be set to any value as below:
-#
-#     development
-#     testing
-#     production
-SetEnv CI_ENV development
-
-RewriteEngine on
-RewriteCond $1 !^(index\.php|images|assets|robots\.txt)
-RewriteRule ^(.*)$ /index.php/$1 [L]
+# Apache for "Don't look at me."
+Options -Indexes

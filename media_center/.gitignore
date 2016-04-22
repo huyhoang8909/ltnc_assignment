@@ -1,27 +1,63 @@
+# Ignore OS Related/Generic
+Thumbs.db
+Desktop.ini
+._*
+Icon?
 .DS_Store
+*.bak
+*.tmproj
+*.tmproject
+*~
 
-application/cache/*
-!application/cache/index.html
-!application/cache/.htaccess
+# IDEs project files/settings
+nbproject/
+nbactions.xml
+.settings/
+.project
+.metadata
+.properties
 
+# Ignore Bonfire Application Specifics
 application/logs/*
 !application/logs/index.html
-!application/logs/.htaccess
+install/logs/*
+application/cache/*
+!application/cache/index.html
+public/assets/cache/*
+!public/assets/cache/index.html
 
-user_guide_src/build/*
-user_guide_src/cilexer/build/*
-user_guide_src/cilexer/dist/*
-user_guide_src/cilexer/pycilexer.egg-info/*
-/vendor/
+# Ignore Custom config files
+application/config/development/*
+application/config/testing/*
+application/config/production/*
+application/config/installed.txt
 
-# IDE Files
-#-------------------------
-/nbproject/
+# but leave the config folders there
+!application/config/development/index.html
+!application/config/testing/index.html
+!application/config/production/index.html
+
+# Helping GUIs omiting subtree repos
+bonfire/modules/**/.git/*
+bonfire/modules/**/.hg/*
+application/modules/**/.git/*
+application/modules/**/.hg/*
+!application/modules/index.html
+
+
+# Ignore all custom modules.
+application/modules/*
+# Except the following modules:
+
+# Remove PHPStorm Project folders
+bonfire/.ideas
 .idea/*
 
-## Sublime Text cache files
-*.tmlanguage.cache
-*.tmPreferences.cache
-*.stTheme.cache
-*.sublime-workspace
-*.sublime-project
+# Ignore the installed.txt file
+public/install/installed.txt
+
+# Ignore any composer downloaded packages
+vendor/*
+
+# Ignore any sparks that have been loaded
+sparks/*
