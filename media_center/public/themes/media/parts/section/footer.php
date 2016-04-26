@@ -4,15 +4,15 @@
     <div class="container">
         <div class="row no-margin widgets-row">
             <div class="col-xs-12  col-sm-4 no-margin-left">
-                <?php require MC_ROOT.'/parts/widgets/footer/featured-products-footer.php';?>
+                <?php echo theme_view('parts/widgets/footer/featured-products-footer') ?>
             </div><!-- /.col -->
 
             <div class="col-xs-12 col-sm-4 ">
-                <?php require MC_ROOT.'/parts/widgets/footer/on-sale-products-footer.php';?>
+                <?php echo theme_view('parts/widgets/footer/on-sale-products-footer') ?>
             </div><!-- /.col -->
 
             <div class="col-xs-12 col-sm-4 ">
-                <?php require MC_ROOT.'/parts/widgets/footer/top-rated-products-footer.php';?>
+                <?php echo theme_view('parts/widgets/footer/top-rated-products-footer') ?>
             </div><!-- /.col -->
 
         </div><!-- /.widgets-row-->
@@ -32,11 +32,11 @@
     <div class="link-list-row">
         <div class="container no-padding">
             <div class="col-xs-12 col-md-4 ">
-                <?php require MC_ROOT.'/parts/widgets/footer/contact-info-footer.php';?>
+                <?php echo theme_view('parts/widgets/footer/contact-info-footer') ?>
             </div>
 
             <div class="col-xs-12 col-md-8 no-margin">
-                <?php require MC_ROOT.'/parts/widgets/footer/links-footer.php';?>
+                <?php echo theme_view('parts/widgets/footer/links-footer');?>
             </div>
         </div><!-- /.container -->
     </div><!-- /.link-list-row -->

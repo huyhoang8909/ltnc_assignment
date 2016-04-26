@@ -11,7 +11,7 @@
 		</div><!-- /.top-search-holder -->
 
 		<div class="col-xs-12 col-sm-12 col-md-3 top-cart-row no-margin">
-			<?php echo theme_view('/parts/widgets/header/shopping-cart-dropdown.php') ?>
+			<?php echo theme_view('/parts/widgets/header/shopping-cart-dropdown') ?>
 		</div><!-- /.top-cart-row -->
 
 	</div><!-- /.container -->
