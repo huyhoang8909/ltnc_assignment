@@ -214,7 +214,7 @@ class Template
         if (empty($output)) {
             show_error("Unable to find theme layout: {$layout}");
         }
-
+        
         Events::trigger('after_layout_render', $output);
 
         self::$ci->output->set_output($output);

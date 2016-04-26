@@ -254,7 +254,7 @@ class Users extends Front_Controller
 
         // Generate password hint messages.
         $this->user_model->password_hints();
-
+        log_message('debug', 'here!');
         Template::set_view('users/register');
         Template::set('languages', unserialize($this->settings_lib->item('site.languages')));
         Template::set('page_title', 'Register');
