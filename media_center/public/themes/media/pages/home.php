@@ -2,22 +2,22 @@
 	<div class="container">
 		
 		<div class="col-xs-12 col-sm-4 col-md-3 sidemenu-holder">
-			<?php require MC_ROOT.'/parts/navigation/sidemenu.php' ?>
+			<?php echo theme_view('parts/navigation/sidemenu', array('pages' => $pages)) ?>
 		</div><!-- /.sidemenu-holder -->
 
 		<div class="col-xs-12 col-sm-8 col-md-9 homebanner-holder">
-			<?php require MC_ROOT.'/parts/section/home-page-slider.php' ?>			
+			<?php echo theme_view('parts/section/home-page-slider') ?>			
 		</div><!-- /.homebanner-holder -->
 
 	</div><!-- /.container -->
 </div><!-- /#top-banner-and-menu -->
 
-<?php require MC_ROOT.'/parts/section/home-banners.php';?>
+<?php echo theme_view('parts/section/home-banners');?>
 
-<?php require MC_ROOT.'/parts/section/home-page-tabs.php';?>
+<?php echo theme_view('parts/section/home-page-tabs');?>
 
-<?php require MC_ROOT.'/parts/section/best-sellers.php';?>
+<?php echo theme_view('parts/section/best-sellers');?>
 
-<?php require MC_ROOT.'/parts/section/recently-viewed.php';?>
+<?php echo theme_view('parts/section/recently-viewed');?>
 
-<?php require MC_ROOT.'/parts/section/top-brands.php';?>
+<?php echo theme_view('parts/section/top-brands');?>

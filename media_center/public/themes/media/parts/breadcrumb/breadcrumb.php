@@ -1,7 +1,5 @@
 <?php
-	if(file_exists(MC_ROOT.'/parts/breadcrumb/breadcrumb-'.$page.'.php')){
-		echo '<div class="animate-dropdown">';
-		require MC_ROOT.'/parts/breadcrumb/breadcrumb-'.$page.'.php';
-		echo '</div>';
-	}
+	echo '<div class="animate-dropdown">';
+	echo theme_view('parts/breadcrumb/breadcrumb-'.$page);
+	echo '</div>';
 ?>
