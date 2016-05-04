@@ -31,11 +31,11 @@
 					<div class="product-item">
 						<div class="ribbon red"><span>sale</span></div> 
 						<div class="image">
-							<img alt="" src="assets/images/blank.gif" data-echo="assets/images/products/product-11.jpg" />
+							<img alt="" src="<?php echo base_url('items').'/'.$item->IMAGE ?>" data-echo="<?php echo base_url('items').'/'.$item->IMAGE ?>" />
 						</div>
 						<div class="body">
 							<div class="title">
-								<a href="item/<?php ?>">LC-70UD1U 70" class aquos 4K ultra HD</a>
+								<a href="<?php echo base_url('item').'/'.$item->ITEM_ID ?>">LC-70UD1U 70" class aquos 4K ultra HD</a>
 							</div>
 							<div class="brand">Sharp</div>
 						</div>
@@ -44,6 +44,7 @@
 						</div>
 						<div class="hover-area">
 							<div class="add-cart-button">
+                                                            <!--@HOANG: TODO HERE-->
 								<a href="index.php?page=single-product" class="le-button">Add to Cart</a>
 							</div>
 							<div class="wish-compare">
