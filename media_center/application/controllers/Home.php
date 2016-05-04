@@ -71,7 +71,11 @@ class Home extends MX_Controller
            
             $products = $this->item_model->get_items_by_categories($top_categories);
             
-            Template::set('products', $products);
+            $data = array(
+                'products' => $products,
+                'more_items' => $this->item_model->get_more_items(1), 
+            );
+            Template::set('data', $data);
             Template::render();
         }
 
@@ -120,9 +124,17 @@ class Home extends MX_Controller
             
             $item = $this->item_model->get_item_by_id($id);
             
+            
+            $top_categories = $this->category_model->get_top_categories(array());
+           
+            $products = $this->item_model->get_items_by_categories($top_categories);
+            
+            
+            
             $data = array(
                 'item' => $item,
-                'more_items' => $this->item_model->get_more_items($id)
+                'more_items' => $this->item_model->get_more_items($id), 
+                'products' => $products
             );
             Template::set('data', $data);
             Template::render();

@@ -14,10 +14,10 @@
 
 <?php echo theme_view('parts/section/home-banners');?>
 
-<?php echo theme_view('parts/section/home-page-tabs', array('products' => $products));?>
+<?php echo theme_view('parts/section/home-page-tabs', array('products' => $data['products']));?>
 
 <?php echo theme_view('parts/section/best-sellers');?>
 
-<?php echo theme_view('parts/section/recently-viewed');?>
+<?php echo theme_view('parts/section/recently-viewed', array('more_items' => $data['more_items']));?>
 
 <?php echo theme_view('parts/section/top-brands');?>

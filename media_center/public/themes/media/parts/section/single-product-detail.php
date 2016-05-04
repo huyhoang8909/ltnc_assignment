@@ -21,8 +21,7 @@
         </div>
         
         <div class="prices">
-            <div class="price-current">$1740.00</div>
-            <div class="price-prev">$2199.00</div>
+            <div class="price-current">$<?php echo $item->ITEM_PRICE ?>.00</div>
         </div>
 
         <div class="qnt-holder">
