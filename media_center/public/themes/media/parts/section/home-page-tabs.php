@@ -45,11 +45,6 @@
                         <?php endforeach;   ?>
                         
                     </div>
-                    <div class="loadmore-holder text-center">
-                        <a class="btn-loadmore" href="#">
-                            <i class="fa fa-plus"></i>
-                            load more products</a>
-                    </div> 
 
                 </div>
                 <?php endforeach;   ?>
