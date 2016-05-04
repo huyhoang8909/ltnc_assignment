@@ -112,8 +112,19 @@ class Home extends MX_Controller
 		}
 	}
         
-        public function item() {
-            echo 'hehe';
+        public function item($id) {
+             
+            $this->load->model('item_model');
+            $this->load->model('category_model');
+            $this->load->library('users/auth');
+            $this->set_current_user();
+
+            $top_categories = $this->category_model->get_top_categories(array());
+           
+            $products = $this->item_model->get_items_by_categories($top_categories);
+            
+            Template::set('products', $products);
+            Template::render();
         }
 }
 /* end ./application/controllers/home.php */
