@@ -2,7 +2,7 @@
     <div class="body">
         <div class="availability"><label>Availability:</label><span class="available">  in stock</span></div>
 
-        <div class="title"><a href="#">VAIO fit laptop - windows 8 SVF14322CXW</a></div>
+        <div class="title"><a href="#"><?php echo $item->ITEM_NAME ?></a></div>
         <div class="brand">sony</div>
 
         <div class="social-row">
