@@ -63,10 +63,14 @@ class Home extends MX_Controller
 
 
             $this->load->model('item_model');
+            $this->load->model('category_model');
             $this->load->library('users/auth');
             $this->set_current_user();
 
+            $top_categories = $this->category_model->get_top_categories(array());
+           
             $items = $this->item_model->get_items();
+            
             
             Template::set('items', $items);
             Template::render();
