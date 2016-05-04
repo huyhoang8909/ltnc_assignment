@@ -120,11 +120,12 @@ class Home extends MX_Controller
         public function item($id) {
              
             $this->load->model('item_model');
+                        $this->load->model('category_model');
+
             $this->load->library('users/auth');
             $this->set_current_user();
             
             $item = $this->item_model->get_item_by_id($id);
-            
             
             $top_categories = $this->category_model->get_top_categories(array());
            
