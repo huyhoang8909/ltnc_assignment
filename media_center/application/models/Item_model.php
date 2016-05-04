@@ -92,5 +92,14 @@ class Item_model  extends BF_Model
         if (!empty($item)) $item = $item[0];
         return $item;
     }
+    
+    public function get_more_items($id) {
+        
+        $items = $this->where('ITEM_ID !=', $id)
+                ->limit(7)
+                ->find_all();
+        
+        return $items;
+    }
 }
 /* End of file /emailer/models/emailer_model.php */

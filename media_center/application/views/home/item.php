@@ -45,7 +45,7 @@
 <?php echo theme_view('parts/navigation/top-menu-bar', array('page' => $page, 'pages' => $pages)) ?>
 
 <?php  echo theme_view('parts/section/header', array('page' => $page, 'pages' => $pages)) ?>
-<?php echo theme_view('parts/breadcrumb/breadcrumb', array('page' => $page, 'pages' => $pages, 'item' => $item)) ?>
+<?php echo theme_view('parts/breadcrumb/breadcrumb', array('page' => $page, 'pages' => $pages, 'data' => $data)) ?>
 
-<?php echo theme_view('pages/single-product', array('page' => $page, 'pages' => $pages, 'item' => $item)) ?>
+<?php echo theme_view('pages/single-product', array('page' => $page, 'pages' => $pages, 'data' => $data)) ?>
 <?php echo theme_view('parts/section/footer', array('page' => $page, 'pages' => $pages)) ?>

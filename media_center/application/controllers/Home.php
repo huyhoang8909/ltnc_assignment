@@ -120,8 +120,11 @@ class Home extends MX_Controller
             
             $item = $this->item_model->get_item_by_id($id);
             
-            
-            Template::set('item', $item);
+            $data = array(
+                'item' => $item,
+                'more_items' => $this->item_model->get_more_items($id)
+            );
+            Template::set('data', $data);
             Template::render();
         }
 }

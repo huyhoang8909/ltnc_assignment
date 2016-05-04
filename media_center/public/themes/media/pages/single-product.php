@@ -2,15 +2,15 @@
     <div class="container">
 
         
-        <?php echo theme_view('parts/section/single-product-gallery', array('item' => $item));?>
-        <?php echo theme_view('parts/section/single-product-detail', array('item' => $item));?>
+        <?php echo theme_view('parts/section/single-product-gallery', array('item' => $data['item']));?>
+        <?php echo theme_view('parts/section/single-product-detail', array('item' => $data['item']));?>
 
 
     </div><!-- /.container -->
 </div><!-- /.single-product -->
 
 
-<?php echo theme_view('parts/section/single-product-tab', array('item' => $item));?>
+<?php echo theme_view('parts/section/single-product-tab', array('item' => $data['item']));?>
 
-<?php echo theme_view('parts/section/recently-viewed', array('item' => $item));?>
+<?php echo theme_view('parts/section/recently-viewed', array('more_items' => $data['more_items']));?>
 
