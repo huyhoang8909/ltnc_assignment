@@ -59,15 +59,21 @@ class Home extends MX_Controller
 	 *
 	 * @return void
 	 */
-	public function index()
-	{
-		$this->load->library('users/auth');
-		$this->set_current_user();
+	public function index() {
 
-		Template::render();
-	}//end index()
 
-	//--------------------------------------------------------------------
+            $this->load->model('item_model');
+            $this->load->library('users/auth');
+            $this->set_current_user();
+
+            $items = $this->item_model->get_items();
+            
+            Template::set('items', $items);
+            Template::render();
+        }
+
+//end index()
+    //--------------------------------------------------------------------
 
 	/**
 	 * If the Auth lib is loaded, it will set the current user, since users
@@ -102,5 +108,9 @@ class Home extends MX_Controller
 			Template::set('current_user', $this->current_user);
 		}
 	}
+        
+        public function list_items() {
+            echo 'hehe';
+        }
 }
 /* end ./application/controllers/home.php */

@@ -14,7 +14,7 @@
 
 <?php echo theme_view('parts/section/home-banners');?>
 
-<?php echo theme_view('parts/section/home-page-tabs');?>
+<?php echo theme_view('parts/section/home-page-tabs', array('items' => $items));?>
 
 <?php echo theme_view('parts/section/best-sellers');?>
 

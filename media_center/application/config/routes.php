@@ -83,3 +83,7 @@ $route = Route::map($route);
 if (defined(CI_VERSION) && substr(CI_VERSION, 0, 1) != '2') {
     $route['translate_uri_dashes'] = false;
 }
+
+
+
+$route['list_item'] = 'home/item';
