@@ -25,7 +25,7 @@
 
             <div id="owl-single-product-thumbnails">
                 <a class="horizontal-thumb active" data-target="#owl-single-product" data-slide="0" href="#slide1">
-                    <img width="67" alt="" src="<?php echo base_url() ?>items/<?php echo $item->IMAGE ?>" data-echo="assets/images/products/gallery-thumb-01.jpg" />
+                    <img width="67" alt="" src="<?php echo base_url('items').'/'.$item->IMAGE ?>" data-echo="<?php echo base_url('items').'/'.$item->IMAGE ?>" />
                 </a>
 
                 <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="1" href="#slide2">
