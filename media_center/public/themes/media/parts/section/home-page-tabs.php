@@ -18,7 +18,7 @@
                                 <div class="product-item">
                                     <div class="ribbon red"><span>sale</span></div> 
                                     <div class="image">
-                                        <img alt="" src="assets/images/blank.gif" data-echo="assets/images/products/product-01.jpg" />
+                                        <img alt="" src="items/<?php echo $item->IMAGE    ?>" data-echo="items/<?php echo $item->IMAGE    ?>" />
                                     </div>
                                     <div class="body">
                                         <div class="label-discount green">-50% sale</div>
