@@ -4,7 +4,7 @@
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" >
                 <?php foreach ($products as $product):  ?>
-                <li><a href="#cat_<?php echo $product->CATEGORY_ID ?>" data-toggle="tab"><?php echo $product->CATEGORY_NAME  ?></a></li>
+                <li class="<?php echo $product->active ?>"><a href="#cat_<?php echo $product->CATEGORY_ID ?>" data-toggle="tab"><?php echo $product->CATEGORY_NAME  ?></a></li>
                 <?php endforeach;    ?>
             </ul>
 

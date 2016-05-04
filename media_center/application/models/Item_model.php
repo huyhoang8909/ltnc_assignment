@@ -78,7 +78,9 @@ class Item_model  extends BF_Model
         foreach ($categories as $index => $category) {
             $params['category_id'] = $category->CATEGORY_ID;
             $categories[$index]->products = $this->get_items($params);
+            $categories[$index]->active = '';
         }
+        $categories[0]->active = 'active';
         
         return $categories;
     }
