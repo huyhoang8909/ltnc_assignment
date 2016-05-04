@@ -112,7 +112,7 @@ class Home extends MX_Controller
 		}
 	}
         
-        public function list_items() {
+        public function item() {
             echo 'hehe';
         }
 }
