@@ -25,11 +25,9 @@
                                         <div class="title">
                                             <a href="index.php?page=single-product"><?php echo $item->ITEM_NAME    ?></a>
                                         </div>
-                                        <div class="brand">sony</div>
                                     </div>
                                     <div class="prices">
-                                        <div class="price-prev">$1399.00</div>
-                                        <div class="price-current pull-right">$1199.00</div>
+                                        <div class="price-current pull-right">$<?php echo $item->ITEM_PRICE ?>.00</div>
                                     </div>
 
                                     <div class="hover-area">

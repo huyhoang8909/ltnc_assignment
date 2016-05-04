@@ -7,7 +7,7 @@
                     <h1>New Life</h1>
                     <span class="tagline">Introducing New Category</span>
                 </div>
-                <img class="banner-image" alt="" src="assets/images/blank.gif" data-echo="assets/images/banners/banner-narrow-01.jpg" />
+                <img class="banner-image" alt="" src="ads/ads1.png" data-echo="ads/ads1.png" />
             </a>
         </div>
         <div class="col-xs-12 col-lg-6 no-margin text-right banner">
@@ -16,7 +16,7 @@
                     <h1>Time &amp; Style</h1>
                     <span class="tagline">Checkout new arrivals</span>
                 </div>
-                <img class="banner-image" alt="" src="assets/images/blank.gif" data-echo="assets/images/banners/banner-narrow-02.jpg" />
+                <img class="banner-image" alt="" src="ads/ads2.png" data-echo="ads/ads2.png" />
             </a>
         </div>
     </div><!-- /.container -->
