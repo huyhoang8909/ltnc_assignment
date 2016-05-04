@@ -69,13 +69,9 @@ class Home extends MX_Controller
 
             $top_categories = $this->category_model->get_top_categories(array());
            
-            $items = $this->item_model->get_items();
+            $products = $this->item_model->get_items_by_categories($top_categories);
             
-            $products = array(
-                'top_categories' => $top_categories
-            );
-            
-            Template::set('items', $items);
+            Template::set('products', $products);
             Template::render();
         }
 

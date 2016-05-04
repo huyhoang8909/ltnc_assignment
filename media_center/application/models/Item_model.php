@@ -61,9 +61,26 @@ class Item_model  extends BF_Model
     protected $skip_validation          = false;
     protected $empty_validation_rules   = array();
     
-    public function get_items(){
-        $items = $this->find_all();
+    public function get_items($params = array()){
+        $items = array();
+        if (isset($params['category_id'])) {
+            $items = $this->where('CATEGORY_ID', $params['category_id'])
+                        ->limit(4)
+                        ->find_all();
+        } else {
+            $items = $this->find_all();
+        }
         return $items;
+    }
+    
+    public function get_items_by_categories($categories) {
+        
+        foreach ($categories as $index => $category) {
+            $params['category_id'] = $category->CATEGORY_ID;
+            $categories[$index]->products = $this->get_items($params);
+        }
+        
+        return $categories;
     }
 }
 /* End of file /emailer/models/emailer_model.php */
