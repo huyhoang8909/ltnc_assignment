@@ -9,7 +9,6 @@
     </div><!-- /.container -->
 </div><!-- /.single-product -->
 
-
 <?php echo theme_view('parts/section/single-product-tab', array('item' => $data['item']));?>
 
 <?php echo theme_view('parts/section/recently-viewed', array('more_items' => $data['more_items']));?>
