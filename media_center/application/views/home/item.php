@@ -47,5 +47,5 @@
 <?php  echo theme_view('parts/section/header', array('page' => $page, 'pages' => $pages)) ?>
 <?php echo theme_view('parts/breadcrumb/breadcrumb', array('page' => $page, 'pages' => $pages, 'products' => $products)) ?>
 
-<?php echo theme_view('pages/'.$page, array('page' => $page, 'pages' => $pages, 'products' => $products)) ?>
+<?php echo theme_view('pages/single-product', array('page' => $page, 'pages' => $pages, 'products' => $products)) ?>
 <?php echo theme_view('parts/section/footer', array('page' => $page, 'pages' => $pages)) ?>

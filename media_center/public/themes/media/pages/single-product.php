@@ -1,13 +1,16 @@
 <div id="single-product">
     <div class="container">
 
-        <?php require MC_ROOT.'/parts/section/single-product-gallery.php';?>
         
-        <?php require MC_ROOT.'/parts/section/single-product-detail.php';?>
+        <?php echo theme_view('parts/section/single-product-gallery');?>
+        <?php echo theme_view('parts/section/single-product-detail');?>
+
 
     </div><!-- /.container -->
 </div><!-- /.single-product -->
 
-<?php require MC_ROOT.'/parts/section/single-product-tab.php';?>
 
-<?php require MC_ROOT.'/parts/section/recently-viewed.php';?>
+<?php echo theme_view('parts/section/single-product-tab');?>
+
+<?php echo theme_view('parts/section/recently-viewed');?>
+

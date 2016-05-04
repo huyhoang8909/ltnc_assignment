@@ -118,6 +118,7 @@ class Home extends MX_Controller
             $this->load->model('category_model');
             $this->load->library('users/auth');
             $this->set_current_user();
+            
 
             $top_categories = $this->category_model->get_top_categories(array());
            
