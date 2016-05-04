@@ -1,22 +1,21 @@
  <div class="no-margin col-xs-12 col-sm-6 col-md-5 gallery-holder">
     <div class="product-item-holder size-big single-product-gallery small-gallery">
-
         <div id="owl-single-product">
             <div class="single-product-gallery-item" id="slide1">
-                <a data-rel="prettyphoto" href="images/products/product-gallery-01.jpg">
-                    <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/product-gallery-01.jpg" />
+                <a data-rel="prettyphoto" href="<?php echo base_url('items').'/'.$item->IMAGE ?>">
+                    <img class="img-responsive" alt="" src="<?php echo base_url('items').'/'.$item->IMAGE ?>" data-echo="<?php echo base_url('items').'/'.$item->IMAGE ?>" />
                 </a>
             </div><!-- /.single-product-gallery-item -->
 
             <div class="single-product-gallery-item" id="slide2">
-                <a data-rel="prettyphoto" href="images/products/product-gallery-01.jpg">
-                    <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/product-gallery-01.jpg" />
+                <a data-rel="prettyphoto" href="<?php echo base_url('items').'/'.$item->IMAGE ?>">
+                    <img class="img-responsive" alt="" src="<?php echo base_url('items').'/'.$item->IMAGE ?>" data-echo="<?php echo base_url('items').'/'.$item->IMAGE ?>" />
                 </a>
             </div><!-- /.single-product-gallery-item -->
 
             <div class="single-product-gallery-item" id="slide3">
-                <a data-rel="prettyphoto" href="images/products/product-gallery-01.jpg">
-                    <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/product-gallery-01.jpg" />
+                <a data-rel="prettyphoto" href="<?php echo base_url('items').'/'.$item->IMAGE ?>">
+                    <img class="img-responsive" alt="" src="<?php echo base_url('items').'/'.$item->IMAGE ?>" data-echo="<?php echo base_url('items').'/'.$item->IMAGE ?>" />
                 </a>
             </div><!-- /.single-product-gallery-item -->
         </div><!-- /.single-product-slider -->
@@ -26,39 +25,39 @@
 
             <div id="owl-single-product-thumbnails">
                 <a class="horizontal-thumb active" data-target="#owl-single-product" data-slide="0" href="#slide1">
-                    <img width="67" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/gallery-thumb-01.jpg" />
+                    <img width="67" alt="" src="<?php echo base_url() ?>items/<?php echo $item->IMAGE ?>" data-echo="assets/images/products/gallery-thumb-01.jpg" />
                 </a>
 
                 <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="1" href="#slide2">
-                    <img width="67" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/gallery-thumb-01.jpg" />
+                    <img width="67" alt="" src="<?php echo base_url('items').'/'.$item->IMAGE ?>" data-echo="<?php echo base_url('items').'/'.$item->IMAGE ?>" />
                 </a>
 
                 <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="2" href="#slide3">
-                    <img width="67" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/gallery-thumb-01.jpg" />
+                    <img width="67" alt="" src="<?php echo base_url('items').'/'.$item->IMAGE ?>" data-echo="<?php echo base_url('items').'/'.$item->IMAGE ?>" />
                 </a>
 
                 <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="0" href="#slide1">
-                    <img width="67" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/gallery-thumb-01.jpg" />
+                    <img width="67" alt="" src="<?php echo base_url('items').'/'.$item->IMAGE ?>" data-echo="<?php echo base_url('items').'/'.$item->IMAGE ?>" />
                 </a>
 
                 <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="1" href="#slide2">
-                    <img width="67" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/gallery-thumb-01.jpg" />
+                    <img width="67" alt="" src="<?php echo base_url('items').'/'.$item->IMAGE ?>" data-echo="<?php echo base_url('items').'/'.$item->IMAGE ?>" />
                 </a>
 
                 <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="2" href="#slide3">
-                    <img width="67" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/gallery-thumb-01.jpg" />
+                   <img width="67" alt="" src="<?php echo base_url('items').'/'.$item->IMAGE ?>" data-echo="<?php echo base_url('items').'/'.$item->IMAGE ?>" />
                 </a>
 
                 <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="0" href="#slide1">
-                    <img width="67" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/gallery-thumb-01.jpg" />
+                    <img width="67" alt="" src="<?php echo base_url('items').'/'.$item->IMAGE ?>" data-echo="<?php echo base_url('items').'/'.$item->IMAGE ?>" />
                 </a>
 
                 <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="1" href="#slide2">
-                    <img width="67" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/gallery-thumb-01.jpg" />
+                   <img width="67" alt="" src="<?php echo base_url('items').'/'.$item->IMAGE ?>" data-echo="<?php echo base_url('items').'/'.$item->IMAGE ?>" />
                 </a>
 
                 <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="2" href="#slide3">
-                    <img width="67" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/gallery-thumb-01.jpg" />
+                    <img width="67" alt="" src="<?php echo base_url('items').'/'.$item->IMAGE ?>" data-echo="<?php echo base_url('items').'/'.$item->IMAGE ?>" />
                 </a>
             </div><!-- /#owl-single-product-thumbnails -->
 

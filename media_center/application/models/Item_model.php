@@ -84,5 +84,13 @@ class Item_model  extends BF_Model
         
         return $categories;
     }
+    
+    public function get_item_by_id($id) {
+        $item = $this->where('ITEM_ID', $id)
+                ->find_all();
+        
+        if (!empty($item)) $item = $item[0];
+        return $item;
+    }
 }
 /* End of file /emailer/models/emailer_model.php */

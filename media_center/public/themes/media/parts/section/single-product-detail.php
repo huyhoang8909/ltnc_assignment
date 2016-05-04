@@ -1,6 +1,5 @@
 <div class="no-margin col-xs-12 col-sm-7 body-holder">
     <div class="body">
-        <div class="star-holder inline"><div class="star" data-score="4"></div></div>
         <div class="availability"><label>Availability:</label><span class="available">  in stock</span></div>
 
         <div class="title"><a href="#">VAIO fit laptop - windows 8 SVF14322CXW</a></div>

@@ -115,16 +115,13 @@ class Home extends MX_Controller
         public function item($id) {
              
             $this->load->model('item_model');
-            $this->load->model('category_model');
             $this->load->library('users/auth');
             $this->set_current_user();
             
-
-            $top_categories = $this->category_model->get_top_categories(array());
-           
-            $products = $this->item_model->get_items_by_categories($top_categories);
+            $item = $this->item_model->get_item_by_id($id);
             
-            Template::set('products', $products);
+            
+            Template::set('item', $item);
             Template::render();
         }
 }
