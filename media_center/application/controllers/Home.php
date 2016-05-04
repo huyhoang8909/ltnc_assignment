@@ -74,6 +74,7 @@ class Home extends MX_Controller
             $data = array(
                 'products' => $products,
                 'more_items' => $this->item_model->get_more_items(1), 
+                'top_items' => $products
             );
             Template::set('data', $data);
             Template::render();

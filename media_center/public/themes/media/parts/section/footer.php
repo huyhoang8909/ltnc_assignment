@@ -4,15 +4,15 @@
     <div class="container">
         <div class="row no-margin widgets-row">
             <div class="col-xs-12  col-sm-4 no-margin-left">
-                <?php echo theme_view('parts/widgets/footer/featured-products-footer') ?>
+                <?php echo theme_view('parts/widgets/footer/featured-products-footer', array('items' => $data['products'][0])) ?>
             </div><!-- /.col -->
 
             <div class="col-xs-12 col-sm-4 ">
-                <?php echo theme_view('parts/widgets/footer/on-sale-products-footer') ?>
+                <?php echo theme_view('parts/widgets/footer/on-sale-products-footer', array('items' => $data['products'][1])) ?>
             </div><!-- /.col -->
 
             <div class="col-xs-12 col-sm-4 ">
-                <?php echo theme_view('parts/widgets/footer/top-rated-products-footer') ?>
+                <?php echo theme_view('parts/widgets/footer/top-rated-products-footer', array('items' => $data['products'][2])) ?>
             </div><!-- /.col -->
 
         </div><!-- /.widgets-row-->

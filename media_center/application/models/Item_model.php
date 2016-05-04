@@ -101,5 +101,9 @@ class Item_model  extends BF_Model
         
         return $items;
     }
+    
+    public function get_top_items($params) {
+        
+    }
 }
 /* End of file /emailer/models/emailer_model.php */
