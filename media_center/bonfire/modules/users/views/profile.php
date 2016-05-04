@@ -29,6 +29,8 @@ if (empty($renderPayload) && isset($this->auth)) {
 }
 
 ?>
+<div class="container">
+<div class="row">
 <section id="profile">
     <h1 class="page-header"><?php echo lang('us_edit_profile'); ?></h1>
     <?php if (validation_errors()) : ?>
@@ -66,6 +68,7 @@ if (empty($renderPayload) && isset($this->auth)) {
                     <?php $this->load->view('users/user_meta', array('frontend_only' => true)); ?>
                     <!-- End of User Meta -->
                 </fieldset>
+                <br/>
                 <fieldset class="form-actions">
                     <input type="submit" name="save" class="btn btn-primary" value="<?php echo lang('bf_action_save') . ' ' . lang('bf_user'); ?>" />
                     <?php echo lang('bf_or') . ' ' . anchor('/', lang('bf_action_cancel')); ?>
@@ -74,3 +77,5 @@ if (empty($renderPayload) && isset($this->auth)) {
         </div>
     </div>
 </section>
+</div>
+</div>

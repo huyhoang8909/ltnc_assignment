@@ -8,12 +8,15 @@ $fieldData = array(
 );
 
 ?>
+
 <style scoped='scoped'>
 #register p.already-registered {
     text-align: center;
 }
 </style>
-<section id="register">
+<div class="container">
+<div class="row">
+<section id="register" class="section register">
     <h1 class="page-header"><?php echo lang('us_sign_up'); ?></h1>
     <?php if (validation_errors()) : ?>
     <div class="alert alert-error fade in">
@@ -30,7 +33,7 @@ $fieldData = array(
     </div>
     <div class="row-fluid">
         <div class="span12">
-            <?php echo form_open(site_url(REGISTER_URL), array('class' => "form-horizontal", 'autocomplete' => 'off')); ?>
+            <?php echo form_open(site_url(REGISTER_URL), array('class' => "register-form cf-style-1", 'autocomplete' => 'off')); ?>
                 <fieldset>
                     <?php Template::block('user_fields', 'user_fields', $fieldData); ?>
                 </fieldset>
@@ -44,10 +47,11 @@ $fieldData = array(
                     <?php $this->load->view('users/user_meta', array('frontend_only' => true)); ?>
                     <!-- End of User Meta -->
                 </fieldset>
+                <br/>
                 <fieldset>
                     <div class="control-group">
                         <div class="controls">
-                            <input class="btn btn-primary" type="submit" name="register" id="submit" value="<?php echo lang('us_register'); ?>" />
+                            <input class="le-button" type="submit" name="register" id="submit" value="<?php echo lang('us_register'); ?>" />
                         </div>
                     </div>
                 </fieldset>
@@ -59,3 +63,5 @@ $fieldData = array(
         </div>
     </div>
 </section>
+</div>
+</div>
