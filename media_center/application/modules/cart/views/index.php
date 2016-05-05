@@ -48,6 +48,7 @@
     <div class="container">
         <!-- ========================================= CONTENT ========================================= -->
         <?php $total_price = 0 ?>
+        <?php if (!empty($records)) : ?>
         <div class="col-xs-12 col-md-9 items-holder no-margin">
             <?php foreach ($records as $record) : ?>
             <div class="row no-margin cart-item">
@@ -68,24 +69,26 @@
                     <div class="quantity">
                         <div class="le-quantity">
                             <form>
-                                <a class="minus" href="#reduce"></a>
-                                <input name="quantity" readonly="readonly" type="text" value="1" />
-                                <a class="plus" href="#add"></a>
+                                <!-- <a class="minus" href="#" onclick="reduce('<?php e($record->ITEM_ID) ?>')"></a> -->
+                                <input name="quantity" id="<?php e($record->ITEM_ID) ?>" readonly="readonly" type="text" value="1" />
+                                <!-- <a class="plus" href="#" onclick="add('<?php e($record->ITEM_ID) ?>')"></a> -->
                             </form>
                         </div>
                     </div>
                 </div> 
 
                 <div class="col-xs-12 col-sm-2 no-margin">
-                    <div class="price">
+                    <div class="price price-<?php e($record->ITEM_ID) ?>">
+                        <input type="hidden" value="<?php echo $record->ITEM_PRICE ?>">
                         $<?php e($record->ITEM_PRICE) ?>
                         <?php $total_price += $record->ITEM_PRICE ?>
                     </div>
-                    <a class="close-btn" href="#"></a>
+                    <a class="close-btn" href="/cart/delete/<?php echo $record->ITEM_ID ?>"></a>
                 </div>
             </div><!-- /.cart-item -->
             <?php endforeach; ?>
         </div>
+        <?php endif; ?>
         <!-- ========================================= CONTENT : END ========================================= -->
 
         <!-- ========================================= SIDEBAR ========================================= -->

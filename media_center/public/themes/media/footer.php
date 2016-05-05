@@ -17,6 +17,8 @@
     <script src="/assets/js/scripts.js"></script>
 
     <script src="http://w.sharethis.com/button/buttons.js"></script>
+    <?php echo Assets::js() ?>
+
 
 </body>
 </html>

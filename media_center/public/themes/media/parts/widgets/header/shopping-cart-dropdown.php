@@ -14,19 +14,21 @@
         
         <div class="basket">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                 
                 <div class="basket-item-count">
-                    <span class="count"><?php echo count($cart) ?></span>
+                    <span class="count"><?php !empty($cart) ? print(count($cart)) : print '0' ?></span>
                     <img src="/assets/images/icon-cart.png" alt="" />
                 </div>
-
+                <?php if(!empty($cart)): ?>
                 <div class="total-price-basket"> 
                     <span class="lbl">your cart:</span>
                     <span class="total-price">
                         <span class="sign">$</span><span class="value"> <?php echo $this->session->userdata('total_price') ?> </span>
                     </span>
                 </div>
+                <?php endif; ?>
             </a>
-
+            <?php if(!empty($cart)): ?>
             <ul class="dropdown-menu">
                 <?php foreach ($cart as $record) : ?>
                 <li>
@@ -42,7 +44,7 @@
                                 <div class="price">$<?php e($record->ITEM_PRICE) ?></div>
                             </div>
                         </div>
-                        <a class="close-btn" href="#"></a>
+                        <!-- <a class="close-btn" href="#"></a> -->
                     </div>
                 </li>
                 <?php endforeach; ?>
@@ -60,6 +62,7 @@
                 </li>
 
             </ul>
+            <?php endif; ?>
         </div><!-- /.basket -->
     </div><!-- /.top-cart-holder -->
 </div><!-- /.top-cart-row-container -->

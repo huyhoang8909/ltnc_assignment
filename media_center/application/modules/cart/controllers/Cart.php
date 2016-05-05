@@ -54,14 +54,10 @@ class Cart extends Front_Controller
         }
     }
 
-    public function delete($item)
+    public function delete($item_id)
     {
-        $records = $this->cart_model->find_all();
-
-        Template::set('records', $records);
-        
-
-        Template::render();
+        $records = $this->db->delete('cart_item', array('ITEM_ID' => $item_id));
+        redirect('/cart');
     }
 
     public function reduce($item)
