@@ -67,6 +67,20 @@ class Home extends MX_Controller
             $this->load->library('users/auth');
             $this->set_current_user();
 
+            if ($this->auth->is_logged_in()) {
+                $this->load->model('cart/cart_model');
+                $cart = $this->cart_model
+                    ->where('cart.USER_ID', $this->current_user->id)
+                    ->find_all();
+                $cart_price = $this->cart_model
+                    ->select('SUM(ITEM_PRICE) AS TOTAL_PRICE')
+                    ->where('cart.USER_ID', $this->current_user->id)
+                    ->find_all();
+
+                $this->session->set_userdata('cart', $cart);
+                $this->session->set_userdata('total_price', $cart_price[0]->TOTAL_PRICE);
+            }
+
             $top_categories = $this->category_model->get_top_categories(array());
            
             $products = $this->item_model->get_items_by_categories($top_categories);

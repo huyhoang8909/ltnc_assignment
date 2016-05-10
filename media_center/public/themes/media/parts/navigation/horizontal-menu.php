@@ -15,14 +15,14 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">TV &amp; Audio</a>
                         <ul class="dropdown-menu">
-                            <li><?php require MC_ROOT.'/parts/navigation/megamenu-horizontal.php';?></li>
+                            <li><?php echo theme_view('parts/navigation/megamenu-horizontal') ?></li>
                         </ul>
                     </li>
                             
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">RTV</a>
                         <ul class="dropdown-menu">
-                            <li><?php require MC_ROOT.'/parts/navigation/megamenu-horizontal.php';?></li>
+                            <li><?php echo theme_view('parts/navigation/megamenu-horizontal') ?></li>
                         </ul>
                     </li>
                             
@@ -44,7 +44,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">Games &amp; Consoles</a>
                         <ul class="dropdown-menu">
-                            <li><?php require MC_ROOT.'/parts/navigation/megamenu-horizontal.php';?></li>
+                            <li><?php echo theme_view('parts/navigation/megamenu-horizontal') ?></li>
                         </ul>
                     </li>
                     
@@ -137,7 +137,7 @@
                     <li class="dropdown navbar-right hidden-md">
                         <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">Accessories</a>
                         <ul class="dropdown-menu">
-                            <li><?php require MC_ROOT.'/parts/navigation/megamenu-horizontal.php';?></li>
+                            <li><?php echo theme_view('parts/navigation/megamenu-horizontal') ?></li>
                         </ul>
                     </li>
                 </ul><!-- /.navbar-nav -->
