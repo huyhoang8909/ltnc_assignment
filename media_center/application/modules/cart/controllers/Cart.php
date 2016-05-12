@@ -10,8 +10,6 @@ class Cart extends Front_Controller
     protected $permissionEdit   = 'Cart.Cart.Edit';
     protected $permissionView   = 'Cart.Cart.View';
 
-    protected $require_authentication = true;
-
     /**
      * Constructor
      *
@@ -34,24 +32,31 @@ class Cart extends Front_Controller
      */
     public function index()
     {
-        $records = $this->cart_model->where('cart.USER_ID', $this->current_user->id)
-            ->find_all();
+        $cart_id = $this->session->userdata('cart_id');
 
-        Template::set('records', $records);
+        if ($cart_id) {
+            $records = $this->cart_model->where('cart.CART_ID', $cart_id)
+                ->find_all();
+             $cart_price = $this->cart_model
+                        ->select('SUM(ITEM_PRICE) AS TOTAL_PRICE')
+                        ->where('cart.CART_ID', $cart_id)
+                        ->find_all();
+
+            $this->session->set_userdata('cart', $records);
+            $this->session->set_userdata('total_price', $cart_price[0]->TOTAL_PRICE);
+        }
+
+        Template::set('records', isset($records) ? $records : []);
+
         Template::render();
     }
 
     public function add($id)
     {
-        if ($this->auth->is_logged_in()) {
-            //insert to db with item and user
-            $cart_id = $this->cart_model->create_cart($this->current_user->id, $id);
-            redirect('/cart');
-        } else {
-        
-            $records = $this->cart_model->find_all();
-            redirect('/login');
-        }
+        //insert to db with item and user
+        $cart_id = $this->cart_model->create_cart($id, $this->session->userdata('cart_id'));
+        $this->session->set_userdata('cart_id', $cart_id);
+        redirect('/cart');
     }
 
     public function delete($item_id)

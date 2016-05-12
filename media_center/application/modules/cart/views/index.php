@@ -69,9 +69,9 @@
                     <div class="quantity">
                         <div class="le-quantity">
                             <form>
-                                <!-- <a class="minus" href="#" onclick="reduce('<?php e($record->ITEM_ID) ?>')"></a> -->
+                                <a class="minus" href="#" onclick="reduce('<?php e($record->ITEM_ID) ?>')"></a>
                                 <input name="quantity" id="<?php e($record->ITEM_ID) ?>" readonly="readonly" type="text" value="1" />
-                                <!-- <a class="plus" href="#" onclick="add('<?php e($record->ITEM_ID) ?>')"></a> -->
+                                <a class="plus" href="#" onclick="add('<?php e($record->ITEM_ID) ?>')"></a>
                             </form>
                         </div>
                     </div>
@@ -80,7 +80,7 @@
                 <div class="col-xs-12 col-sm-2 no-margin">
                     <div class="price price-<?php e($record->ITEM_ID) ?>">
                         <input type="hidden" value="<?php echo $record->ITEM_PRICE ?>">
-                        $<?php e($record->ITEM_PRICE) ?>
+                        <span>$<?php e($record->ITEM_PRICE) ?></span>
                         <?php $total_price += $record->ITEM_PRICE ?>
                     </div>
                     <a class="close-btn" href="/cart/delete/<?php echo $record->ITEM_ID ?>"></a>
@@ -100,7 +100,7 @@
                     <ul class="tabled-data no-border inverse-bold">
                         <li>
                             <label>cart subtotal</label>
-                            <div class="value pull-right">$<?php echo $total_price ?></div>
+                            <div id ="cart-price"class="value pull-right">$<?php echo $total_price ?></div>
                         </li>
                         <li>
                             <label>shipping</label>

@@ -40,11 +40,6 @@ class Cart_model extends BF_Model
 	// be updating a portion of the data.
 	protected $validation_rules 		= array(
 		array(
-			'field' => 'USER_ID',
-			'label' => 'lang:cart_field_USER_ID',
-			'rules' => 'required|unique[cart.USER_ID,cart.CART_ID]|max_length[11]',
-		),
-		array(
 			'field' => 'STATUS',
 			'label' => 'lang:cart_field_STATUS',
 			'rules' => 'required|max_length[10]',
@@ -71,16 +66,13 @@ class Cart_model extends BF_Model
         return parent::find_all();
     }
 
-    public function create_cart($user_id, $item_id)
+    public function create_cart($item_id, $cart_id = null)
     {
         // find the cart for this user
-        $cart = $this->find_by(['USER_ID' => $user_id, 'STATUS' => 'ordered']);
-        if (empty($cart)) {
+        if (empty($cart_id)) {
             // create cart for the user
-            $this->db->insert('cart', ['USER_ID' => $user_id, 'STATUS' => 'ordered']);
+            $this->db->insert('cart', ['STATUS' => 'ordered']);
             $cart_id = $this->db->insert_id();
-        } else {
-            $cart_id = $cart->CART_ID;
         }
 
         // add item to the cart
