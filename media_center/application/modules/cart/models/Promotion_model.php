@@ -1,9 +1,9 @@
 <?php defined('BASEPATH') || exit('No direct script access allowed');
 
-class Cart_model extends BF_Model
+class Promotion_model extends BF_Model
 {
-    protected $table_name	= 'cart';
-	protected $key			= 'CART_ID';
+    protected $table_name	= 'promotion';
+	protected $key			= 'PROMOTION_ID';
 	protected $date_format	= 'datetime';
 
 	protected $log_user 	= false;
@@ -39,11 +39,11 @@ class Cart_model extends BF_Model
 	// That way it is only required during inserts, not updates which may only
 	// be updating a portion of the data.
 	protected $validation_rules 		= array(
-		array(
-			'field' => 'STATUS',
-			'label' => 'lang:cart_field_STATUS',
-			'rules' => 'required|max_length[10]',
-		),
+		// array(
+		// 	'field' => 'STATUS',
+		// 	'label' => 'lang:cart_field_STATUS',
+		// 	'rules' => 'required|max_length[10]',
+		// ),
 	);
 	protected $insert_validation_rules  = array();
 	protected $skip_validation 			= false;
@@ -58,30 +58,5 @@ class Cart_model extends BF_Model
         parent::__construct();
     }
 
-    public function find_all()
-    {
-        $this->db->join('cart_item', 'cart_item.CART_ID = cart.CART_ID')
-        ->join('item', 'cart_item.ITEM_ID = item.ITEM_ID')
-        ->join('manufacturer', 'manufacturer.manufacturer_id = item.manufacturer_id');
-        return parent::find_all();
-    }
-
-    public function create_cart($item_id, $cart_id = null)
-    {
-        // find the cart for this user
-        if (empty($cart_id)) {
-            // create cart for the user
-            $this->db->insert('cart', ['STATUS' => 'ordered']);
-            $cart_id = $this->db->insert_id();
-        }
-
-        // add item to the cart
-        $this->db->insert('cart_item', [
-            'CART_ID' => $cart_id,
-            'ITEM_ID' => $item_id,
-            'AMOUNT'  => 1
-        ]);
-
-        return $cart_id;
-    }
+    
 }

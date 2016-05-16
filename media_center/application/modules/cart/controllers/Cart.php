@@ -20,6 +20,7 @@ class Cart extends Front_Controller
         parent::__construct();
         
         $this->load->model('cart/cart_model');
+        $this->load->model('cart/promotion_model');
         $this->lang->load('cart');
 
         Assets::add_module_js('cart', 'cart.js');
@@ -67,22 +68,29 @@ class Cart extends Front_Controller
 
     public function reduce($item)
     {
-        $records = $this->cart_model->find_all();
-
-        Template::set('records', $records);
-        
-
-        Template::render();
+        $cart_id = $this->session->userdata('cart_id');
+        $this->db->set('AMOUNT', 'AMOUNT-1', FALSE);
+        $this->db->where('CART_ID', $cart_id)
+            ->where('ITEM_ID', $item_id);
+        $this->db->update('cart_item');
+        exit(0);
     }
 
-        public function increase()
+    public function increase($item_id)
     {
-        $records = $this->cart_model->find_all();
+        $cart_id = $this->session->userdata('cart_id');
+        $this->db->set('AMOUNT', 'AMOUNT+1', FALSE);
+        $this->db->where('CART_ID', $cart_id)
+            ->where('ITEM_ID', $item_id);
+        $this->db->update('cart_item');
+        exit(0);
+    }
 
-        Template::set('records', $records);
-        
-
-        Template::render();
+    public function coupon($coupon_id)
+    {
+       $data = $this->promotion_model->find_by('PROMOTION_CODE', $coupon_id);
+       echo json_encode($data);
+       exit();
     }
     
 }
