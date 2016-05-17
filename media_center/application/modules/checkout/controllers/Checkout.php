@@ -10,8 +10,6 @@ class Checkout extends Front_Controller
     protected $permissionEdit   = 'Checkout.Checkout.Edit';
     protected $permissionView   = 'Checkout.Checkout.View';
 
-    protected $require_authentication = true;
-
     /**
      * Constructor
      *
@@ -36,8 +34,8 @@ class Checkout extends Front_Controller
      */
     public function index()
     {
-        
-        $records = $this->cart_model->where('cart.USER_ID', $this->current_user->id)
+        $cart_id = $this->session->userdata('cart_id');
+        $records = $this->cart_model->where('cart.CART_ID', $cart_id)
             ->find_all();
 
         if (empty($records)) redirect('/');
