@@ -46,7 +46,7 @@
 <?php echo theme_view('parts/navigation/horizontal-menu', array('page' => $page, 'pages' => $pages)) ?>
 
 <!-- ========================================= CONTENT ========================================= -->
-<form action="checkout" method="post">
+<?php echo form_open('/checkout') ?>
 <section id="checkout-page">
     <div class="container">
         <div class="col-xs-12 no-margin">
@@ -57,21 +57,23 @@
                     <div class="row field-row">
                         <div class="col-xs-12 col-sm-6">
                             <label>full name*</label>
-                            <input name="name" class="le-input" >
+                            <input name="name" class="le-input" value="<?php echo set_value('name'); ?>">
+                            <?php echo form_error('name'); ?>
                         </div>
                     </div><!-- /.field-row -->
 
                     <div class="row field-row">
                         <div class="col-xs-12">
                             <label>company name</label>
-                            <input name="company-name" class="le-input" >
+                            <input name="company-name" class="le-input" value="<?php echo set_value('company-name'); ?>">
                         </div>
                     </div><!-- /.field-row -->
 
                     <div class="row field-row">
                         <div class="col-xs-12 col-sm-6">
                             <label>address*</label>
-                            <input style="text-transform: none;" name="address" class="le-input" data-placeholder="Street address" >
+                            <input style="text-transform: none;" name="address" class="le-input" data-placeholder="Street address" value="<?php echo set_value('address'); ?>" >
+                            <?php echo form_error('address'); ?>
                         </div>
 
                     </div><!-- /.field-row -->
@@ -79,12 +81,14 @@
                     <div class="row field-row">
                         <div class="col-xs-12 col-sm-4">
                             <label>email address*</label>
-                            <input name="email" class="le-input" >
+                            <input name="email" class="le-input" value="<?php echo set_value('email'); ?>">
+                            <?php echo form_error('email'); ?>
                         </div>
 
                         <div class="col-xs-12 col-sm-4">
                             <label>phone number*</label>
-                            <input name="phone" class="le-input" >
+                            <input name="phone" class="le-input" value="<?php echo set_value('phone'); ?>">
+                            <?php echo form_error('phone'); ?>
                         </div>
                     </div><!-- /.field-row -->
 
@@ -176,6 +180,6 @@
         </div><!-- /.col -->
     </div><!-- /.container -->    
 </section><!-- /#checkout-page -->
-</form>
+<?php echo form_close() ?>
 <!-- ========================================= CONTENT : END ========================================= -->
 <?php echo theme_view('parts/section/footer', array('page' => $page, 'pages' => $pages)) ?>

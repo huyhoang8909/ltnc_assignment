@@ -34,14 +34,49 @@ class Checkout extends Front_Controller
      */
     public function index()
     {
-        $cart_id = $this->session->userdata('cart_id');
-        $records = $this->cart_model->where('cart.CART_ID', $cart_id)
-            ->find_all();
+        $this->load->helper('form');
 
-        if (empty($records)) redirect('/');
+        if($this->input->method(TRUE) === 'POST') {
+            $this->load->library('form_validation');
 
-        Template::set('records', $records);
-        Template::render();
+            $this->form_validation->set_rules('name', 'Full Name', 'required');
+            $this->form_validation->set_rules('address', 'Address', 'required');
+            $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+            $this->form_validation->set_rules('phone', 'Phone', 'required|is_natural|min_length[10]|max_length[11]');
+
+            if ($this->form_validation->run() == FALSE) {
+                $this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
+
+                $cart_id = $this->session->userdata('cart_id');
+                $records = $this->cart_model->where('cart.CART_ID', $cart_id)
+                ->find_all();
+
+                if (empty($records)) redirect('/');
+
+                Template::set('records', $records);
+                Template::render();
+            } else {
+                //flash message
+                $this->session->set_flashdata('message', 'success::Your order has completed! You can view this order
+                    <a href="#" class="alert-link">here</a>');
+                // redirect to home
+                redirect('/');
+            }
+        } else {
+            $cart_id = $this->session->userdata('cart_id');
+            $records = $this->cart_model->where('cart.CART_ID', $cart_id)
+                ->find_all();
+
+            if (empty($records)) redirect('/');
+
+            Template::set('records', $records);
+            Template::render();
+        }
+    }
+
+    public function complete()
+    {
+
     }
     
 }
