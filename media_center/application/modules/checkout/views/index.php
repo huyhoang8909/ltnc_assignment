@@ -57,7 +57,7 @@
                     <div class="row field-row">
                         <div class="col-xs-12 col-sm-6">
                             <label>full name*</label>
-                            <input name="username" class="le-input" value="<?php echo set_value('name'); ?>">
+                            <input name="username" class="le-input" value="<?php echo set_value('username', isset($username) ? $username : ''); ?>">
                             <?php echo form_error('username'); ?>
                         </div>
                     </div><!-- /.field-row -->
@@ -65,14 +65,14 @@
                     <div class="row field-row">
                         <div class="col-xs-12">
                             <label>company name</label>
-                            <input name="company-name" class="le-input" value="<?php echo set_value('company-name'); ?>">
+                            <input name="company" class="le-input" value="<?php echo set_value('company', isset($company) ? $company : ''); ?>">
                         </div>
                     </div><!-- /.field-row -->
 
                     <div class="row field-row">
                         <div class="col-xs-12 col-sm-6">
                             <label>address*</label>
-                            <input style="text-transform: none;" name="address" class="le-input" data-placeholder="Street address" value="<?php echo set_value('address'); ?>" >
+                            <input style="text-transform: none;" name="address" class="le-input" data-placeholder="Street address" value="<?php echo set_value('address', isset($address) ? $address : ''); ?>" >
                             <?php echo form_error('address'); ?>
                         </div>
 
@@ -81,23 +81,25 @@
                     <div class="row field-row">
                         <div class="col-xs-12 col-sm-4">
                             <label>email address*</label>
-                            <input name="email" class="le-input" value="<?php echo set_value('email'); ?>">
+                            <input name="email" class="le-input" <?php echo empty($current_user) ?: "readonly" ?> value="<?php echo set_value('email', isset($email) ? $email : ''); ?>">
                             <?php echo form_error('email'); ?>
                         </div>
 
                         <div class="col-xs-12 col-sm-4">
                             <label>phone number*</label>
-                            <input name="phone" class="le-input" value="<?php echo set_value('phone'); ?>">
+                            <input name="phone" class="le-input" value="<?php echo set_value('phone', isset($phone) ? $phone : ''); ?>">
                             <?php echo form_error('phone'); ?>
                         </div>
                     </div><!-- /.field-row -->
 
+                    <?php if (empty($current_user)) : ?>
                     <div class="row field-row">
                         <div id="create-account" class="col-xs-12">
                             <input name="create-account" class="le-checkbox big" type="checkbox"  />
                             <a class="simple-link bold" href="#">Create Account?</a> - you will receive email with temporary generated password after login you need to change it.
                         </div>
                     </div><!-- /.field-row -->
+                    <?php endif; ?>
 
             </div><!-- /.billing-address -->
 
@@ -161,14 +163,14 @@
 
             <div id="payment-method-options">
                     <div class="payment-method-option">
-                        <input class="le-radio" type="radio" name="group2" value="Direct">
+                        <input class="le-radio" type="radio" name="payment" value="Direct" checked>
                         <div class="radio-label bold ">Direct Bank Transfer<br>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce rutrum tempus elit, vestibulum vestibulum erat ornare id.</p>
+                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce rutrum tempus elit, vestibulum vestibulum erat ornare id.</p> -->
                         </div>
                     </div><!-- /.payment-method-option -->
                     
                     <div class="payment-method-option">
-                        <input class="le-radio" type="radio" name="group2" value="paypal">
+                        <input class="le-radio" type="radio" name="payment" value="paypal">
                         <div class="radio-label bold ">paypal system</div>
                     </div><!-- /.payment-method-option -->
             </div><!-- /#payment-method-options -->

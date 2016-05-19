@@ -6,5 +6,16 @@ ADD COLUMN `TYPE` VARCHAR(45) NULL DEFAULT 'percent' AFTER `PROMOTION_CODE`;
 ALTER TABLE `media_center`.`promotion` 
 CHANGE COLUMN `DISCOUNT_PERCENT` `DISCOUNT` TINYINT(4) NULL DEFAULT NULL ;
 
+ADD COLUMN `address` VARCHAR(45) AFTER `force_password_reset`,
+ADD COLUMN `phone` VARCHAR(45) AFTER `address`,
+ADD COLUMN `company` TEXT NULL AFTER `phone`;
+
+
 // add data
 insert into promotion(START_DATE, END_DATE,DISCOUNT, PROMOTION_CODE) values(NOW(), DATE_ADD(NOW(), INTERVAL 1 MONTH), 10, 'abc');
+ALTER TABLE `media_center`.`users` 
+
+INSERT INTO `media_center`.`shippingtype` (`SHIPPING_TYPE_NAME`, `SHIPPING_COST`, `SHIPPING_DAYS`) VALUES ('free', '0', '3');
+INSERT INTO `media_center`.`shippingtype` (`SHIPPING_TYPE_NAME`, `SHIPPING_COST`, `SHIPPING_DAYS`) VALUES ('local', '15', '1');
+
+
