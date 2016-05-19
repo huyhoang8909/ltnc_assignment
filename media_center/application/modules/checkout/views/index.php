@@ -57,8 +57,8 @@
                     <div class="row field-row">
                         <div class="col-xs-12 col-sm-6">
                             <label>full name*</label>
-                            <input name="name" class="le-input" value="<?php echo set_value('name'); ?>">
-                            <?php echo form_error('name'); ?>
+                            <input name="username" class="le-input" value="<?php echo set_value('name'); ?>">
+                            <?php echo form_error('username'); ?>
                         </div>
                     </div><!-- /.field-row -->
 
