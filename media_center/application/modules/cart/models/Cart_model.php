@@ -84,4 +84,10 @@ class Cart_model extends BF_Model
 
         return $cart_id;
     }
+
+    public function delete($id = null)
+    {
+      $this->db->delete('cart_item', array('CART_ID' => $id));
+      return parent::delete($id);
+    }
 }

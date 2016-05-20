@@ -137,8 +137,8 @@
                                 <label>shipping</label>
                                 <div class="value">
                                     <div class="radio-group">
-                                        <input class="le-radio" type="radio" name="ship" value="free" checked> <div class="radio-label bold">free shipping</div><br>
-                                        <input class="le-radio" type="radio" name="ship" value="local" >  <div class="radio-label">local delivery<br><span class="bold">$15</span></div>
+                                        <input class="le-radio" type="radio" name="ship" value="1" checked> <div class="radio-label bold">free shipping</div><br>
+                                        <input class="le-radio" type="radio" name="ship" value="2" >  <div class="radio-label">local delivery<br><span class="bold">$15</span></div>
                                     </div>
                                 </div>
                             </li>

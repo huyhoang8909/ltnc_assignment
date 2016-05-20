@@ -70,7 +70,8 @@ class Checkout extends Front_Controller
                         // No activation method, so automatically activate the user.
                         $data['active'] = 1;
                     }
-                    $data['password'] = random_string('alnum', 5);
+                    // $data['password'] = random_string('alnum', 5);
+                    $data['password'] = '12345678'
                     $data['phone'] = $this->input->post('phone');
                     $data['address'] = $this->input->post('address');
                     $data['company'] = $this->input->post('company');
@@ -113,18 +114,22 @@ class Checkout extends Front_Controller
                 }
 
                 // insert order
-                $this->order_model->create($this->session->userdata('cart_id'));
+                $this->load->model('order/order_model');
+                $items = $this->cart_model->where('cart.CART_ID', $this->session->userdata('cart_id'))
+                    ->find_all();
 
-                $this->db->insert('orders', [
-                    'SHIPPING_TYPE_ID' => 'ordered',
-                    'USER_ID' => $userId,
-                    'ORDER_STATUS' => 'PROCESSING',
-                    'ORDER_DATE' => $this->set_date(),
-                ]);
-
+                $this->order_model->create($userId, $items, $this->input->post('ship'));
 
                 // update items quantity
+                foreach ($items as $item) {
+                    $this->db->set('ITEM_QUANTITY', 'ITEM_QUANTITY-'. $item->AMOUNT, FALSE);
+                    $this->db->where('ITEM_ID', $item->ITEM_ID);
+                    $this->db->update('item');
+                }
+
                 //delete cart
+                $this->cart_model->delete($this->session->userdata('cart_id'));
+
                 //flash message
                 $this->session->set_flashdata('message', 'success::Your order has completed! You can view this order
                     <a href="/order" class="alert-link">here</a>');
@@ -150,9 +155,4 @@ class Checkout extends Front_Controller
         }
     }
 
-    public function complete()
-    {
-
-    }
-    
 }
