@@ -142,12 +142,12 @@
                                     </div>
                                 </div>
                             </li>
-                            <li>
+<!--                             <li>
                                 <label>Voucher</label>
                                 <div class="value">
                                 10% off
                                 </div>
-                            </li>
+                            </li> -->
                         </ul><!-- /.tabled-data -->
 
                         <ul id="total-field" class="tabled-data inverse-bold ">
@@ -163,15 +163,12 @@
 
             <div id="payment-method-options">
                     <div class="payment-method-option">
-                        <input class="le-radio" type="radio" name="payment" value="Direct" checked>
-                        <div class="radio-label bold ">Direct Bank Transfer<br>
-                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce rutrum tempus elit, vestibulum vestibulum erat ornare id.</p> -->
-                        </div>
-                    </div><!-- /.payment-method-option -->
-                    
-                    <div class="payment-method-option">
-                        <input class="le-radio" type="radio" name="payment" value="paypal">
-                        <div class="radio-label bold ">paypal system</div>
+                            <p>Please transfer to the banks</p>
+                            <ul> 
+                                <li><strong>Name: test </strong></li>
+                                <li><strong>Account: 123xxxx</strong></li>
+                                <li><strong>Bank: Vietcombank</strong></li>
+                            </ul>
                     </div><!-- /.payment-method-option -->
             </div><!-- /#payment-method-options -->
             

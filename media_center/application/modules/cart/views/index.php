@@ -120,7 +120,7 @@
                 </div>
             </div><!-- /.widget -->
 
-            <div id="cupon-widget" class="widget">
+<!--             <div id="cupon-widget" class="widget">
                 <h1 class="border">use coupon</h1>
                 <div class="body">
                     

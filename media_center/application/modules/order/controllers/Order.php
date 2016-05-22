@@ -41,10 +41,26 @@ class Order extends Front_Controller
         $this->load->library('users/auth');
         
         if ($this->auth->is_logged_in()) {
-            $records = $this->order_model->where('USER_ID', $this->auth->user()->id)->find_all();
+            $records = $this->order_model->get_order_items(array('USER_ID' => $this->auth->user()->id));
+
+            $this->set_current_user();
 
             Template::set('records', $records);
             Template::render();
+        } else {
+            redirect('/login');
+        }
+
+    }
+
+    public function delete($id)
+    {
+        $this->load->library('users/auth');
+        
+        if ($this->auth->is_logged_in()) {
+            //delete order
+            $records = $this->order_model->delete_order($id);
+            redirect('/order');
         } else {
             redirect('/login');
         }

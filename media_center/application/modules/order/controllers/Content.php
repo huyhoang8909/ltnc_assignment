@@ -66,13 +66,11 @@ class Content extends Admin_Controller
             }
         }
         
-        
-        
         $records = $this->order_model->find_all();
 
         Template::set('records', $records);
         
-    Template::set('toolbar_title', lang('order_manage'));
+        Template::set('toolbar_title', lang('order_manage'));
 
         Template::render();
     }

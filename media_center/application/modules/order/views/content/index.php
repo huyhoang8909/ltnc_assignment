@@ -21,17 +21,15 @@ if ($can_delete) {
 					<th class='column-check'><input class='check-all' type='checkbox' /></th>
 					<?php endif;?>
 					
-					<th><?php echo lang('order_field_SHIPPING_TYPE_ID'); ?></th>
+					<th>SHIPPING TYPE</th>
 					<th><?php echo lang('order_field_PAYMENT_TYPE'); ?></th>
-					<th><?php echo lang('order_field_USER_ID'); ?></th>
-					<th><?php echo lang('order_field_ADDRESS_ID'); ?></th>
-					<th><?php echo lang('order_field_PAYMENT_ID'); ?></th>
+					<th>USERNAME</th>
+					<th>ADDRESS</th>
 					<th><?php echo lang('order_field_ORDER_STATUS'); ?></th>
 					<th><?php echo lang('order_field_ORDER_DATE'); ?></th>
 					<th><?php echo lang('order_field_DELIVERY_DATE'); ?></th>
 					<th><?php echo lang('order_field_TOTAL'); ?></th>
-					<th><?php echo lang('order_field_PAYMENT_KEY'); ?></th>
-					<th><?php echo lang('order_field_PAYMENT_CODE'); ?></th>
+					<th>PAYMENT STATUS</th>
 				</tr>
 			</thead>
 			<?php if ($has_records) : ?>
@@ -57,14 +55,13 @@ if ($can_delete) {
 					<?php endif;?>
 					
 				<?php if ($can_edit) : ?>
-					<td><?php echo anchor(SITE_AREA . '/content/order/edit/' . $record->ORDER_ID, '<span class="icon-pencil"></span> ' .  $record->SHIPPING_TYPE_ID); ?></td>
+					<td><?php echo anchor(SITE_AREA . '/content/order/edit/' . $record->ORDER_ID, '<span class="icon-pencil"></span> ' .  $record->SHIPPING_TYPE_NAME); ?></td>
 				<?php else : ?>
-					<td><?php e($record->SHIPPING_TYPE_ID); ?></td>
+					<td><?php e($record->SHIPPING_TYPE_NAME); ?></td>
 				<?php endif; ?>
 					<td><?php e($record->PAYMENT_TYPE); ?></td>
-					<td><?php e($record->USER_ID); ?></td>
-					<td><?php e($record->ADDRESS_ID); ?></td>
-					<td><?php e($record->PAYMENT_ID); ?></td>
+					<td><?php e($record->display_name); ?></td>
+					<td><?php e($record->address); ?></td>
 					<td><?php e($record->ORDER_STATUS); ?></td>
 					<td><?php e($record->ORDER_DATE); ?></td>
 					<td><?php e($record->DELIVERY_DATE); ?></td>

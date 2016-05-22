@@ -71,7 +71,7 @@ class Checkout extends Front_Controller
                         $data['active'] = 1;
                     }
                     // $data['password'] = random_string('alnum', 5);
-                    $data['password'] = '12345678'
+                    $data['password'] = '12345678';
                     $data['phone'] = $this->input->post('phone');
                     $data['address'] = $this->input->post('address');
                     $data['company'] = $this->input->post('company');
@@ -111,6 +111,8 @@ class Checkout extends Front_Controller
 
                     // save to db
                     if (!empty($updated_data)) $this->user_model->update($this->auth->user()->id, $updated_data);
+                } else {
+                    redirect('/login');
                 }
 
                 // insert order
@@ -129,6 +131,8 @@ class Checkout extends Front_Controller
 
                 //delete cart
                 $this->cart_model->delete($this->session->userdata('cart_id'));
+                $this->session->unset_userdata('cart_id');
+                $this->session->unset_userdata('cart');
 
                 //flash message
                 $this->session->set_flashdata('message', 'success::Your order has completed! You can view this order

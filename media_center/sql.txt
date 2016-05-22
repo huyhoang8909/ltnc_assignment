@@ -19,12 +19,8 @@ CHANGE COLUMN `ORDER_STATUS` `ORDER_STATUS` VARCHAR(20) NOT NULL,
 CHANGE COLUMN `PAYMENT_TYPE_ID` `PAYMENT_TYPE` VARCHAR(20) NOT NULL ;
 
 
-
-
-
 // add data
 insert into promotion(START_DATE, END_DATE,DISCOUNT, PROMOTION_CODE) values(NOW(), DATE_ADD(NOW(), INTERVAL 1 MONTH), 10, 'abc');
-ALTER TABLE `media_center`.`users` 
 
 INSERT INTO `media_center`.`shippingtype` (`SHIPPING_TYPE_NAME`, `SHIPPING_COST`, `SHIPPING_DAYS`) VALUES ('free', '0', '3');
 INSERT INTO `media_center`.`shippingtype` (`SHIPPING_TYPE_NAME`, `SHIPPING_COST`, `SHIPPING_DAYS`) VALUES ('local', '15', '1');

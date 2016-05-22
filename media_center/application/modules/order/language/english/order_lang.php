@@ -50,7 +50,7 @@ $lang['order_column_modified_by'] = 'Modified By';
 // Module Details
 $lang['order_module_name'] = 'Order';
 $lang['order_module_description'] = 'Your module description';
-$lang['order_area_title'] = 'Order';
+$lang['order_area_title'] = 'Your Order';
 
 // Fields
 $lang['order_field_SHIPPING_TYPE_ID'] = 'SHIPPING TYPE ID';

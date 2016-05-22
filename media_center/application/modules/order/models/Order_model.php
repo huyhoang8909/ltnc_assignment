@@ -98,6 +98,8 @@ class Order_model extends BF_Model
 	protected $insert_validation_rules  = array();
 	protected $skip_validation 			= false;
 
+    public $items = null;
+
     /**
      * Constructor
      *
@@ -112,12 +114,12 @@ class Order_model extends BF_Model
   {
     $total = 0;
     foreach ($items as $item) {
-      $total += $item->ITEM_PRICE * $item->ITEM_QUANTITY;
+      $total += $item->ITEM_PRICE * $item->AMOUNT;
     }
 
     if ($shipping_type == 2) $total +=15;
 
-    $order_id = $this->db->insert('orders', [
+    $this->db->insert('orders', [
         'SHIPPING_TYPE_ID' => $shipping_type,
         'USER_ID' => $user_id,
         'ORDER_STATUS' => 'PROCESSING',
@@ -126,15 +128,61 @@ class Order_model extends BF_Model
         'PAYMENT_TYPE' => $payment_type
     ]);
 
+    $order_id = $this->db->insert_id();
+
     $data = array();
 
     foreach ($items as $item) {
       $data[] = array(
         'ORDER_ID' => $order_id,
-        'ITEM_ID' => $item->ITEM_ID
+        'ITEM_ID' => $item->ITEM_ID,
+        'AMOUNT' => $item->AMOUNT
       );
     }
 
     $this->db->insert_batch('order_item', $data);
   }
+
+  public function find_all()
+  {
+    $this->db->join('shippingtype', "orders.SHIPPING_TYPE_ID = shippingtype.SHIPPING_TYPE_ID")
+        ->join('users', 'users.id = orders.USER_ID');
+    return parent::find_all();
+  }
+
+  public function get_order_items($conditions = array())
+  {
+    $orders = $this->where($conditions)->find_all();
+
+    if(!empty($orders) && count($orders) > 0) {
+        foreach ($orders as $order) {
+            $this->db->select('*');
+            $this->db->from('item');
+            $this->db->where('ORDER_ID', $order->ORDER_ID);
+            $this->db->join('order_item', 'item.ITEM_ID = order_item.ITEM_ID');
+            $this->db->join('manufacturer', 'manufacturer.manufacturer_id = item.manufacturer_id');
+
+            $order->items = $this->db->get()->result();
+        }
+    }
+
+    return $orders;
+
+  }
+
+  public function delete_order($id)
+  {
+    $items = $this->db->get_where('order_item', array('ORDER_ID' => $id))->result();
+
+    // update items quantity
+    foreach ($items as $item) {
+        $this->db->set('ITEM_QUANTITY', 'ITEM_QUANTITY+'. $item->AMOUNT, FALSE);
+        $this->db->where('ITEM_ID', $item->ITEM_ID);
+        $this->db->update('item');
+    }
+
+    $this->db->delete('order_item', array('ORDER_ID' => $id));
+    $this->delete($id);
+  }
+
 }
