@@ -54,6 +54,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $route['default_controller'] = 'home';
 $route['404_override'] = '';
+$route['search'] =  'home/search';
 
 // Authentication
 Route::any(LOGIN_URL, 'users/login', array('as' => 'login'));
@@ -87,3 +88,5 @@ if (defined(CI_VERSION) && substr(CI_VERSION, 0, 1) != '2') {
 
 
 $route['item/(:num)'] = 'home/item/$1';
+
+

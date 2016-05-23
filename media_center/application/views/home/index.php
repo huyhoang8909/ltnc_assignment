@@ -1,5 +1,4 @@
 <?php
-
     // Define the root folder and base URL for the application
     function baseURL(){
         return sprintf(

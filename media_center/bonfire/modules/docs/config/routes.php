@@ -2,3 +2,7 @@
 
 $route['docs/search'] = 'docs/search';
 $route['docs/(:any)'] = 'docs';
+
+$route['search'] =  'home/search';
+
+

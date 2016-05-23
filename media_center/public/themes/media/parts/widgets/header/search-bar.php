@@ -8,28 +8,47 @@
 </div><!-- /.contact-row -->
 <!-- ============================================================= SEARCH AREA ============================================================= -->
 <div class="search-area">
-    <form>
-        <div class="control-group">
-            <input class="search-field" placeholder="Search for item" />
-
-            <ul class="categories-filter animate-dropdown">
-                <li class="dropdown">
-
-                    <a class="dropdown-toggle"  data-toggle="dropdown" href="index.php?page=category-grid">all categories</a>
-
-                    <ul class="dropdown-menu" role="menu" >
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?page=category-grid">laptops</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?page=category-grid">tv & audio</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?page=category-grid">gadgets</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?page=category-grid">cameras</a></li>
-
-                    </ul>
-                </li>
-            </ul>
-
-            <a class="search-button" href="#" ></a>    
-
+    <div class="">
+    <div class="col-md-12 pull-right well">
+        <form class="form-inline" action="<?php echo base_url('search') ?>" method="post">
+        <div class="input-group col-sm-8">
+          <input class="form-control" type="text" value="" placeholder="Search" name="q">
+       <div class="input-group-btn">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Select <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+        </ul>
+         <input type="hidden" name="category" class="category">
+      </div><!-- /btn-group -->
         </div>
-    </form>
+        <button class="btn btn-primary col-sm-3 pull-right" type="submit">Search</button>
+      </form>
+    </div>
+</div>
 </div><!-- /.search-area -->
 <!-- ============================================================= SEARCH AREA : END ============================================================= -->
+<script type='text/css'>
+    @media (min-width: 768px) {
+	.form-inline input {
+         border-radius: 6px 0 0 6px;
+     }
+    .form-inline select {
+        border-radius: 0 6px 6px 0;
+        border-left-width: 0;
+    }
+}
+  
+    </script>
+    
+<script>
+   $( document ).ready(function() {
+       $('.dropdown-menu li').click(function(e){
+  e.preventDefault();
+  var selected = $(this).text();
+  $('.category').val(selected);  
+});
+   });
+ 
+</script>
