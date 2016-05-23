@@ -3,32 +3,29 @@
         <div class="tab-holder">
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" >
-                <?php foreach ($products as $product):  ?>
-                <li class="<?php echo $product->active ?>"><a href="#cat_<?php echo $product->CATEGORY_ID ?>" data-toggle="tab"><?php echo $product->CATEGORY_NAME  ?></a></li>
-                <?php endforeach;    ?>
+                <li class="active"><a href="#" data-toggle="tab">Sản phẩm mới</a></li>
             </ul>
 
             <!-- Tab panes -->
             <div class="tab-content">
-                <?php foreach ($products as $product):    ?>
-                <div class="tab-pane active" id="cat_<?php echo $product->CATEGORY_ID ?>">
-                    <div class="product-grid-holder">
-                        
-                        <?php if ($product->products) foreach ($product->products as $item):    ?>
+                <?php foreach ($data['new_products'] as $n_product): ?>
+                    <div class="tab-pane active">
+                        <div class="product-grid-holder">
+
                             <div class="col-sm-4 col-md-3  no-margin product-item-holder hover">
                                 <div class="product-item">
                                     <div class="ribbon red"><span>sale</span></div> 
                                     <div class="image">
-                                        <img alt="" src="items/<?php echo $item->IMAGE    ?>" data-echo="items/<?php echo $item->IMAGE    ?>" />
+                                        <img alt="" src="items/<?php echo $n_product->IMAGE ?>" data-echo="items/<?php echo $n_product->IMAGE ?>" />
                                     </div>
                                     <div class="body">
                                         <div class="label-discount green">-50% sale</div>
                                         <div class="title">
-                                            <a href="item/<?php echo $item->ITEM_ID?>"><?php echo $item->ITEM_NAME    ?></a>
+                                            <a href="item/<?php echo $n_product->ITEM_ID ?>"><?php echo $n_product->ITEM_NAME ?></a>
                                         </div>
                                     </div>
                                     <div class="prices">
-                                        <div class="price-current pull-right">$<?php echo $item->ITEM_PRICE ?>.00</div>
+                                        <div class="price-current pull-right">$<?php echo $n_product->ITEM_PRICE ?>.00</div>
                                     </div>
 
                                     <div class="hover-area">
@@ -42,13 +39,11 @@
                                     </div>
                                 </div>
                             </div>
-                        <?php endforeach;   ?>
-                        
-                    </div>
 
-                </div>
-                
-                <?php endforeach;   ?>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+
             </div>
         </div>
     </div>

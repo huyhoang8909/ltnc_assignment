@@ -134,9 +134,13 @@ class Home extends MX_Controller {
         $common_item = $this->item_model->common_item(4);
 
         $products = $this->item_model->get_items_by_categories($top_categories);
+        
+        $new_products = $this->item_model->get_new_items(array());
+
         $data = array(
             'products' => $products,
             'new_item' => $new_item,
+            'new_products' => $new_products,
             'sale_item' => $sale_item,
             'common_item' => $common_item,
             'more_items' => $this->item_model->get_more_items(1),
