@@ -88,5 +88,6 @@ if (defined(CI_VERSION) && substr(CI_VERSION, 0, 1) != '2') {
 
 
 $route['item/(:num)'] = 'home/item/$1';
+$route['search/(:any)'] = 'home/search/$1';
 
 
