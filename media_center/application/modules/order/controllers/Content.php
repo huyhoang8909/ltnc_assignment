@@ -182,7 +182,7 @@ class Content extends Admin_Controller
 
         // Additional handling for default values should be added below,
         // or in the model's prep_data() method
-        log_message('info', print_r($data));
+
         $return = false;
         if ($type == 'insert') {
             $id = $this->order_model->insert($data);
