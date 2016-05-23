@@ -67,7 +67,7 @@ class Order_model extends BF_Model
 		array(
 			'field' => 'ORDER_STATUS',
 			'label' => 'lang:order_field_ORDER_STATUS',
-			'rules' => 'max_length[4]',
+			'rules' => 'max_length[20]',
 		),
 		array(
 			'field' => 'ORDER_DATE',
