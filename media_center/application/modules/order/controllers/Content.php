@@ -22,7 +22,7 @@ class Content extends Admin_Controller
         $this->auth->restrict($this->permissionView);
         $this->load->model('order/order_model');
         $this->lang->load('order');
-        
+
             Assets::add_css('flick/jquery-ui-1.8.13.custom.css');
             Assets::add_js('jquery-ui-1.8.13.min.js');
             Assets::add_css('jquery-ui-timepicker.css');
@@ -145,6 +145,7 @@ class Content extends Admin_Controller
         }
         
         Template::set('order', $this->order_model->find($id));
+        Template::set('order_items', $this->order_model->get_order_items(array('ORDER_ID' => $id)));
 
         Template::set('toolbar_title', lang('order_edit_heading'));
         Template::render();
