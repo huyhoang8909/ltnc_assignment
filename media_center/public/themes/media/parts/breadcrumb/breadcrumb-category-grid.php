@@ -1,5 +1,5 @@
 <!-- ========================================= BREADCRUMB ========================================= -->
-<?php if($headerStyle == 1):?>
+<?php if(isset($headerStyle) && $headerStyle == 1):?>
 <div id="top-mega-nav">
     <div class="container">
         <nav>
