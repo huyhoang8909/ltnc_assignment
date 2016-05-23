@@ -6,38 +6,41 @@
 
                 <div class="product-grid-holder">
                     <div class="row no-margin">
+                        <?php if ($s_products): ?>
+                            <?php foreach ($s_products as $s_product): ?>
 
-                        <?php foreach ($s_products as $s_product): ?>
-                            <div class="col-xs-12 col-sm-4 no-margin product-item-holder hover">
-                                <div class="product-item">
-                                    <div class="ribbon red"><span>sale</span></div> 
-                                    <div class="image">
-                                        <img alt="" src="<?php echo base_url('item') . '/' . $s_product->IMAGE ?>" data-echo="<?php echo base_url('items') . '/' . $s_product->IMAGE ?>" />
-                                    </div>
-                                    <div class="body">
-                                        <div class="label-discount green">-50% sale</div>
-                                        <div class="title">
-                                            <a href="index.php?page=single-product"><?php echo $s_product->ITEM_NAME ?></a>
+                                <div class="col-xs-12 col-sm-4 no-margin product-item-holder hover">
+                                    <div class="product-item">
+                                        <div class="ribbon red"><span>sale</span></div> 
+                                        <div class="image">
+                                            <img alt="" src="<?php echo base_url('item') . '/' . $s_product->IMAGE ?>" data-echo="<?php echo base_url('items') . '/' . $s_product->IMAGE ?>" />
                                         </div>
-                                        <div class="brand">sony</div>
-                                    </div>
-                                    <div class="prices">
-                                        <div class="price-prev"><?php echo $s_product->ITEM_PRICE ?></div>
-                                        <div class="price-current pull-right"><?php echo $s_product->ITEM_QUANTITY ?></div>
-                                    </div>
-                                    <div class="hover-area">
-                                        <div class="add-cart-button">
-                                            <a href="index.php?page=single-product" class="le-button">add to cart</a>
+                                        <div class="body">
+                                            <div class="label-discount green">-50% sale</div>
+                                            <div class="title">
+                                                <a href="index.php?page=single-product"><?php echo $s_product->ITEM_NAME ?></a>
+                                            </div>
+                                            <div class="brand">sony</div>
                                         </div>
-                                        <div class="wish-compare">
-                                            <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
-                                            <a class="btn-add-to-compare" href="#">compare</a>
+                                        <div class="prices">
+                                            <div class="price-prev"><?php echo $s_product->ITEM_PRICE ?></div>
+                                            <div class="price-current pull-right"><?php echo $s_product->ITEM_QUANTITY ?></div>
                                         </div>
-                                    </div>
-                                </div><!-- /.product-item -->
-                            </div><!-- /.product-item-holder -->
+                                        <div class="hover-area">
+                                            <div class="add-cart-button">
+                                                <a href="index.php?page=single-product" class="le-button">add to cart</a>
+                                            </div>
+                                            <div class="wish-compare">
+                                                <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
+                                                <a class="btn-add-to-compare" href="#">compare</a>
+                                            </div>
+                                        </div>
+                                    </div><!-- /.product-item -->
+                                </div><!-- /.product-item-holder -->
 
-                        <?php endforeach; ?>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                      
 
 
 

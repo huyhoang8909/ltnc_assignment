@@ -1,89 +1,25 @@
 <div class="widget">
-	<h1 class="border">special offers</h1>
+	<h1 class="border">Sản phẩm mới </h1>
 	<ul class="product-list">
         <li>
             <div class="row">
+                <?php foreach ($data['new_item'] as $new_item): ?>
                 <div class="col-xs-4 col-sm-4 no-margin">
                     <a href="#" class="thumb-holder">
-                        <img alt="" src="assets/images/blank.gif" data-echo="assets/images/products/product-small-01.jpg" />
+                       <img alt="" src="<?php echo base_url('item') . '/' . $new_item->IMAGE ?>" data-echo="<?php echo base_url('items') . '/' . $new_item->IMAGE ?>" />
                     </a>
                 </div>
                 <div class="col-xs-8 col-sm-8 no-margin">
-                    <a href="#">Netbook Acer </a>
+                    <a href="#"><?php echo $new_item->ITEM_NAME ?> </a>
                     <div class="price">
-                        <div class="price-prev">$2000</div>
-                        <div class="price-current">$1873</div>
+                        <div class="price-prev"><?php echo $new_item->ITEM_PRICE ?></div>
+                        <div class="price-current"><?php echo $new_item->ITEM_QUANTITY ?></div>
                     </div>
                 </div>  
+                <?php endforeach; ?>
             </div>
         </li>
 
-        <li>
-            <div class="row">
-                <div class="col-xs-4 col-sm-4 no-margin">
-                    <a href="#" class="thumb-holder">
-                        <img alt="" src="assets/images/blank.gif" data-echo="assets/images/products/product-small-02.jpg" />
-                    </a>
-                </div>
-                <div class="col-xs-8 col-sm-8 no-margin">
-                    <a href="#">PowerShot Elph 115 16MP Digital Camera</a>
-                    <div class="price">
-                        <div class="price-prev">$2000</div>
-                        <div class="price-current">$1873</div>
-                    </div>
-                </div>  
-            </div>
-        </li>
-
-        <li>
-            <div class="row">
-                <div class="col-xs-4 col-sm-4 no-margin">
-                    <a href="#" class="thumb-holder">
-                        <img alt="" src="assets/images/blank.gif" data-echo="assets/images/products/product-small-03.jpg" />
-                    </a>
-                </div>
-                <div class="col-xs-8 col-sm-8 no-margin">
-                    <a href="#">PowerShot Elph 115 16MP Digital Camera</a>
-                    <div class="price">
-                        <div class="price-prev">$2000</div>
-                        <div class="price-current">$1873</div>
-                    </div>
-                </div>  
-            </div>
-        </li>
-
-        <li>
-            <div class="row">
-                <div class="col-xs-4 col-sm-4 no-margin">
-                    <a href="#" class="thumb-holder">
-                        <img alt="" src="assets/images/blank.gif" data-echo="assets/images/products/product-small-01.jpg" />
-                    </a>
-                </div>
-                <div class="col-xs-8 col-sm-8 no-margin">
-                    <a href="#">Netbook Acer</a>
-                    <div class="price">
-                        <div class="price-prev">$2000</div>
-                        <div class="price-current">$1873</div>
-                    </div>
-                </div>  
-            </div>
-        </li>
         
-        <li>
-            <div class="row">
-                <div class="col-xs-4 col-sm-4 no-margin">
-                    <a href="#" class="thumb-holder">
-                        <img alt="" src="assets/images/blank.gif" data-echo="assets/images/products/product-small-02.jpg" />
-                    </a>
-                </div>
-                <div class="col-xs-8 col-sm-8 no-margin">
-                    <a href="#">PowerShot Elph 115 16MP Digital Camera</a>
-                        <div class="price">
-                            <div class="price-prev">$2000</div>
-                            <div class="price-current">$1873</div>
-                        </div>
-                </div>  
-            </div>
-        </li>
     </ul>
 </div><!-- /.widget -->

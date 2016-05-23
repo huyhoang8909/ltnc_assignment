@@ -56,12 +56,12 @@ class Home extends MX_Controller {
     public function search($q = null) {
         $this->load->model('item_model');
         $this->load->model('category_model');
-       $key =  $this->input->get('q');
-       $s_products = array();
-       if($key){
-           $s_products = $this->item_model->search($key);
-       }
-       
+        $key = $this->input->get('q');
+        $s_products = array();
+        if ($key) {
+            $s_products = $this->item_model->search($key);
+        }
+
         $this->load->library('users/auth');
         $this->set_current_user();
 
@@ -80,12 +80,15 @@ class Home extends MX_Controller {
 
         $top_categories = $this->category_model->get_top_categories(array());
         $all_categories = $this->category_model->get_all_categories(array());
-
+        $new_item = $this->item_model->get_new_items(5);
+        $sale_item = $this->item_model->sale_item(5);
 
         $products = $this->item_model->get_items_by_categories($top_categories);
         $data = array(
             'products' => $products,
             's_products' => $s_products,
+            'sale_item' => $sale_item,
+            'new_item' => $new_item,
             'more_items' => $this->item_model->get_more_items(1),
             'top_items' => $products,
             'all_categories' => $all_categories
@@ -123,11 +126,16 @@ class Home extends MX_Controller {
 
         $top_categories = $this->category_model->get_top_categories(array());
         $all_categories = $this->category_model->get_all_categories(array());
-
+        $new_item = $this->item_model->get_new_items(4);
+        $sale_item = $this->item_model->sale_item(4);
+        $common_item = $this->item_model->common_item(4);
 
         $products = $this->item_model->get_items_by_categories($top_categories);
         $data = array(
             'products' => $products,
+            'new_item' => $new_item,
+            'sale_item' => $sale_item,
+            'common_item' => $common_item,
             'more_items' => $this->item_model->get_more_items(1),
             'top_items' => $products,
             'all_categories' => $all_categories
@@ -172,6 +180,31 @@ class Home extends MX_Controller {
         }
     }
 
+    public function bycategory($id_category) {
+
+        $this->load->model('item_model');
+        $this->load->model('category_model');
+
+        $this->load->library('users/auth');
+        $this->set_current_user();
+
+        $item = $this->item_model->get_item_by_id($id_category);
+
+        $top_categories = $this->category_model->get_top_categories(array());
+
+        $products = $this->item_model->get_items_by_categories($top_categories);
+
+
+
+        $data = array(
+            'item' => $item,
+            'more_items' => $this->item_model->get_more_items($id_category),
+            'products' => $products
+        );
+        Template::set('data', $data);
+        Template::render();
+    }
+
     public function item($id) {
 
         $this->load->model('item_model');
@@ -196,7 +229,7 @@ class Home extends MX_Controller {
         Template::set('data', $data);
         Template::render();
     }
-     
+
 }
 
 /* end ./application/controllers/home.php */

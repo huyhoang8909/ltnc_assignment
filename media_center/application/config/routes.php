@@ -56,6 +56,8 @@ $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['search'] =  'home/search';
 
+$route['bycategory/(:num)'] = 'home/bycategory/$1';
+
 // Authentication
 Route::any(LOGIN_URL, 'users/login', array('as' => 'login'));
 Route::any(REGISTER_URL, 'users/register', array('as' => 'register'));
