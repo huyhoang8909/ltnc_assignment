@@ -182,10 +182,7 @@ class Content extends Admin_Controller
 
         // Additional handling for default values should be added below,
         // or in the model's prep_data() method
-        
-		$data['ORDER_DATE']	= $this->input->post('ORDER_DATE') ? $this->input->post('ORDER_DATE') : '0000-00-00 00:00:00';
-		$data['DELIVERY_DATE']	= $this->input->post('DELIVERY_DATE') ? $this->input->post('DELIVERY_DATE') : '0000-00-00 00:00:00';
-
+        log_message('info', print_r($data));
         $return = false;
         if ($type == 'insert') {
             $id = $this->order_model->insert($data);
