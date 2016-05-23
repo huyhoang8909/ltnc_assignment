@@ -18,7 +18,6 @@ class Cart extends Front_Controller
     public function __construct()
     {
         parent::__construct();
-        
         $this->load->model('cart/cart_model');
         $this->load->model('cart/promotion_model');
         $this->lang->load('cart');

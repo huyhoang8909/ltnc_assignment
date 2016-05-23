@@ -52,6 +52,10 @@ class Home extends MX_Controller
         $this->requested_page = isset($_SESSION['requested_page']) ? $_SESSION['requested_page'] : null;
 	}
 
+        public function search() {
+            var_dump(2323);
+            die();
+        }
 	//--------------------------------------------------------------------
 
 	/**
@@ -84,7 +88,6 @@ class Home extends MX_Controller
             
            
             $products = $this->item_model->get_items_by_categories($top_categories);
-            
             $data = array(
                 'products' => $products,
                 'more_items' => $this->item_model->get_more_items(1), 
