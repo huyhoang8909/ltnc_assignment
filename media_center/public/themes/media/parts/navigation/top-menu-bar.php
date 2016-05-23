@@ -4,7 +4,7 @@
         <div class="col-xs-12 col-sm-6 no-margin">
             <ul>
                 <li><a href="<?php echo site_url(); ?>">Trang chủ</a></li>
-                <li><a href="index.php?page=blog">Sản phẩm mới nhất</a></li>
+                <li><a href="<?php echo base_url('new_products') ?>">Sản phẩm mới nhất</a></li>
                 <li><a href="index.php?page=faq">Hỗ trợ</a></li>
                 <li><a href="index.php?page=contact">Liên hệ</a></li>
             </ul>

@@ -11,7 +11,7 @@
 
     define('BASE_URL', baseURL());
     define('MC_ROOT', dirname(__FILE__));
-    $page = isset($_GET['page']) ? $_GET['page'] : 'home';
+    $page = isset($_GET['page']) ? $_GET['page'] : 'new_products';
     if($page == 'home'){
         $_GET['style'] = 'alt2';
     }else{
@@ -44,5 +44,6 @@
 
 <?php  echo theme_view('parts/section/header', array('page' => $page, 'pages' => $pages)) ?>
 <?php echo theme_view('parts/breadcrumb/breadcrumb', array('page' => $page, 'pages' => $pages, 'data' => $data)) ?>
+
 <?php echo theme_view('pages/'.$page, array('page' => $page, 'pages' => $pages, 'data' => $data)) ?>
 <?php echo theme_view('parts/section/footer', array('page' => $page, 'pages' => $pages, 'data' => $data)) ?>
