@@ -25,7 +25,6 @@
 
 			<div id="<?php echo $carouselID;?>" class="owl-carousel product-grid-holder">
                             
-                            
                             <?php foreach ($more_items as $item): ?>
 				<div class="no-margin carousel-item product-item-holder <?php echo $productItemSize;?> hover">
 					<div class="product-item">

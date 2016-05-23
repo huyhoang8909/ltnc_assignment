@@ -11,7 +11,6 @@
 
 	</div><!-- /.container -->
 </div><!-- /#top-banner-and-menu -->
-
 <?php echo theme_view('parts/section/home-banners');?>
 
 <?php echo theme_view('parts/section/home-page-tabs', array('products' => $data['products']));?>

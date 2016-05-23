@@ -61,7 +61,6 @@ class Home extends MX_Controller
 	 */
 	public function index() {
 
-
             $this->load->model('item_model');
             $this->load->model('category_model');
             $this->load->library('users/auth');
