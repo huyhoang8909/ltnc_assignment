@@ -69,9 +69,9 @@
                     <div class="quantity">
                         <div class="le-quantity">
                             <form>
-                                <!-- <a class="minus" href="#" onclick="reduce('<?php e($record->ITEM_ID) ?>')"></a> -->
-                                <input name="quantity" id="<?php e($record->ITEM_ID) ?>" readonly="readonly" type="text" value="1" />
-                                <!-- <a class="plus" href="#" onclick="add('<?php e($record->ITEM_ID) ?>')"></a> -->
+                                <a class="minus" href="#" onclick="reduce('<?php e($record->ITEM_ID) ?>')"></a>
+                                <input name="quantity" id="<?php e($record->ITEM_ID) ?>" readonly="readonly" type="text" value="<?php e($record->AMOUNT) ?>" />
+                                <a class="plus" href="#" onclick="add('<?php e($record->ITEM_ID) ?>')"></a>
                             </form>
                         </div>
                     </div>
@@ -80,8 +80,8 @@
                 <div class="col-xs-12 col-sm-2 no-margin">
                     <div class="price price-<?php e($record->ITEM_ID) ?>">
                         <input type="hidden" value="<?php echo $record->ITEM_PRICE ?>">
-                        $<?php e($record->ITEM_PRICE) ?>
-                        <?php $total_price += $record->ITEM_PRICE ?>
+                        <span>$<?php e($record->ITEM_PRICE * $record->AMOUNT) ?></span>
+                        <?php $total_price += $record->ITEM_PRICE * $record->AMOUNT ?>
                     </div>
                     <a class="close-btn" href="/cart/delete/<?php echo $record->ITEM_ID ?>"></a>
                 </div>
@@ -100,7 +100,7 @@
                     <ul class="tabled-data no-border inverse-bold">
                         <li>
                             <label>cart subtotal</label>
-                            <div class="value pull-right">$<?php echo $total_price ?></div>
+                            <div id ="cart-price"class="value pull-right">$<?php echo $total_price ?></div>
                         </li>
                         <li>
                             <label>shipping</label>
@@ -120,15 +120,15 @@
                 </div>
             </div><!-- /.widget -->
 
-            <div id="cupon-widget" class="widget">
+<!--             <div id="cupon-widget" class="widget">
                 <h1 class="border">use coupon</h1>
                 <div class="body">
-                    <form>
-                        <div class="inline-input">
-                            <input data-placeholder="enter coupon code" type="text" />
-                            <button class="le-button" type="submit">Apply</button>
-                        </div>
-                    </form>
+                    
+                    <div class="inline-input">
+                        <input style="text-transform:none;" data-placeholder="Enter coupon code" type="text" />
+                        <button class="le-button" onclick="applyCoupon()">Apply</button>
+                    </div>
+                    
                 </div>
             </div><!-- /.widget -->
         </div><!-- /.sidebar -->

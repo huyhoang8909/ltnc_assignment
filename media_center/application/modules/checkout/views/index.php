@@ -46,92 +46,70 @@
 <?php echo theme_view('parts/navigation/horizontal-menu', array('page' => $page, 'pages' => $pages)) ?>
 
 <!-- ========================================= CONTENT ========================================= -->
-
+<?php echo form_open('/checkout') ?>
 <section id="checkout-page">
     <div class="container">
         <div class="col-xs-12 no-margin">
             
             <div class="billing-address">
                 <h2 class="border h1">billing address</h2>
-                <form>
+                
                     <div class="row field-row">
                         <div class="col-xs-12 col-sm-6">
                             <label>full name*</label>
-                            <input class="le-input" >
+                            <input name="username" class="le-input" value="<?php echo set_value('username', isset($username) ? $username : ''); ?>">
+                            <?php echo form_error('username'); ?>
                         </div>
-<!--                         <div class="col-xs-12 col-sm-6">
-                            <label>last name*</label>
-                            <input class="le-input" >
-                        </div> -->
                     </div><!-- /.field-row -->
 
                     <div class="row field-row">
                         <div class="col-xs-12">
                             <label>company name</label>
-                            <input class="le-input" >
+                            <input name="company" class="le-input" value="<?php echo set_value('company', isset($company) ? $company : ''); ?>">
                         </div>
                     </div><!-- /.field-row -->
 
                     <div class="row field-row">
                         <div class="col-xs-12 col-sm-6">
                             <label>address*</label>
-                            <input class="le-input" data-placeholder="street address" >
+                            <input style="text-transform: none;" name="address" class="le-input" data-placeholder="Street address" value="<?php echo set_value('address', isset($address) ? $address : ''); ?>" >
+                            <?php echo form_error('address'); ?>
                         </div>
-                        <div class="col-xs-12 col-sm-6">
-                            <label>&nbsp;</label>
-                            <input class="le-input" data-placeholder="town" >
-                        </div>
+
                     </div><!-- /.field-row -->
 
                     <div class="row field-row">
                         <div class="col-xs-12 col-sm-4">
-                            <label>postcode / Zip*</label>
-                            <input class="le-input"  >
-                        </div>
-                        <div class="col-xs-12 col-sm-4">
                             <label>email address*</label>
-                            <input class="le-input" >
+                            <input name="email" class="le-input" <?php echo empty($current_user) ?: "readonly" ?> value="<?php echo set_value('email', isset($email) ? $email : ''); ?>">
+                            <?php echo form_error('email'); ?>
                         </div>
 
                         <div class="col-xs-12 col-sm-4">
                             <label>phone number*</label>
-                            <input class="le-input" >
+                            <input name="phone" class="le-input" value="<?php echo set_value('phone', isset($phone) ? $phone : ''); ?>">
+                            <?php echo form_error('phone'); ?>
                         </div>
                     </div><!-- /.field-row -->
 
-<!--                     <div class="row field-row">
+                    <?php if (empty($current_user)) : ?>
+                    <div class="row field-row">
                         <div id="create-account" class="col-xs-12">
-                            <input  class="le-checkbox big" type="checkbox"  />
+                            <input name="create-account" class="le-checkbox big" type="checkbox"  />
                             <a class="simple-link bold" href="#">Create Account?</a> - you will receive email with temporary generated password after login you need to change it.
                         </div>
                     </div><!-- /.field-row -->
+                    <?php endif; ?>
 
-                </form>
             </div><!-- /.billing-address -->
-
-
-            <section id="shipping-address">
-                <!-- <h2 class="border h1">shipping address</h2> -->
-                <form>
-<!--                     <div class="row field-row">
-                        <div class="col-xs-12">
-                            <input  class="le-checkbox big" type="checkbox"  />
-                            <a class="simple-link bold" href="#">ship to different address?</a>
-                        </div>
-                    </div> -->
-                    <!-- /.field-row -->
-                </form>
-            </section><!-- /#shipping-address -->
-
 
             <section id="your-order">
                 <h2 class="border h1">your order</h2>
-                <form>
                 <?php $total_price = 0 ?>
                 <?php foreach ($records as $record) : ?>
                     <div class="row no-margin order-item">
                         <div class="col-xs-12 col-sm-1 no-margin">
-                            <a href="#" class="qty">1 x</a>
+                            <a href="#" class="qty"><?php e($record->AMOUNT) ?> x</a>
                         </div>
 
                         <div class="col-xs-12 col-sm-9 ">
@@ -140,12 +118,11 @@
                         </div>
 
                         <div class="col-xs-12 col-sm-2 no-margin">
-                            <div class="price">$<?php e($record->ITEM_PRICE) ?></div>
-                            <?php $total_price += $record->ITEM_PRICE ?>
+                            <div class="price">$<?php e($record->ITEM_PRICE * $record->AMOUNT) ?></div>
+                            <?php $total_price += $record->ITEM_PRICE * $record->AMOUNT ?>
                         </div>
                     </div><!-- /.order-item -->
                 <?php endforeach; ?>
-                </form>
             </section><!-- /#your-order -->
 
             <div id="total-area" class="row no-margin">
@@ -156,13 +133,19 @@
                                 <label>cart subtotal</label>
                                 <div class="value ">$<?php echo $total_price ?></div>
                             </li>
-<!--                             <li>
+                            <li>
                                 <label>shipping</label>
                                 <div class="value">
                                     <div class="radio-group">
-                                        <input class="le-radio" type="radio" name="group1" value="free" checked> <div class="radio-label bold">free shipping</div><br>
-                                        <input class="le-radio" type="radio" name="group1" value="local">  <div class="radio-label">local delivery<br><span class="bold">$15</span></div>
+                                        <input class="le-radio" type="radio" name="ship" value="1" checked> <div class="radio-label bold">free shipping</div><br>
+                                        <input class="le-radio" type="radio" name="ship" value="2" >  <div class="radio-label">local delivery<br><span class="bold">$15</span></div>
                                     </div>
+                                </div>
+                            </li>
+<!--                             <li>
+                                <label>Voucher</label>
+                                <div class="value">
+                                10% off
                                 </div>
                             </li> -->
                         </ul><!-- /.tabled-data -->
@@ -179,32 +162,23 @@
             </div><!-- /#total-area -->
 
             <div id="payment-method-options">
-                <form>
                     <div class="payment-method-option">
-                        <input class="le-radio" type="radio" name="group2" value="Direct">
-                        <div class="radio-label bold ">Direct Bank Transfer<br>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce rutrum tempus elit, vestibulum vestibulum erat ornare id.</p>
-                        </div>
+                            <p>Please transfer to the banks</p>
+                            <ul> 
+                                <li><strong>Name: test </strong></li>
+                                <li><strong>Account: 123xxxx</strong></li>
+                                <li><strong>Bank: Vietcombank</strong></li>
+                            </ul>
                     </div><!-- /.payment-method-option -->
-                    
-                    <div class="payment-method-option">
-                        <input class="le-radio" type="radio" name="group2" value="cheque">
-                        <div class="radio-label bold ">cheque payment</div>
-                    </div><!-- /.payment-method-option -->
-                    
-                    <div class="payment-method-option">
-                        <input class="le-radio" type="radio" name="group2" value="paypal">
-                        <div class="radio-label bold ">paypal system</div>
-                    </div><!-- /.payment-method-option -->
-                </form>
             </div><!-- /#payment-method-options -->
             
             <div class="place-order-button">
-                <button class="le-button big">place order</button>
+                <button class="le-button big" type="submit">place order</button>
             </div><!-- /.place-order-button -->
 
         </div><!-- /.col -->
     </div><!-- /.container -->    
 </section><!-- /#checkout-page -->
+<?php echo form_close() ?>
 <!-- ========================================= CONTENT : END ========================================= -->
 <?php echo theme_view('parts/section/footer', array('page' => $page, 'pages' => $pages)) ?>

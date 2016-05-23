@@ -10,11 +10,12 @@
 			<?php echo theme_view('/parts/widgets/header/search-bar') ?>
 		</div><!-- /.top-search-holder -->
 
-		<?php if ($this->auth->is_logged_in()) : ?>
+		<?php if(!in_array($this->router->fetch_module(), ['cart', 'checkout'])): ?>
 		<div class="col-xs-12 col-sm-12 col-md-3 top-cart-row no-margin">
 			<?php echo theme_view('/parts/widgets/header/shopping-cart-dropdown') ?>
 		</div><!-- /.top-cart-row -->
 		<?php endif; ?>
+
 	</div><!-- /.container -->
 </header>
 <!-- ============================================================= HEADER : END ============================================================= -->

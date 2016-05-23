@@ -41,7 +41,7 @@ class Content extends Admin_Controller
         
         
         
-    Template::set('toolbar_title', lang('checkout_manage'));
+        Template::set('toolbar_title', lang('checkout_manage'));
 
         Template::render();
     }
