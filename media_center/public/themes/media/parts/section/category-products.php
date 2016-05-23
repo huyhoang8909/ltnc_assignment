@@ -40,11 +40,6 @@
 
                             <?php endforeach; ?>
                         <?php endif; ?>
-                      
-
-
-
-
                     </div><!-- /.row -->
                 </div><!-- /.product-grid-holder -->
 
