@@ -3,10 +3,10 @@
     <div class="container">
         <div class="col-xs-12 col-sm-6 no-margin">
             <ul>
-                <li><a href="<?php echo site_url(); ?>"><?php e(lang('bf_home')); ?></a></li>
-                <li><a href="index.php?page=blog">Blog</a></li>
-                <li><a href="index.php?page=faq">FAQ</a></li>
-                <li><a href="index.php?page=contact">Contact</a></li>
+                <li><a href="<?php echo site_url(); ?>">Trang chủ</a></li>
+                <li><a href="index.php?page=blog">Sản phẩm mới nhất</a></li>
+                <li><a href="index.php?page=faq">Hỗ trợ</a></li>
+                <li><a href="index.php?page=contact">Liên hệ</a></li>
             </ul>
         </div><!-- /.col -->
 
