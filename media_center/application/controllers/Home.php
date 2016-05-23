@@ -82,6 +82,7 @@ class Home extends MX_Controller {
         $all_categories = $this->category_model->get_all_categories(array());
         $new_item = $this->item_model->get_new_items(5);
         $sale_item = $this->item_model->sale_item(5);
+        $common_item = $this->item_model->common_item(5);
 
         $products = $this->item_model->get_items_by_categories($top_categories);
         $data = array(
@@ -89,6 +90,7 @@ class Home extends MX_Controller {
             's_products' => $s_products,
             'sale_item' => $sale_item,
             'new_item' => $new_item,
+            'common_item' => $common_item,
             'more_items' => $this->item_model->get_more_items(1),
             'top_items' => $products,
             'all_categories' => $all_categories
@@ -219,10 +221,16 @@ class Home extends MX_Controller {
 
         $products = $this->item_model->get_items_by_categories($top_categories);
 
+        $new_item = $this->item_model->get_new_items(4);
+        $sale_item = $this->item_model->sale_item(4);
+        $common_item = $this->item_model->common_item(4);
 
 
         $data = array(
             'item' => $item,
+            'new_item' => $new_item,
+            'sale_item' => $sale_item,
+            'common_item' => $common_item,
             'more_items' => $this->item_model->get_more_items($id),
             'products' => $products
         );
