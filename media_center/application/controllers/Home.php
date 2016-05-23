@@ -57,18 +57,15 @@ class Home extends MX_Controller {
         $this->load->model('item_model');
         $this->load->model('category_model');
        $key =  $this->input->get('q');
-       $products = array();
+       $s_products = array();
        if($key){
-           $products = $this->item_model->search($key);
+           $s_products = $this->item_model->search($key);
        }
        
-        $this->load->model('item_model');
-        $this->load->model('category_model');
         $this->load->library('users/auth');
         $this->set_current_user();
 
         if ($cart_id = $this->session->userdata('cart_id')) {
-            $this->load->model('cart/cart_model');
             $cart = $this->cart_model
                     ->where('cart.CART_ID', $cart_id)
                     ->find_all();
@@ -88,6 +85,7 @@ class Home extends MX_Controller {
         $products = $this->item_model->get_items_by_categories($top_categories);
         $data = array(
             'products' => $products,
+            's_products' => $s_products,
             'more_items' => $this->item_model->get_more_items(1),
             'top_items' => $products,
             'all_categories' => $all_categories
