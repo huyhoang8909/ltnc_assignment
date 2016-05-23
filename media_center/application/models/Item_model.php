@@ -131,10 +131,10 @@ class Item_model extends BF_Model {
         return $common;
     }
       public function bycategory($id_category) {
-        
-        $items = $this->where('CATEGORY_ID ==', $id_catelogy)
+          
+        $items = $this->where('CATEGORY_ID', $id_category)
                 ->find_all();
-
+        
         return $items;
     }
     

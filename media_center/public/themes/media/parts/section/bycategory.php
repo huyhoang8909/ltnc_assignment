@@ -17,7 +17,8 @@
                                 <div class="product-item">
                                     <div class="ribbon red"><span>sale</span></div> 
                                     <div class="image">
-                                        <img alt="" src="items/<?php echo $byproduct->IMAGE ?>" data-echo="items/<?php echo $byproduct->IMAGE ?>" />
+                                        
+                                        <img alt="" src="<?php echo base_url('items/'.$byproduct->IMAGE) ?>" data-echo="<?php echo base_url('items/'.$byproduct->IMAGE) ?>"" />
                                     </div>
                                     <div class="body">
                                         <div class="label-discount green">-50% sale</div>

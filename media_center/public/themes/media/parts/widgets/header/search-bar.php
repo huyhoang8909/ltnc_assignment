@@ -12,11 +12,11 @@
         <div class="col-md-12 pull-right well">
             <form class="form-inline" action="<?php echo base_url('search') ?>" method="get">
                 <div class="input-group col-sm-8">
-                    <input class="form-control" type="text" value="" placeholder="Search" name="q">
+                    <input class="form-control" type="text" value="" placeholder="Tên sản phẩm" name="q">
                     <input class="form-control" type="hidden" value="category-grid" name="page">
                     
                 </div>
-                <button class="btn btn-primary col-sm-3 pull-right" type="submit">Search</button>
+                <button class="btn btn-primary col-sm-3 pull-right" type="submit">Tìm kiếm</button>
             </form>
         </div>
     </div>

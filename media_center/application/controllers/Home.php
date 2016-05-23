@@ -303,7 +303,7 @@ class Home extends MX_Controller {
         $new_products = $this->item_model->get_new_items(array());
         
         $byproduct = $this->item_model->bycategory($id);
-
+       
         $data = array(
             'products' => $products,
             'new_item' => $new_item,
