@@ -109,13 +109,26 @@ class Item_model extends BF_Model {
         return $items;
         
     }
-     public function get_new_items() {
-          $new = $this->order_by('item', 'DESC')
-                        ->limit(5)
+     public function get_new_items($limit) {
+          $new = $this->order_by('ITEM_ID', 'DESC')
+                        ->limit($limit)
                         ->find_all();
-
               
         return $new;
+    }
+     public function sale_item($limit) {
+          $sale = $this->order_by('ITEM_ID', 'DESC')
+                        ->limit($limit)
+                        ->find_all();
+              
+        return $sale;
+    }
+     public function common_item($limit) {
+          $common = $this->order_by('ITEM_ID', 'DESC')
+                        ->limit($limit)
+                        ->find_all();
+              
+        return $common;
     }
 
 }
