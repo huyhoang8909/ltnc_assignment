@@ -1,4 +1,5 @@
 <!-- ========================================= HOME BANNERS ========================================= -->
+
 <section id="banner-holder" class="wow fadeInUp">
     <div class="container">
         <div class="col-xs-12 col-lg-6 no-margin banner">

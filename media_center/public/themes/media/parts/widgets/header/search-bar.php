@@ -13,6 +13,7 @@
         <form class="form-inline" action="<?php echo base_url('search') ?>" method="get">
         <div class="input-group col-sm-8">
           <input class="form-control" type="text" value="" placeholder="Search" name="q">
+          <input class="form-control" type="hidden" value="category-grid" name="page">
        <div class="input-group-btn">
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Select <span class="caret"></span></button>
         <ul class="dropdown-menu">

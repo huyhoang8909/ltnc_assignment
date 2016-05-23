@@ -1,5 +1,5 @@
 <!-- ========================================= PRODUCT FILTER ========================================= -->
-<div class="widget">
+    <div class="widget">
     <h1>Product Filters</h1>
     <div class="body bordered">
         
