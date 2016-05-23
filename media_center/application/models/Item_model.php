@@ -109,6 +109,14 @@ class Item_model extends BF_Model {
         return $items;
         
     }
+     public function get_new_items() {
+          $new = $this->order_by('item', 'DESC')
+                        ->limit(5)
+                        ->find_all();
+
+              
+        return $new;
+    }
 
 }
 
