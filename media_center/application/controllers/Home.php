@@ -196,7 +196,46 @@ class Home extends MX_Controller {
         Template::set('data', $data);
         Template::render();
     }
+    
+     public function about() {
+        $this->load->model('item_model');
+        $this->load->model('category_model');
+        $this->load->library('users/auth');
+        $this->set_current_user();
 
+        if ($cart_id = $this->session->userdata('cart_id')) {
+            $this->load->model('cart/cart_model');
+            $cart = $this->cart_model
+                    ->where('cart.CART_ID', $cart_id)
+                    ->find_all();
+            $cart_price = $this->cart_model
+                    ->select('SUM(ITEM_PRICE) AS TOTAL_PRICE')
+                    ->where('cart.CART_ID', $cart_id)
+                    ->find_all();
+
+            $this->session->set_userdata('cart', $cart);
+            $this->session->set_userdata('total_price', $cart_price[0]->TOTAL_PRICE);
+        }
+
+        $top_categories = $this->category_model->get_top_categories(array());
+        $all_categories = $this->category_model->get_all_categories(array());
+        $new_item = $this->item_model->get_new_items(4);
+        $sale_item = $this->item_model->sale_item(4);
+        $common_item = $this->item_model->common_item(4);
+
+        $products = $this->item_model->get_items_by_categories($top_categories);
+        $data = array(
+            'products' => $products,
+            'new_item' => $new_item,
+            'sale_item' => $sale_item,
+            'common_item' => $common_item,
+            'more_items' => $this->item_model->get_more_items(1),
+            'top_items' => $products,
+            'all_categories' => $all_categories
+        );
+        Template::set('data', $data);
+        Template::render();
+    }
 //end index()
     //--------------------------------------------------------------------
 

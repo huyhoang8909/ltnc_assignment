@@ -57,7 +57,7 @@ $route['404_override'] = '';
 $route['search'] =  'home/search';
 
 $route['new_products'] =  'home/new_products';
-
+$route['about'] =  'home/about';
 $route['bycategory/(:num)'] = 'home/bycategory/$1';
 
 // Authentication
