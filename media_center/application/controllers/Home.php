@@ -52,9 +52,10 @@ class Home extends MX_Controller
         $this->requested_page = isset($_SESSION['requested_page']) ? $_SESSION['requested_page'] : null;
 	}
 
-        public function search() {
-            var_dump(2323);
-            die();
+        public function search($q = null) {
+
+            var_dump($_GET);
+            die();            die();
         }
 	//--------------------------------------------------------------------
 

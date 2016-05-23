@@ -10,7 +10,7 @@
 <div class="search-area">
     <div class="">
     <div class="col-md-12 pull-right well">
-        <form class="form-inline" action="<?php echo base_url('search') ?>" method="post">
+        <form class="form-inline" action="<?php echo base_url('search') ?>" method="get">
         <div class="input-group col-sm-8">
           <input class="form-control" type="text" value="" placeholder="Search" name="q">
        <div class="input-group-btn">
