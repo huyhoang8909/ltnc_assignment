@@ -51,11 +51,11 @@
             <div class="col-xs-12 col-sm-6 no-margin">
                 <div class="payment-methods ">
                     <ul>
-                        <li><img alt="" src="assets/images/payments/payment-visa.png"></li>
-                        <li><img alt="" src="assets/images/payments/payment-master.png"></li>
-                        <li><img alt="" src="assets/images/payments/payment-paypal.png"></li>
-                        <li><img alt="" src="assets/images/payments/payment-skrill.png"></li>
-                    </ul>
+                        <li><img alt="" src="<?php echo base_url('assets/images/payments/payment-visa.png') ?>"></li>
+                        <li><img alt="" src="<?php echo base_url('assets/images/payments/payment-master.png') ?>"></li>
+                        <li><img alt="" src="<?php echo base_url('assets/images/payments/payment-paypal.png') ?>"></li>
+                        <li><img alt="" src="<?php echo base_url('assets/images/payments/payment-skrill.png') ?>"></li>
+                        </ul>
                 </div><!-- /.payment-methods -->
             </div>
         </div><!-- /.container -->
