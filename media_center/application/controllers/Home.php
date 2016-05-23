@@ -304,9 +304,11 @@ class Home extends MX_Controller {
         
         $byproduct = $this->item_model->bycategory($id);
        
+        $getcategory = $this->category_model->getcaterogy($id);
         $data = array(
             'products' => $products,
             'new_item' => $new_item,
+            'get_category' => $getcategory,
             'new_products' => $new_products,
             'byproduct' => $byproduct,
             'sale_item' => $sale_item,

@@ -4,7 +4,9 @@
         <div class="tab-holder">
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" >
-                <li class="active"><a href="#" data-toggle="tab">Sản phẩm mới</a></li>
+                 <?php foreach ($data['get_category'] as $getcategory): ?>
+                <li class="active"><a href="#" data-toggle="tab"><?php echo $getcategory->CATEGORY_NAME  ?></a></li>
+                <?php endforeach; ?>
             </ul>
 
             <!-- Tab panes -->

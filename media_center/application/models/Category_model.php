@@ -79,5 +79,12 @@ class Category_model  extends BF_Model
        
         return $all_categories;
     }
+     public function getcaterogy($id_category) {
+          
+        $items = $this->where('CATEGORY_ID', $id_category)
+                ->find_all();
+        
+        return $items;
+     }
 }
 /* End of file /emailer/models/emailer_model.php */
