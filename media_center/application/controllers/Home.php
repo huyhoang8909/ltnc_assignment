@@ -196,7 +196,7 @@ class Home extends MX_Controller {
         Template::set('data', $data);
         Template::render();
     }
-
+     
 }
 
 /* end ./application/controllers/home.php */
