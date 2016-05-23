@@ -14,18 +14,7 @@
                 <div class="input-group col-sm-8">
                     <input class="form-control" type="text" value="" placeholder="Search" name="q">
                     <input class="form-control" type="hidden" value="category-grid" name="page">
-                    <div class="input-group-btn">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Select <span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                            <?php if (!empty($data['all_categories'])): ?>
-                                <?php foreach ($data['all_categories'] as $category): ?>
-                                    <li><a href="#"><?php echo $category->CATEGORY_NAME ?></a></li>
-
-                                <?php endforeach; ?>
-                            <?php endif; ?>          
-                        </ul>
-                        <input type="hidden" name="category" class="category">
-                    </div><!-- /btn-group -->
+                    
                 </div>
                 <button class="btn btn-primary col-sm-3 pull-right" type="submit">Search</button>
             </form>
