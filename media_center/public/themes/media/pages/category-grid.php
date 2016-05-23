@@ -22,7 +22,7 @@
         <div class="col-xs-12 col-sm-9 no-margin wide sidebar">
 
             <?php echo theme_view('parts/section/recommended-products');?>
-            <?php echo theme_view('parts/section/category-products',array('isListView' => $isListView, 'products' => $data['products']));?>
+            <?php echo theme_view('parts/section/category-products',array('isListView' => $isListView, 'products' => $data['s_products']));?>
             
         </div><!-- /.col -->
         <!-- ========================================= CONTENT : END ========================================= -->    

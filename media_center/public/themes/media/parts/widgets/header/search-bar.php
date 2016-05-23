@@ -9,47 +9,50 @@
 <!-- ============================================================= SEARCH AREA ============================================================= -->
 <div class="search-area">
     <div class="">
-    <div class="col-md-12 pull-right well">
-        <form class="form-inline" action="<?php echo base_url('search') ?>" method="get">
-        <div class="input-group col-sm-8">
-          <input class="form-control" type="text" value="" placeholder="Search" name="q">
-          <input class="form-control" type="hidden" value="category-grid" name="page">
-       <div class="input-group-btn">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Select <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-        </ul>
-         <input type="hidden" name="category" class="category">
-      </div><!-- /btn-group -->
+        <div class="col-md-12 pull-right well">
+            <form class="form-inline" action="<?php echo base_url('search') ?>" method="get">
+                <div class="input-group col-sm-8">
+                    <input class="form-control" type="text" value="" placeholder="Search" name="q">
+                    <input class="form-control" type="hidden" value="category-grid" name="page">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Select <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <?php if (!empty($data['all_categories'])): ?>
+                                <?php foreach ($data['all_categories'] as $category): ?>
+                                    <li><a href="#"><?php echo $category->CATEGORY_NAME ?></a></li>
+
+                                <?php endforeach; ?>
+                            <?php endif; ?>          
+                        </ul>
+                        <input type="hidden" name="category" class="category">
+                    </div><!-- /btn-group -->
+                </div>
+                <button class="btn btn-primary col-sm-3 pull-right" type="submit">Search</button>
+            </form>
         </div>
-        <button class="btn btn-primary col-sm-3 pull-right" type="submit">Search</button>
-      </form>
     </div>
-</div>
 </div><!-- /.search-area -->
 <!-- ============================================================= SEARCH AREA : END ============================================================= -->
 <script type='text/css'>
     @media (min-width: 768px) {
-	.form-inline input {
-         border-radius: 6px 0 0 6px;
-     }
-    .form-inline select {
-        border-radius: 0 6px 6px 0;
-        border-left-width: 0;
+        .form-inline input {
+            border-radius: 6px 0 0 6px;
+        }
+        .form-inline select {
+            border-radius: 0 6px 6px 0;
+            border-left-width: 0;
+        }
     }
-}
-  
-    </script>
-    
+
+</script>
+
 <script>
-   $( document ).ready(function() {
-       $('.dropdown-menu li').click(function(e){
-  e.preventDefault();
-  var selected = $(this).text();
-  $('.category').val(selected);  
-});
-   });
- 
+    $(document).ready(function () {
+        $('.dropdown-menu li').click(function (e) {
+            e.preventDefault();
+            var selected = $(this).text();
+            $('.category').val(selected);
+        });
+    });
+
 </script>

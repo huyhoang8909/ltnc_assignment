@@ -1,7 +1,7 @@
 <section id="gaming">
     <div class="grid-list-products">
         <h2 class="section-title">Gaming</h2>
-        
+
         <div class="control-bar">
             <div id="popularity-sort" class="le-select" >
                 <select data-placeholder="sort by popularity">
@@ -10,7 +10,7 @@
                     <option value="3">200+ players</option>
                 </select>
             </div>
-            
+
             <div id="item-count" class="le-select">
                 <select>
                     <option value="1">24 per page</option>
@@ -21,57 +21,60 @@
 
             <div class="grid-list-buttons">
                 <ul>
-                    <li class="grid-list-button-item <?php if(!$isListView) echo 'active';?>"><a data-toggle="tab" href="#grid-view"><i class="fa fa-th-large"></i> Grid</a></li>
-                    <li class="grid-list-button-item <?php if($isListView) echo 'active';?>"><a data-toggle="tab" href="#list-view"><i class="fa fa-th-list"></i> List</a></li>
+                    <li class="grid-list-button-item <?php if (!$isListView) echo 'active'; ?>"><a data-toggle="tab" href="#grid-view"><i class="fa fa-th-large"></i> Grid</a></li>
+                    <li class="grid-list-button-item <?php if ($isListView) echo 'active'; ?>"><a data-toggle="tab" href="#list-view"><i class="fa fa-th-list"></i> List</a></li>
                 </ul>
             </div>
         </div><!-- /.control-bar -->
         <div class="tab-content">
-            <div id="grid-view" class="products-grid fade tab-pane <?php if(!$isListView) echo 'in active';?>">
-                
+            <div id="grid-view" class="products-grid fade tab-pane <?php if (!$isListView) echo 'in active'; ?>">
+
                 <div class="product-grid-holder">
                     <div class="row no-margin">
                         
                         <?php foreach ($products as $product): ?>
-                        <div class="col-xs-12 col-sm-4 no-margin product-item-holder hover">
-                            <div class="product-item">
-                                <div class="ribbon red"><span>sale</span></div> 
-                                <div class="image">
-                                    <img alt="" src="assets/images/blank.gif" data-echo="assets/images/products/product-01.jpg" />
-                                </div>
-                                <div class="body">
-                                    <div class="label-discount green">-50% sale</div>
-                                    <div class="title">
-                                        <a href="index.php?page=single-product">VAIO Fit Laptop - Windows 8 SVF14322CXW</a>
-                                    </div>
-                                    <div class="brand">sony</div>
-                                </div>
-                                <div class="prices">
-                                    <div class="price-prev">$1399.00</div>
-                                    <div class="price-current pull-right">$1199.00</div>
-                                </div>
-                                <div class="hover-area">
-                                    <div class="add-cart-button">
-                                        <a href="index.php?page=single-product" class="le-button">add to cart</a>
-                                    </div>
-                                    <div class="wish-compare">
-                                        <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
-                                        <a class="btn-add-to-compare" href="#">compare</a>
-                                    </div>
-                                </div>
-                            </div><!-- /.product-item -->
-                        </div><!-- /.product-item-holder -->
-
+                           
+                            <?php var_dump($product);
+                            die(); ?>
+                                <div class="col-xs-12 col-sm-4 no-margin product-item-holder hover">
+                                    <div class="product-item">
+                                        <div class="ribbon red"><span>sale</span></div> 
+                                        <div class="image">
+                                            <img alt="" src="assets/images/blank.gif" data-echo="assets/images/products/product-01.jpg" />
+                                        </div>
+                                        <div class="body">
+                                            <div class="label-discount green">-50% sale</div>
+                                            <div class="title">
+                                                <a href="index.php?page=single-product"</a>
+                                            </div>
+                                            <div class="brand">sony</div>
+                                        </div>
+                                        <div class="prices">
+                                            <div class="price-prev">$1399.00</div>
+                                            <div class="price-current pull-right">$1199.00</div>
+                                        </div>
+                                        <div class="hover-area">
+                                            <div class="add-cart-button">
+                                                <a href="index.php?page=single-product" class="le-button">add to cart</a>
+                                            </div>
+                                            <div class="wish-compare">
+                                                <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
+                                                <a class="btn-add-to-compare" href="#">compare</a>
+                                            </div>
+                                        </div>
+                                    </div><!-- /.product-item -->
+                                </div><!-- /.product-item-holder -->
+                            
                         <?php endforeach; ?>
-                        
-                        
+
+
 
                     </div><!-- /.row -->
                 </div><!-- /.product-grid-holder -->
-                
+
                 <div class="pagination-holder">
                     <div class="row">
-                        
+
                         <div class="col-xs-12 col-sm-6 text-left">
                             <ul class="pagination ">
                                 <li class="current"><a  href="#">1</a></li>
@@ -92,9 +95,9 @@
                 </div><!-- /.pagination-holder -->
             </div><!-- /.products-grid #grid-view -->
 
-            <div id="list-view" class="products-grid fade tab-pane <?php if($isListView) echo 'active in';?>">
+            <div id="list-view" class="products-grid fade tab-pane <?php if ($isListView) echo 'active in'; ?>">
                 <div class="products-list">
-                    
+
                     <div class="product-item product-item-holder">
                         <div class="ribbon red"><span>sale</span></div> 
                         <div class="ribbon blue"><span>new!</span></div>
