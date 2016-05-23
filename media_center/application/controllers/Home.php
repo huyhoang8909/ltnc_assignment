@@ -273,7 +273,7 @@ class Home extends MX_Controller {
     }
 
    public function bycategory($id) {
-        $this->load->model('item_model');
+         $this->load->model('item_model');
         $this->load->model('category_model');
         $this->load->library('users/auth');
         $this->set_current_user();
@@ -299,9 +299,16 @@ class Home extends MX_Controller {
         $common_item = $this->item_model->common_item(4);
 
         $products = $this->item_model->get_items_by_categories($top_categories);
+        
+        $new_products = $this->item_model->get_new_items(array());
+        
+        $byproduct = $this->item_model->bycategory($id);
+
         $data = array(
             'products' => $products,
             'new_item' => $new_item,
+            'new_products' => $new_products,
+            'byproduct' => $byproduct,
             'sale_item' => $sale_item,
             'common_item' => $common_item,
             'more_items' => $this->item_model->get_more_items(1),

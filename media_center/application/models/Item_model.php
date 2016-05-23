@@ -130,6 +130,14 @@ class Item_model extends BF_Model {
               
         return $common;
     }
+      public function bycategory($id_category) {
+        
+        $items = $this->where('CATEGORY_ID ==', $id_catelogy)
+                ->find_all();
+
+        return $items;
+    }
+    
 
 }
 
