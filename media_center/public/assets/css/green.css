@@ -297,3 +297,7 @@ h2 {
 .blog-sidebar .widget .recent-post-list h5 a:hover {
   color: #59b210;
 }
+
+.form-inline .input-group {
+    float: left !important;
+}
