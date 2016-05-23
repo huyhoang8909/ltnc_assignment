@@ -71,5 +71,13 @@ class Category_model  extends BF_Model
        
         return $top_categories;
     }
+    
+     public function get_all_categories($params){
+        $all_categories = $this->order_by('CATEGORY_PRIORITY', 'DESC')
+                        ->find_all();
+
+       
+        return $all_categories;
+    }
 }
 /* End of file /emailer/models/emailer_model.php */

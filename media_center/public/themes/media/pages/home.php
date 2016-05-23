@@ -2,7 +2,7 @@
 	<div class="container">
 		
 		<div class="col-xs-12 col-sm-4 col-md-3 sidemenu-holder">
-			<?php echo theme_view('parts/navigation/sidemenu', array('pages' => $pages)) ?>
+			<?php echo theme_view('parts/navigation/sidemenu', array('pages' => $pages, 'data' => $data)) ?>
 		</div><!-- /.sidemenu-holder -->
 
 		<div class="col-xs-12 col-sm-8 col-md-9 homebanner-holder">

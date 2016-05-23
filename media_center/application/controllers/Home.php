@@ -60,7 +60,6 @@ class Home extends MX_Controller
 	 * @return void
 	 */
 	public function index() {
-
             $this->load->model('item_model');
             $this->load->model('category_model');
             $this->load->library('users/auth');
@@ -81,13 +80,16 @@ class Home extends MX_Controller
             }
 
             $top_categories = $this->category_model->get_top_categories(array());
+            $all_categories = $this->category_model->get_all_categories(array());
+            
            
             $products = $this->item_model->get_items_by_categories($top_categories);
             
             $data = array(
                 'products' => $products,
                 'more_items' => $this->item_model->get_more_items(1), 
-                'top_items' => $products
+                'top_items' => $products,
+                'all_categories' => $all_categories
             );
             Template::set('data', $data);
             Template::render();
