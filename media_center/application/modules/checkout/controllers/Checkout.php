@@ -1,14 +1,16 @@
-<?php defined('BASEPATH') || exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') || exit('No direct script access allowed');
 
 /**
  * Checkout controller
  */
-class Checkout extends Front_Controller
-{
+class Checkout extends Front_Controller {
+
     protected $permissionCreate = 'Checkout.Checkout.Create';
     protected $permissionDelete = 'Checkout.Checkout.Delete';
-    protected $permissionEdit   = 'Checkout.Checkout.Edit';
-    protected $permissionView   = 'Checkout.Checkout.View';
+    protected $permissionEdit = 'Checkout.Checkout.Edit';
+    protected $permissionView = 'Checkout.Checkout.View';
 
     // protected $require_authentication = true;
 
@@ -17,14 +19,13 @@ class Checkout extends Front_Controller
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         $this->load->model('cart/cart_model');
         $this->lang->load('checkout');
-        
-        
+
+
 
         Assets::add_module_js('checkout', 'checkout.js');
     }
@@ -34,14 +35,13 @@ class Checkout extends Front_Controller
      *
      * @return void
      */
-    public function index()
-    {
+    public function index() {
         $this->load->helper('form');
         $this->load->helper('string');
         $this->load->model('users/user_model');
         $this->load->library('users/auth');
 
-        if($this->input->method(TRUE) === 'POST') {
+        if ($this->input->method(TRUE) === 'POST') {
             $this->load->library('form_validation');
 
             $this->form_validation->set_rules('username', 'Full Name', 'required');
@@ -54,9 +54,10 @@ class Checkout extends Front_Controller
 
                 $cart_id = $this->session->userdata('cart_id');
                 $records = $this->cart_model->where('cart.CART_ID', $cart_id)
-                ->find_all();
+                        ->find_all();
 
-                if (empty($records)) redirect('/');
+                if (empty($records))
+                    redirect('/');
 
                 Template::set('records', $records);
                 Template::render();
@@ -82,7 +83,7 @@ class Checkout extends Front_Controller
                         // User Activation
                         $activation = $this->user_model->set_activation($userId);
                         $message = $activation['message'];
-                        $error   = $activation['error'];
+                        $error = $activation['error'];
 
                         Template::set_message($message, $error ? 'error' : 'success');
 
@@ -91,26 +92,30 @@ class Checkout extends Front_Controller
                         // send mail
                         $this->load->library('emailer/emailer');
                         $mail = array(
-                            'to'        => $data['email'],
-                            'subject'   => 'Account Infomation',
-                            'message'   => "<div>Here is your temporary password: <strong>{$data['password']}</strong></div>
+                            'to' => $data['email'],
+                            'subject' => 'Account Infomation',
+                            'message' => "<div>Here is your temporary password: <strong>{$data['password']}</strong></div>
                             <div>Please update it as soon as possible!</div>",
                         );
 
                         $this->emailer->send($mail);
                     }
-                } elseif($this->auth->is_logged_in()) {
+                } elseif ($this->auth->is_logged_in()) {
 
                     $userId = $this->auth->user()->id;
 
                     // update missing data if they are available
                     $updated_data = array();
-                    if (empty($this->auth->user()->phone)) $updated_data['phone'] = $this->input->post('phone');
-                    if (empty($this->auth->user()->address)) $updated_data['address'] = $this->input->post('address');
-                    if (empty($this->auth->user()->company)) $updated_data['company'] = $this->input->post('company');
+                    if (empty($this->auth->user()->phone))
+                        $updated_data['phone'] = $this->input->post('phone');
+                    if (empty($this->auth->user()->address))
+                        $updated_data['address'] = $this->input->post('address');
+                    if (empty($this->auth->user()->company))
+                        $updated_data['company'] = $this->input->post('company');
 
                     // save to db
-                    if (!empty($updated_data)) $this->user_model->update($this->auth->user()->id, $updated_data);
+                    if (!empty($updated_data))
+                        $this->user_model->update($this->auth->user()->id, $updated_data);
                 } else {
                     redirect('/login');
                 }
@@ -118,13 +123,13 @@ class Checkout extends Front_Controller
                 // insert order
                 $this->load->model('order/order_model');
                 $items = $this->cart_model->where('cart.CART_ID', $this->session->userdata('cart_id'))
-                    ->find_all();
+                        ->find_all();
 
                 $this->order_model->create($userId, $items, $this->input->post('ship'));
 
                 // update items quantity
                 foreach ($items as $item) {
-                    $this->db->set('ITEM_QUANTITY', 'ITEM_QUANTITY-'. $item->AMOUNT, FALSE);
+                    $this->db->set('ITEM_QUANTITY', 'ITEM_QUANTITY-' . $item->AMOUNT, FALSE);
                     $this->db->where('ITEM_ID', $item->ITEM_ID);
                     $this->db->update('item');
                 }
@@ -145,16 +150,38 @@ class Checkout extends Front_Controller
             if ($this->auth->is_logged_in()) {
                 $this->set_current_user();
                 $data = clone $this->auth->user();
-                Template::set((array)$data);
-
+                Template::set((array) $data);
             }
             $cart_id = $this->session->userdata('cart_id');
             $records = $this->cart_model->where('cart.CART_ID', $cart_id)
-                ->find_all();
+                    ->find_all();
+            $this->load->model('item_model');
+            $this->load->model('category_model');
+            $this->load->library('users/auth');
+            $this->set_current_user();
 
-            if (empty($records)) redirect('/');
+            $top_categories = $this->category_model->get_top_categories(array());
+            $all_categories = $this->category_model->get_all_categories(array('limit' => 11));
+            $new_item = $this->item_model->get_new_items(4);
+            $sale_item = $this->item_model->sale_item(4);
+            $common_item = $this->item_model->common_item(4);
+
+            $products = $this->item_model->get_items_by_categories($top_categories);
+            $data = array(
+                'products' => $products,
+                'new_item' => $new_item,
+                'sale_item' => $sale_item,
+                'common_item' => $common_item,
+                'more_items' => $this->item_model->get_more_items(1),
+                'top_items' => $products,
+                'all_categories' => $all_categories
+            );
+
+            if (empty($records))
+                redirect('/');
 
             Template::set('records', $records);
+            Template::set('data', $data);
             Template::render();
         }
     }

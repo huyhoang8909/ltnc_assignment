@@ -43,7 +43,8 @@
 <?php  echo theme_view('parts/section/header', array('page' => $page, 'pages' => $pages)) ?>
 <?php //echo theme_view('parts/breadcrumb/breadcrumb', array('page' => $page, 'pages' => $pages, 'products' => $products)) ?>
 <?php //Template::$debug = true ?>
-<?php echo theme_view('parts/navigation/horizontal-menu', array('page' => $page, 'pages' => $pages)) ?>
+<?php echo theme_view('parts/breadcrumb/breadcrumb-category-grid', array('page' => $page, 'pages' => $pages, 'data' => $data)) ?>
+
 
 <!-- ========================================= CONTENT ========================================= -->
 <?php echo form_open('/checkout') ?>
@@ -181,4 +182,4 @@
 </section><!-- /#checkout-page -->
 <?php echo form_close() ?>
 <!-- ========================================= CONTENT : END ========================================= -->
-<?php echo theme_view('parts/section/footer', array('page' => $page, 'pages' => $pages)) ?>
+<?php echo theme_view('parts/section/footer', array('page' => $page, 'pages' => $pages, 'data'=>$data)) ?>

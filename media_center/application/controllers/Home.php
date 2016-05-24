@@ -56,6 +56,8 @@ class Home extends MX_Controller {
     public function search($q = null) {
         $this->load->model('item_model');
         $this->load->model('category_model');
+        $this->load->model('cart/cart_model');
+
         $key = $this->input->get('q');
         $s_products = array();
         if ($key) {
