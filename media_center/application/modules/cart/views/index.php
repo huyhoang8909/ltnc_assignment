@@ -53,7 +53,8 @@ $pages = array(
                     <div class="row no-margin cart-item">
                         <div class="col-xs-12 col-sm-2 no-margin">
                             <a href="#" class="thumb-holder">
-                                <img class="lazy" alt="" src="/<?php e($record->IMAGE) ?>" />
+                                <img class="lazy" alt="" src="<?php echo base_url('items/'.$record->IMAGE) ?>" />
+                                
                             </a>
                         </div>
 
