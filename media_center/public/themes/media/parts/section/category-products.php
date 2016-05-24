@@ -18,7 +18,7 @@
                                         <div class="body">
                                             <div class="label-discount green">-50% sale</div>
                                             <div class="title">
-                                                <a href="index.php?page=single-product"><?php echo $s_product->ITEM_NAME ?></a>
+                                                <a href="<?php echo base_url('item'),'/'.$s_product->ITEM_ID ?>"><?php echo $s_product->ITEM_NAME ?></a>
                                             </div>
                                             <div class="brand">sony</div>
                                         </div>

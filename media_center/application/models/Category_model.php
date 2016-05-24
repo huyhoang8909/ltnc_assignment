@@ -60,7 +60,7 @@ class Category_model extends BF_Model {
 
     public function get_top_categories($params) {
         $top_categories = $this->order_by('CATEGORY_PRIORITY', 'DESC')
-                ->limit(3)
+                ->limit(7)
                 ->find_all();
 
 

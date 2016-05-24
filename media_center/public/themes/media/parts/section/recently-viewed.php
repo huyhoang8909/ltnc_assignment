@@ -16,7 +16,7 @@
 		<div class="carousel-holder hover">
 			
 			<div class="title-nav">
-				<h2 class="h1">Recently Viewed</h2>
+				<h2 class="h1">Sản phầm được xem nhiều</h2>
 				<div class="nav-holder">
 					<a href="#prev" data-target="#<?php echo $carouselID;?>" class="slider-prev btn-prev fa fa-angle-left"></a>
 					<a href="#next" data-target="#<?php echo $carouselID;?>" class="slider-next btn-next fa fa-angle-right"></a>

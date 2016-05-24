@@ -25,7 +25,7 @@
                                     <div class="body">
                                         <div class="label-discount green">-50% sale</div>
                                         <div class="title">
-                                            <a href="item/<?php echo $byproduct->ITEM_ID ?>"><?php echo $byproduct->ITEM_NAME ?></a>
+                                            <a href="<?php echo base_url('item/'.$byproduct->ITEM_ID) ?>"><?php echo $byproduct->ITEM_NAME ?></a>
                                         </div>
                                     </div>
                                     <div class="prices">

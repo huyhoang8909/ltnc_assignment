@@ -12,7 +12,7 @@
                         </a>
                     </div>
                     <div class="col-xs-8 col-sm-8 no-margin">
-                        <a href="#"><?php echo $new_item->ITEM_NAME ?> </a>
+                        <a href="<?php echo base_url('item') . '/' . $new_item->ITEM_ID ?>"><?php echo $new_item->ITEM_NAME ?> </a>
                         <div class="price">
                             <div class="price-prev"><?php echo $new_item->ITEM_PRICE ?></div>
                             <div class="price-current"><?php echo $new_item->ITEM_QUANTITY ?></div>

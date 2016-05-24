@@ -178,7 +178,7 @@ class Home extends MX_Controller {
         }
 
         $top_categories = $this->category_model->get_top_categories(array());
-        $all_categories = $this->category_model->get_all_categories(array());
+        $all_categories = $this->category_model->get_all_categories(array('limit' => 11));
         $new_item = $this->item_model->get_new_items(4);
         $sale_item = $this->item_model->sale_item(4);
         $common_item = $this->item_model->common_item(4);
