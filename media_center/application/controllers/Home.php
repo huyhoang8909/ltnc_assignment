@@ -79,7 +79,8 @@ class Home extends MX_Controller {
         }
 
         $top_categories = $this->category_model->get_top_categories(array());
-        $all_categories = $this->category_model->get_all_categories(array());
+        $all_categories = $this->category_model->get_all_categories(array('limit' => 8));
+
         $new_item = $this->item_model->get_new_items(5);
         $sale_item = $this->item_model->sale_item(5);
         $common_item = $this->item_model->common_item(5);
@@ -101,8 +102,7 @@ class Home extends MX_Controller {
 
     //--------------------------------------------------------------------
 
-    
-     /**
+    /**
      * Displays the homepage of the Bonfire app
      *
      * @return void
@@ -129,12 +129,13 @@ class Home extends MX_Controller {
 
         $top_categories = $this->category_model->get_top_categories(array());
         $all_categories = $this->category_model->get_all_categories(array());
+
         $new_item = $this->item_model->get_new_items(4);
         $sale_item = $this->item_model->sale_item(4);
         $common_item = $this->item_model->common_item(4);
 
         $products = $this->item_model->get_items_by_categories($top_categories);
-        
+
         $new_products = $this->item_model->get_new_items(array());
 
         $data = array(
@@ -151,7 +152,6 @@ class Home extends MX_Controller {
         Template::render();
     }
 
-    
     /**
      * Displays the homepage of the Bonfire app
      *
@@ -196,8 +196,8 @@ class Home extends MX_Controller {
         Template::set('data', $data);
         Template::render();
     }
-    
-     public function about() {
+
+    public function about() {
         $this->load->model('item_model');
         $this->load->model('category_model');
         $this->load->library('users/auth');
@@ -236,6 +236,7 @@ class Home extends MX_Controller {
         Template::set('data', $data);
         Template::render();
     }
+
 //end index()
     //--------------------------------------------------------------------
 
@@ -272,8 +273,8 @@ class Home extends MX_Controller {
         }
     }
 
-   public function bycategory($id) {
-         $this->load->model('item_model');
+    public function bycategory($id) {
+        $this->load->model('item_model');
         $this->load->model('category_model');
         $this->load->library('users/auth');
         $this->set_current_user();
@@ -299,11 +300,11 @@ class Home extends MX_Controller {
         $common_item = $this->item_model->common_item(4);
 
         $products = $this->item_model->get_items_by_categories($top_categories);
-        
+
         $new_products = $this->item_model->get_new_items(array());
-        
+
         $byproduct = $this->item_model->bycategory($id);
-       
+
         $getcategory = $this->category_model->getcaterogy($id);
         $data = array(
             'products' => $products,

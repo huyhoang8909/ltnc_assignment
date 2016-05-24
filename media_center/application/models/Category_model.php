@@ -1,4 +1,6 @@
-<?php defined('BASEPATH') || exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') || exit('No direct script access allowed');
 
 /**
  * Bonfire
@@ -22,69 +24,70 @@
  * @author     Bonfire Dev Team
  * @link       http://cibonfire.com/docs/guides
  */
-class Category_model  extends BF_Model
-{
-    protected $table_name   = 'category';
-    protected $key          = 'CATEGORY_ID';
+class Category_model extends BF_Model {
+
+    protected $table_name = 'category';
+    protected $key = 'CATEGORY_ID';
     protected $soft_deletes = FALSE;
-    protected $date_format  = 'int';
-    protected $log_user     = FALSE;
-
-    protected $set_created  = TRUE;
-    protected $created_field    = 'created_on';
+    protected $date_format = 'int';
+    protected $log_user = FALSE;
+    protected $set_created = TRUE;
+    protected $created_field = 'created_on';
     protected $created_by_field = 'created_by';
-    
     protected $category_priority_field = 'CATEGORY_PRIORITY';
-
-    protected $set_modified     = FALSE;
-    protected $modified_field   = 'modified_on';
+    protected $set_modified = FALSE;
+    protected $modified_field = 'modified_on';
     protected $modified_by_field = 'modified_by';
-
-    protected $deleted_field    = 'deleted';
+    protected $deleted_field = 'deleted';
     protected $deleted_by_field = 'deleted_by';
-
     // Observers
-    protected $before_insert    = array();
-    protected $after_insert     = array();
-    protected $before_update    = array();
-    protected $after_update     = array();
-    protected $before_find      = array();
-    protected $after_find       = array();
-    protected $before_delete    = array();
-    protected $after_delete     = array();
-
+    protected $before_insert = array();
+    protected $after_insert = array();
+    protected $before_update = array();
+    protected $after_update = array();
+    protected $before_find = array();
+    protected $after_find = array();
+    protected $before_delete = array();
+    protected $after_delete = array();
     protected $return_insert_id = true;
-    protected $return_type      = 'object';
+    protected $return_type = 'object';
     protected $protected_attributes = array();
-    protected $field_info           = array();
+    protected $field_info = array();
+    protected $validation_rules = array();
+    protected $insert_validation_rules = array();
+    protected $skip_validation = false;
+    protected $empty_validation_rules = array();
 
-    protected $validation_rules         = array();
-    protected $insert_validation_rules  = array();
-    protected $skip_validation          = false;
-    protected $empty_validation_rules   = array();
-    
-    public function get_top_categories($params){
+    public function get_top_categories($params) {
         $top_categories = $this->order_by('CATEGORY_PRIORITY', 'DESC')
-                        ->limit(3)
-                        ->find_all();
+                ->limit(3)
+                ->find_all();
 
-       
+
         return $top_categories;
     }
-    
-     public function get_all_categories($params){
-        $all_categories = $this->order_by('CATEGORY_PRIORITY', 'DESC')
-                        ->find_all();
 
-       
-        return $all_categories;
+    public function get_all_categories($params = array()) {
+        if (isset($params['limit'])) {
+            $all_categories = $this->order_by('CATEGORY_PRIORITY', 'DESC')
+                    ->limit($params['limit'])
+                    ->find_all();
+            return $all_categories;
+        } else {
+            $all_categories = $this->order_by('CATEGORY_PRIORITY', 'DESC')
+                    ->find_all();
+            return $all_categories;
+        }
     }
-     public function getcaterogy($id_category) {
-          
+
+    public function getcaterogy($id_category) {
+
         $items = $this->where('CATEGORY_ID', $id_category)
                 ->find_all();
-        
+
         return $items;
-     }
+    }
+
 }
+
 /* End of file /emailer/models/emailer_model.php */

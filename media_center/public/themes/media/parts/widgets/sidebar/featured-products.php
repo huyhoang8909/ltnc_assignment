@@ -2,10 +2,9 @@
 <div class="widget">
     <h1 class="border">khuyến mãi</h1>
     <ul class="product-list">
-
-        <li class="sidebar-product-list-item">
-            <div class="row">
-                <?php foreach ($data['sale_item'] as $sale_item): ?>
+        <?php foreach ($data['sale_item'] as $sale_item): ?>
+            <li class="sidebar-product-list-item">
+                <div class="row">
                     <div class="col-xs-4 col-sm-4 no-margin">
                         <a href="#" class="thumb-holder">
                             <img alt="" src="<?php echo base_url('item') . '/' . $sale_item->IMAGE ?>" data-echo="<?php echo base_url('items') . '/' . $sale_item->IMAGE ?>" />
@@ -19,9 +18,9 @@
                             <div class="price-current"><?php echo $sale_item->ITEM_QUANTITY ?></div>
                         </div>
                     </div>  
-                <?php endforeach; ?>
-            </div>
-        </li><!-- /.sidebar-product-list-item -->
+                </div>
+            </li><!-- /.sidebar-product-list-item -->
+        <?php endforeach; ?>
     </ul><!-- /.product-list -->
 </div><!-- /.widget -->
 <!-- ========================================= FEATURED PRODUCTS : END ========================================= -->
