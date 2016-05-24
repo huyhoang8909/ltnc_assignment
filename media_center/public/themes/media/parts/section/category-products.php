@@ -28,7 +28,7 @@
                                         </div>
                                         <div class="hover-area">
                                             <div class="add-cart-button">
-                                                <a href="index.php?page=single-product" class="le-button">add to cart</a>
+                                                <a href="<?php echo base_url('Cart/add/'.$s_product->ITEM_ID) ?>" class="le-button">add to cart</a>
                                             </div>
                                             <div class="wish-compare">
                                                 <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
