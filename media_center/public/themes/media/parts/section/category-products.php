@@ -2,11 +2,11 @@
     <div class="grid-list-products">
         <h2 class="section-title">Kết quả tìm kiếm</h2>
         <div class="tab-content">
-            <div id="grid-view" class="products-grid fade tab-pane <?php if (!$isListView) echo 'in active'; ?>">
+            <?php if ($s_products): ?>
+                <div id="grid-view" class="products-grid fade tab-pane <?php if (!$isListView) echo 'in active'; ?>">
+                    <div class="product-grid-holder">
+                        <div class="row no-margin">
 
-                <div class="product-grid-holder">
-                    <div class="row no-margin">
-                        <?php if ($s_products): ?>
                             <?php foreach ($s_products as $s_product): ?>
 
                                 <div class="col-xs-12 col-sm-4 no-margin product-item-holder hover">
@@ -18,7 +18,7 @@
                                         <div class="body">
                                             <div class="label-discount green">-50% sale</div>
                                             <div class="title">
-                                                <a href="<?php echo base_url('item'),'/'.$s_product->ITEM_ID ?>"><?php echo $s_product->ITEM_NAME ?></a>
+                                                <a href="<?php echo base_url('item'), '/' . $s_product->ITEM_ID ?>"><?php echo $s_product->ITEM_NAME ?></a>
                                             </div>
                                             <div class="brand">sony</div>
                                         </div>
@@ -39,32 +39,35 @@
                                 </div><!-- /.product-item-holder -->
 
                             <?php endforeach; ?>
-                        <?php endif; ?>
-                    </div><!-- /.row -->
-                </div><!-- /.product-grid-holder -->
+                        </div><!-- /.row -->
+                    </div><!-- /.product-grid-holder -->
 
-                <div class="pagination-holder">
-                    <div class="row">
+                    <div class="pagination-holder">
+                        <div class="row">
 
-                        <div class="col-xs-12 col-sm-6 text-left">
-                            <ul class="pagination ">
-                                <li class="current"><a  href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">next</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-6">
-                            <div class="result-counter">
-                                Showing <span>1-9</span> of <span>11</span> results
+                            <div class="col-xs-12 col-sm-6 text-left">
+                                <ul class="pagination ">
+                                    <li class="current"><a  href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">next</a></li>
+                                </ul>
                             </div>
-                        </div>
 
-                    </div><!-- /.row -->
-                </div><!-- /.pagination-holder -->
-            </div><!-- /.products-grid #grid-view -->
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="result-counter">
+                                    Showing <span>1-9</span> of <span>11</span> results
+                                </div>
+                            </div>
+
+                        </div><!-- /.row -->
+                    </div><!-- /.pagination-holder -->
+                </div><!-- /.products-grid #grid-view -->
+            <?php else : ?>
+                <h4><em>Sản phẩm</em>  <strong><?php echo $this->input->get('q')?></strong><em> không tồn tại</em></h4>
+            <?php endif; ?>
+
 
             <div id="list-view" class="products-grid fade tab-pane <?php if ($isListView) echo 'active in'; ?>">
                 <div class="products-list">

@@ -76,7 +76,7 @@
                 <ul>
                     <li class="dropdown breadcrumb-item">
                         <?php foreach ($data['all_categories'] as $dt): ?>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <a href="<?php echo base_url('bycategory/'.$dt->CATEGORY_ID) ?>" >
                                 <?php echo $dt->CATEGORY_NAME ?>                        </a>
 
                         <?php endforeach; ?>
