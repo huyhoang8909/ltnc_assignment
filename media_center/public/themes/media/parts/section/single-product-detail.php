@@ -32,7 +32,7 @@
                     <a class="plus" href="#add"></a>
                 </form>
             </div>
-            <a id="addto-cart" href="index.php?page=cart" class="le-button huge">add to cart</a>
+            <a id="addto-cart" href="<?php echo base_url('cart/add').'/'.$item->ITEM_ID ?>" class="le-button huge">add to cart</a>
         </div><!-- /.qnt-holder -->
     </div><!-- /.body -->
 
