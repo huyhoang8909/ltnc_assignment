@@ -124,7 +124,7 @@ class Item_model extends BF_Model {
         return $sale;
     }
      public function common_item($limit) {
-          $common = $this->order_by('ITEM_ID', 'DESC')
+          $common = $this->order_by('VIEWED', 'DESC')
                         ->limit($limit)
                         ->find_all();
               
