@@ -36,7 +36,6 @@
         'terms' => 'Terms & Conditions',
         'authentication' => 'Login/Register'
     );
-
 ?>
 
 <?php echo theme_view('parts/navigation/top-menu-bar', array('page' => $page, 'pages' => $pages)) ?>
@@ -106,4 +105,4 @@
 endif; ?>
 </div>
 </div>
-<?php echo theme_view('parts/section/footer', array('page' => $page, 'pages' => $pages)) ?>
+<?php echo theme_view('parts/section/footer', array('page' => $page, 'pages' => $pages, 'data' => $data)) ?>
