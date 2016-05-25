@@ -40,7 +40,10 @@ class Checkout extends Front_Controller {
         $this->load->helper('string');
         $this->load->model('users/user_model');
         $this->load->library('users/auth');
-
+        $this->load->model('item_model');
+        $this->load->model('category_model');
+        $this->load->library('users/auth');
+        $this->set_current_user();
         if ($this->input->method(TRUE) === 'POST') {
             $this->load->library('form_validation');
 
@@ -56,10 +59,33 @@ class Checkout extends Front_Controller {
                 $records = $this->cart_model->where('cart.CART_ID', $cart_id)
                         ->find_all();
 
+
+
+
+
+
+                $top_categories = $this->category_model->get_top_categories(array());
+                $all_categories = $this->category_model->get_all_categories(array('limit' => 11));
+                $new_item = $this->item_model->get_new_items(4);
+                $sale_item = $this->item_model->sale_item(4);
+                $common_item = $this->item_model->common_item(4);
+
+                $products = $this->item_model->get_items_by_categories($top_categories);
+                $data = array(
+                    'products' => $products,
+                    'new_item' => $new_item,
+                    'sale_item' => $sale_item,
+                    'common_item' => $common_item,
+                    'more_items' => $this->item_model->get_more_items(1),
+                    'top_items' => $products,
+                    'all_categories' => $all_categories
+                );
+
                 if (empty($records))
                     redirect('/');
 
                 Template::set('records', $records);
+                Template::set('data', $data);
                 Template::render();
             } else {
                 // create a user if required
@@ -155,9 +181,7 @@ class Checkout extends Front_Controller {
             $cart_id = $this->session->userdata('cart_id');
             $records = $this->cart_model->where('cart.CART_ID', $cart_id)
                     ->find_all();
-            $this->load->model('item_model');
-            $this->load->model('category_model');
-            $this->load->library('users/auth');
+
             $this->set_current_user();
 
             $top_categories = $this->category_model->get_top_categories(array());
