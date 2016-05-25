@@ -93,12 +93,12 @@ $lang['us_send_password']			= 'Send Password';
 
 $lang['us_login']					= 'Please sign in';
 $lang['us_remember_note']			= 'Remember me';
-$lang['us_sign_up']					= 'Create An Account';
-$lang['us_forgot_your_password']	= 'Forgot Your Password?';
-$lang['us_let_me_in']				= 'Sign In';
+$lang['us_sign_up']					= 'Tạo tài khoản';
+$lang['us_forgot_your_password']	= 'Quên mật khẩu?';
+$lang['us_let_me_in']				= 'Đăng nhập';
 
 $lang['us_password_mins']			= 'Minimum 8 characters.';
-$lang['us_register']				= 'Sign Up';
+$lang['us_register']				= 'Đăng ký';
 $lang['us_already_registered']		= 'Already registered?';
 
 $lang['us_action_save']				= 'Save User';

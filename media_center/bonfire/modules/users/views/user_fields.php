@@ -19,7 +19,7 @@ $defaultTimezone = isset($user->timezone) ? $user->timezone : strtoupper(setting
     </div>
 </div>
 <div class="control-group<?php echo form_error('display_name') ? $errorClass : ''; ?>">
-    <label class="control-label" for="display_name"><?php echo lang('bf_display_name'); ?></label>
+    <label class="control-label" for="display_name">Tên hiển thị</label>
     <div class="controls">
         <input class="<?php echo $controlClass; ?>" type="text" id="display_name" name="display_name" value="<?php echo set_value('display_name', isset($user) ? $user->display_name : ''); ?>" />
         <span class="help-inline"><?php echo form_error('display_name'); ?></span>
@@ -68,7 +68,7 @@ if (! empty($languages) && is_array($languages)) :
 <?php
     else :
 ?>
-<div class="control-group<?php echo form_error('language') ? $errorClass : ''; ?>">
+<div class="hidden control-group<?php echo form_error('language') ? $errorClass : ''; ?>">
     <label class="control-label required" for="language"><?php echo lang('bf_language'); ?></label>
     <div class="controls">
         <select name="language" id="language" class="chzn-select <?php echo $controlClass; ?>">
@@ -85,7 +85,7 @@ if (! empty($languages) && is_array($languages)) :
     endif;
 endif;
 ?>
-<div class="control-group<?php echo form_error('timezones') ? $errorClass : ''; ?>">
+<div class="hidden control-group<?php echo form_error('timezones') ? $errorClass : ''; ?>">
     <label class="control-label required" for="timezones"><?php echo lang('bf_timezone'); ?></label>
     <div class="controls">
         <?php

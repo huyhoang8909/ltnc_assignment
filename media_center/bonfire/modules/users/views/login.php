@@ -13,12 +13,12 @@
 	<div class="container">
 		<div class="row">
 			
-			<div class="col-md-6">
+			<div class="col-md-offset-3 col-md-6">
 				<section class="section sign-in inner-right-xs">
-					<h2 class="bordered"><?php echo lang('us_login'); ?></h2>
+					<h2 class="bordered">Login</h2>
 					<p><?php echo Template::message(); ?></p>
 
-					<div class="social-auth-buttons">
+<!-- 					<div class="social-auth-buttons">
 						<div class="row">
 							<div class="col-md-6">
 								<button class="btn-block btn-lg btn btn-facebook"><i class="fa fa-facebook"></i> Sign In with Facebook</button>
@@ -27,7 +27,7 @@
 								<button class="btn-block btn-lg btn btn-twitter"><i class="fa fa-twitter"></i> Sign In with Twitter</button>
 							</div>
 						</div>
-					</div>
+					</div> -->
 					<?php echo form_open(LOGIN_URL, array('autocomplete' => 'off', 'class' => 'login-form cf-style-1')); ?>
 
 						<div class="field-row <?php echo iif( form_error('login') , 'error') ;?>">
@@ -36,7 +36,7 @@
                         </div><!-- /.field-row -->
 
                         <div class="field-row <?php echo iif( form_error('password') , 'error') ;?>">
-                            <label>Password</label>
+                            <label>Mật khẩu</label>
                             <input type="text" class="le-input" name="password" id="password" value="" placeholder="<?php echo lang('bf_password'); ?>">
                         </div><!-- /.field-row -->
 
@@ -55,40 +55,14 @@
                         
 
                         <div class="buttons-holder">
-                            <input class="le-button huge" type="submit" name="log-me-in" id="submit" value="<?php e(lang('us_let_me_in')); ?>" />
+                            <input class="le-button huge" type="submit" name="log-me-in" id="submit" value="Đăng nhập" />
+                            <a href="/register" class="le-button huge">Đăng ký</a>
                         </div><!-- /.buttons-holder -->
 					<?php echo form_close(); ?><!-- /.cf-style-1 -->
-
+                    
 				</section><!-- /.sign-in -->
 			</div><!-- /.col -->
 
-			<div class="col-md-6">
-				<section class="section register inner-left-xs">
-					<h2 class="bordered">Create New Account</h2>
-					<p>Create your own Media Center account</p>
-
-					<form role="form" class="register-form cf-style-1">
-						<div class="field-row">
-                            <label>Email</label>
-                            <input type="text" class="le-input">
-                        </div><!-- /.field-row -->
-
-                        <div class="buttons-holder">
-                            <button type="submit" class="le-button huge">Sign Up</button>
-                        </div><!-- /.buttons-holder -->
-					</form>
-
-					<h2 class="semi-bold">Sign up today and you'll be able to :</h2>
-
-					<ul class="list-unstyled list-benefits">
-						<li><i class="fa fa-check primary-color"></i> Speed your way through the checkout</li>
-						<li><i class="fa fa-check primary-color"></i> Track your orders easily</li>
-						<li><i class="fa fa-check primary-color"></i> Keep a record of all your purchases</li>
-					</ul>
-
-				</section><!-- /.register -->
-
-			</div><!-- /.col -->
 
 		</div><!-- /.row -->
 	</div><!-- /.container -->

@@ -57,8 +57,8 @@ $fieldData = array(
                 </fieldset>
             <?php echo form_close(); ?>
             <p class='already-registered'>
-                <?php echo lang('us_already_registered'); ?>
-                <?php echo anchor(LOGIN_URL, lang('bf_action_login')); ?>
+                Đã đăng ký?
+                <?php echo anchor(LOGIN_URL, 'Đăng nhập'); ?>
             </p>
         </div>
     </div>

@@ -85,7 +85,7 @@ $lang['bf_action_purge']		= 'Purge';
 $lang['bf_action_restore']		= 'Restore';
 $lang['bf_action_show']			= 'Show';
 $lang['bf_action_login']		= 'Sign In';
-$lang['bf_action_logout']		= 'Sign Out';
+$lang['bf_action_logout']		= 'Đăng xuất';
 $lang['bf_actions']				= 'Actions';
 $lang['bf_clear']				= 'Clear';
 $lang['bf_action_list']			= 'List';
@@ -134,7 +134,7 @@ $lang['bf_user']				= 'User';
 $lang['bf_users']				= 'Users';
 $lang['bf_description']			= 'Description';
 $lang['bf_email']				= 'Email';
-$lang['bf_user_settings']		= 'My Profile';
+$lang['bf_user_settings']		= 'Tài khoản';
 $lang['bf_select_state'] 		= 'Select State';
 $lang['bf_select_no_state'] 	= 'No State Available';
 

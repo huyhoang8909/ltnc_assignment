@@ -18,6 +18,7 @@
                         <li><?php echo anchor(REGISTER_URL, 'Đăng ký'); ?></li>
                     <?php endif; ?>
                 <?php else : ?>
+                <li><?php echo anchor("/order", 'Đơn hàng') ?></li>
                 <li <?php echo check_method('profile'); ?>><a href="<?php echo site_url('users/profile'); ?>"><?php e(lang('bf_user_settings')); ?></a></li>
                 <li><a href="<?php echo site_url('logout'); ?>"><?php e(lang('bf_action_logout')); ?></a></li>
                 <?php endif; ?>
