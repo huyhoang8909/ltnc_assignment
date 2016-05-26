@@ -37,7 +37,7 @@
 
                         <div class="field-row <?php echo iif( form_error('password') , 'error') ;?>">
                             <label>Mật khẩu</label>
-                            <input type="text" class="le-input" name="password" id="password" value="" placeholder="<?php echo lang('bf_password'); ?>">
+                            <input type="password" class="le-input" name="password" id="password" value="" placeholder="<?php echo lang('bf_password'); ?>">
                         </div><!-- /.field-row -->
 
                         <div class="field-row clearfix">

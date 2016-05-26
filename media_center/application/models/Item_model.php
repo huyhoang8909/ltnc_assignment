@@ -117,7 +117,7 @@ class Item_model extends BF_Model {
         return $new;
     }
      public function sale_item($limit) {
-          $sale = $this->order_by('ITEM_ID', 'DESC')
+          $sale = $this->order_by('buyers', 'DESC')
                         ->limit($limit)
                         ->find_all();
               

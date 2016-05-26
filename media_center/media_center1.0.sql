@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 26, 2016 at 01:17 AM
+-- Generation Time: May 26, 2016 at 04:06 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `media_center`
 --
+CREATE DATABASE IF NOT EXISTS `media_center` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `media_center`;
 
 -- --------------------------------------------------------
 
@@ -26,7 +28,6 @@ SET time_zone = "+00:00";
 -- Table structure for table `activities`
 --
 
-DROP TABLE IF EXISTS `activities`;
 CREATE TABLE IF NOT EXISTS `activities` (
   `activity_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -35,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `activities` (
   `created_on` datetime NOT NULL,
   `deleted` tinyint(12) NOT NULL DEFAULT '0',
   PRIMARY KEY (`activity_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `activities`
@@ -43,7 +44,16 @@ CREATE TABLE IF NOT EXISTS `activities` (
 
 INSERT INTO `activities` (`activity_id`, `user_id`, `activity`, `module`, `created_on`, `deleted`) VALUES
 (1, 1, 'logged in from: 127.0.0.1', 'users', '2016-05-04 07:48:27', 0),
-(4, 1, 'logged in from: 127.0.0.1', 'users', '2016-05-26 01:16:48', 0);
+(4, 1, 'logged in from: 127.0.0.1', 'users', '2016-05-26 01:16:48', 0),
+(5, 1, 'logged in from: 127.0.0.1', 'users', '2016-05-26 03:33:11', 0),
+(6, 2, 'logged in from: 127.0.0.1', 'users', '2016-05-26 03:52:42', 0),
+(7, 1, 'logged in from: 127.0.0.1', 'users', '2016-05-26 04:02:55', 0),
+(8, 1, 'Migrate Type: category_ to Version: 1 from: 127.0.0.1', 'migrations', '2016-05-26 04:03:34', 0),
+(9, 1, 'Migration module: category Version: 1 from: 127.0.0.1', 'migrations', '2016-05-26 04:03:34', 0),
+(10, 1, 'Migrate Type: item_ to Version: 1 from: 127.0.0.1', 'migrations', '2016-05-26 04:03:49', 0),
+(11, 1, 'Migration module: item Version: 1 from: 127.0.0.1', 'migrations', '2016-05-26 04:03:49', 0),
+(12, 1, 'Migrate Type: order_ to Version: 1 from: 127.0.0.1', 'migrations', '2016-05-26 04:04:04', 0),
+(13, 1, 'Migration module: order Version: 1 from: 127.0.0.1', 'migrations', '2016-05-26 04:04:04', 0);
 
 -- --------------------------------------------------------
 
@@ -51,14 +61,13 @@ INSERT INTO `activities` (`activity_id`, `user_id`, `activity`, `module`, `creat
 -- Table structure for table `cart`
 --
 
-DROP TABLE IF EXISTS `cart`;
 CREATE TABLE IF NOT EXISTS `cart` (
   `CART_ID` int(11) NOT NULL AUTO_INCREMENT,
   `USER_ID` int(11) DEFAULT NULL,
   `STATUS` varchar(10) NOT NULL,
   PRIMARY KEY (`CART_ID`),
   KEY `FK_USER_CART2` (`USER_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `cart`
@@ -73,7 +82,6 @@ INSERT INTO `cart` (`CART_ID`, `USER_ID`, `STATUS`) VALUES
 -- Table structure for table `cart_item`
 --
 
-DROP TABLE IF EXISTS `cart_item`;
 CREATE TABLE IF NOT EXISTS `cart_item` (
   `CART_ID` int(11) NOT NULL,
   `ITEM_ID` int(11) NOT NULL,
@@ -95,7 +103,6 @@ INSERT INTO `cart_item` (`CART_ID`, `ITEM_ID`, `AMOUNT`) VALUES
 -- Table structure for table `category`
 --
 
-DROP TABLE IF EXISTS `category`;
 CREATE TABLE IF NOT EXISTS `category` (
   `CATEGORY_ID` int(11) NOT NULL AUTO_INCREMENT,
   `CATEGORY_CATEGORY_ID` int(11) DEFAULT NULL,
@@ -134,7 +141,6 @@ INSERT INTO `category` (`CATEGORY_ID`, `CATEGORY_CATEGORY_ID`, `CATEGORY_NAME`, 
 -- Table structure for table `ci3_sessions`
 --
 
-DROP TABLE IF EXISTS `ci3_sessions`;
 CREATE TABLE IF NOT EXISTS `ci3_sessions` (
   `id` varchar(40) NOT NULL,
   `ip_address` varchar(45) NOT NULL,
@@ -260,7 +266,13 @@ INSERT INTO `ci3_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
 ('c4bfb14166802d57873bb31adac33638ebe2f8cb', '127.0.0.1', 1464217287, 0x5f5f63695f6c6173745f726567656e65726174657c693a313436343231373030343b7265717565737465645f706167657c733a33313a22687474703a2f2f6d656469612d63656e7465722e6c6f63616c2f6f72646572223b70726576696f75735f706167657c733a33313a22687474703a2f2f6d656469612d63656e7465722e6c6f63616c2f6f72646572223b757365725f69647c733a313a2232223b617574685f637573746f6d7c733a353a2268636d7574223b757365725f746f6b656e7c733a34303a2263346537333534653637373830366261306562373562643039643737363165333934373032653834223b6964656e746974797c733a31353a2268636d757440676d61696c2e636f6d223b726f6c655f69647c733a313a2234223b6c6f676765645f696e7c623a313b6c616e67756167657c733a373a22656e676c697368223b746f74616c5f70726963657c733a313a2230223b),
 ('0655fd00e0a7f105b4ed6fb9137d535875a22ccb', '127.0.0.1', 1464217616, 0x5f5f63695f6c6173745f726567656e65726174657c693a313436343231373332393b7265717565737465645f706167657c733a32363a22687474703a2f2f6d656469612d63656e7465722e6c6f63616c2f223b70726576696f75735f706167657c733a32363a22687474703a2f2f6d656469612d63656e7465722e6c6f63616c2f223b757365725f69647c733a313a2232223b617574685f637573746f6d7c733a353a2268636d7574223b757365725f746f6b656e7c733a34303a2263346537333534653637373830366261306562373562643039643737363165333934373032653834223b6964656e746974797c733a31353a2268636d757440676d61696c2e636f6d223b726f6c655f69647c733a313a2234223b6c6f676765645f696e7c623a313b6c616e67756167657c733a373a22656e676c697368223b746f74616c5f70726963657c733a313a2230223b),
 ('862dd596f4634c140bc5d6e0ad4dab0d83e32f84', '127.0.0.1', 1464217987, 0x5f5f63695f6c6173745f726567656e65726174657c693a313436343231373732373b7265717565737465645f706167657c733a32363a22687474703a2f2f6d656469612d63656e7465722e6c6f63616c2f223b70726576696f75735f706167657c733a32363a22687474703a2f2f6d656469612d63656e7465722e6c6f63616c2f223b757365725f69647c733a313a2232223b617574685f637573746f6d7c733a353a2268636d7574223b757365725f746f6b656e7c733a34303a2263346537333534653637373830366261306562373562643039643737363165333934373032653834223b6964656e746974797c733a31353a2268636d757440676d61696c2e636f6d223b726f6c655f69647c733a313a2234223b6c6f676765645f696e7c623a313b6c616e67756167657c733a373a22656e676c697368223b746f74616c5f70726963657c733a333a22373737223b),
-('a0efabf7b57309089b85bd4576c2137ca764f498', '127.0.0.1', 1464218231, 0x5f5f63695f6c6173745f726567656e65726174657c693a313436343231383137383b7265717565737465645f706167657c733a35313a22687474703a2f2f6d656469612d63656e7465722e6c6f63616c2f61646d696e2f73657474696e67732f75736572732f65646974223b70726576696f75735f706167657c733a35313a22687474703a2f2f6d656469612d63656e7465722e6c6f63616c2f61646d696e2f73657474696e67732f75736572732f65646974223b757365725f69647c733a313a2231223b617574685f637573746f6d7c733a353a2261646d696e223b757365725f746f6b656e7c733a34303a2238663036636230643233393365326462666538653162613765316466323638323135653664303866223b6964656e746974797c733a31393a2261646d696e406d79626f6e666972652e636f6d223b726f6c655f69647c733a313a2231223b6c6f676765645f696e7c623a313b6c616e67756167657c733a373a22656e676c697368223b);
+('baa4940ce38a4f6248c0ef504283471419475dbd', '127.0.0.1', 1464226579, 0x5f5f63695f6c6173745f726567656e65726174657c693a313436343232363530363b7265717565737465645f706167657c733a32363a22687474703a2f2f6d656469612d63656e7465722e6c6f63616c2f223b70726576696f75735f706167657c733a32363a22687474703a2f2f6d656469612d63656e7465722e6c6f63616c2f223b757365725f69647c733a313a2231223b617574685f637573746f6d7c733a353a2261646d696e223b757365725f746f6b656e7c733a34303a2238663036636230643233393365326462666538653162613765316466323638323135653664303866223b6964656e746974797c733a31353a2261646d696e40676d61696c2e636f6d223b726f6c655f69647c733a313a2231223b6c6f676765645f696e7c623a313b6c616e67756167657c733a373a22656e676c697368223b746f74616c5f70726963657c733a373a2233363530303030223b6d6573736167657c733a303a22223b5f5f63695f766172737c613a313a7b733a373a226d657373616765223b733a333a226e6577223b7d),
+('a5f76ec934de53721e52b59cbce6405221c27fb5', '127.0.0.1', 1464226947, 0x5f5f63695f6c6173745f726567656e65726174657c693a313436343232363835333b7265717565737465645f706167657c733a35353a22687474703a2f2f6d656469612d63656e7465722e6c6f63616c2f646f63732f646576656c6f7065722f626f6e666972655f6d6f64656c73223b70726576696f75735f706167657c733a35353a22687474703a2f2f6d656469612d63656e7465722e6c6f63616c2f646f63732f646576656c6f7065722f626f6e666972655f6d6f64656c73223b757365725f69647c733a313a2231223b617574685f637573746f6d7c733a353a2261646d696e223b757365725f746f6b656e7c733a34303a2238663036636230643233393365326462666538653162613765316466323638323135653664303866223b6964656e746974797c733a31353a2261646d696e40676d61696c2e636f6d223b726f6c655f69647c733a313a2231223b6c6f676765645f696e7c623a313b6c616e67756167657c733a373a22656e676c697368223b746f74616c5f70726963657c733a373a2233363530303030223b),
+('a0efabf7b57309089b85bd4576c2137ca764f498', '127.0.0.1', 1464218447, 0x5f5f63695f6c6173745f726567656e65726174657c693a313436343231383137383b7265717565737465645f706167657c733a33313a22687474703a2f2f6d656469612d63656e7465722e6c6f63616c2f6f72646572223b70726576696f75735f706167657c733a33313a22687474703a2f2f6d656469612d63656e7465722e6c6f63616c2f6f72646572223b757365725f69647c733a313a2231223b617574685f637573746f6d7c733a353a2261646d696e223b757365725f746f6b656e7c733a34303a2238663036636230643233393365326462666538653162613765316466323638323135653664303866223b6964656e746974797c733a31393a2261646d696e406d79626f6e666972652e636f6d223b726f6c655f69647c733a313a2231223b6c6f676765645f696e7c623a313b6c616e67756167657c733a373a22656e676c697368223b746f74616c5f70726963657c733a353a223938303030223b6d6573736167657c733a303a22223b5f5f63695f766172737c613a313a7b733a373a226d657373616765223b733a333a226f6c64223b7d),
+('73136c34c3bf1cc52ad60e32954a9f7ee0f1be9d', '127.0.0.1', 1464226206, 0x5f5f63695f6c6173745f726567656e65726174657c693a313436343232363230333b7265717565737465645f706167657c733a32363a22687474703a2f2f6d656469612d63656e7465722e6c6f63616c2f223b70726576696f75735f706167657c733a32363a22687474703a2f2f6d656469612d63656e7465722e6c6f63616c2f223b),
+('c899c0c8c0729f1e3c417364057ba3973498cfbf', '127.0.0.1', 1464226430, 0x5f5f63695f6c6173745f726567656e65726174657c693a313436343232363230333b7265717565737465645f706167657c733a33343a22687474703a2f2f6d656469612d63656e7465722e6c6f63616c2f636865636b6f7574223b70726576696f75735f706167657c733a33343a22687474703a2f2f6d656469612d63656e7465722e6c6f63616c2f636865636b6f7574223b757365725f69647c733a313a2231223b617574685f637573746f6d7c733a353a2261646d696e223b757365725f746f6b656e7c733a34303a2238663036636230643233393365326462666538653162613765316466323638323135653664303866223b6964656e746974797c733a31353a2261646d696e40676d61696c2e636f6d223b726f6c655f69647c733a313a2231223b6c6f676765645f696e7c623a313b636172745f69647c693a353b6c616e67756167657c733a373a22656e676c697368223b636172747c613a313a7b693a303b4f3a383a22737464436c617373223a31343a7b733a373a22434152545f4944223b733a313a2235223b733a373a22555345525f4944223b4e3b733a363a22535441545553223b733a373a226f726465726564223b733a373a224954454d5f4944223b733a323a223333223b733a363a22414d4f554e54223b733a313a2231223b733a31353a224d414e5546414354555245525f4944223b733a313a2231223b733a31323a2250524f4d4f54494f4e5f4944223b4e3b733a31313a2243415445474f52595f4944223b733a323a223137223b733a393a224954454d5f4e414d45223b733a32373a224c6f6120426c7565746f6f746820536f6e79205352532d58383820223b733a31303a224954454d5f5052494345223b733a373a2239363530303030223b733a31333a224954454d5f5155414e54495459223b733a363a22313030303030223b733a353a22494d414745223b733a32343a223531676572753876636b6c2e5f736c313230305f2e6a7067223b733a363a22564945574544223b733a313a2230223b733a31373a224d414e5546414354555245525f4e414d45223b733a343a22536f6e79223b7d7d746f74616c5f70726963657c733a373a2239363530303030223b),
+('1f1543552e62627c7d2ef7485bf4179b6665deef', '127.0.0.1', 1464227844, 0x5f5f63695f6c6173745f726567656e65726174657c693a313436343232373534353b7265717565737465645f706167657c733a32363a22687474703a2f2f6d656469612d63656e7465722e6c6f63616c2f223b70726576696f75735f706167657c733a32363a22687474703a2f2f6d656469612d63656e7465722e6c6f63616c2f223b757365725f69647c733a313a2232223b617574685f637573746f6d7c733a353a2268636d7574223b757365725f746f6b656e7c733a34303a2263346537333534653637373830366261306562373562643039643737363165333934373032653834223b6964656e746974797c733a31353a2268636d757440676d61696c2e636f6d223b726f6c655f69647c733a313a2234223b6c6f676765645f696e7c623a313b6c616e67756167657c733a373a22656e676c697368223b746f74616c5f70726963657c733a373a2233363530303030223b),
+('f92867e07727fb360d776dac10e6168a7e814188', '127.0.0.1', 1464228278, 0x5f5f63695f6c6173745f726567656e65726174657c693a313436343232383130373b7265717565737465645f706167657c733a34343a22687474703a2f2f6d656469612d63656e7465722e6c6f63616c2f61646d696e2f636f6e74656e742f6974656d223b70726576696f75735f706167657c733a34343a22687474703a2f2f6d656469612d63656e7465722e6c6f63616c2f61646d696e2f636f6e74656e742f6974656d223b757365725f69647c733a313a2231223b617574685f637573746f6d7c733a353a2261646d696e223b757365725f746f6b656e7c733a34303a2238663036636230643233393365326462666538653162613765316466323638323135653664303866223b6964656e746974797c733a31353a2261646d696e40676d61696c2e636f6d223b726f6c655f69647c733a313a2231223b6c6f676765645f696e7c623a313b6c616e67756167657c733a373a22656e676c697368223b);
 
 -- --------------------------------------------------------
 
@@ -268,7 +280,6 @@ INSERT INTO `ci3_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
 -- Table structure for table `customeraddress`
 --
 
-DROP TABLE IF EXISTS `customeraddress`;
 CREATE TABLE IF NOT EXISTS `customeraddress` (
   `ADDRESS_ID` int(11) NOT NULL AUTO_INCREMENT,
   `USER_ID` int(11) NOT NULL,
@@ -290,7 +301,6 @@ CREATE TABLE IF NOT EXISTS `customeraddress` (
 -- Table structure for table `email_queue`
 --
 
-DROP TABLE IF EXISTS `email_queue`;
 CREATE TABLE IF NOT EXISTS `email_queue` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `to_email` varchar(254) NOT NULL,
@@ -313,7 +323,6 @@ CREATE TABLE IF NOT EXISTS `email_queue` (
 -- Table structure for table `item`
 --
 
-DROP TABLE IF EXISTS `item`;
 CREATE TABLE IF NOT EXISTS `item` (
   `ITEM_ID` int(11) NOT NULL AUTO_INCREMENT,
   `MANUFACTURER_ID` int(11) NOT NULL,
@@ -324,6 +333,7 @@ CREATE TABLE IF NOT EXISTS `item` (
   `ITEM_QUANTITY` int(11) NOT NULL,
   `IMAGE` varchar(55) CHARACTER SET latin1 NOT NULL,
   `VIEWED` int(11) NOT NULL,
+  `buyers` int(11) NOT NULL,
   PRIMARY KEY (`ITEM_ID`),
   KEY `FK_ITEM_CATEGORY` (`CATEGORY_ID`),
   KEY `FK_ITEM_MANUFACTURER` (`MANUFACTURER_ID`),
@@ -334,36 +344,36 @@ CREATE TABLE IF NOT EXISTS `item` (
 -- Dumping data for table `item`
 --
 
-INSERT INTO `item` (`ITEM_ID`, `MANUFACTURER_ID`, `PROMOTION_ID`, `CATEGORY_ID`, `ITEM_NAME`, `ITEM_PRICE`, `ITEM_QUANTITY`, `IMAGE`, `VIEWED`) VALUES
-(1, 2, NULL, 1, 'Modern PHP: New Features and Good Practices', 116000, 10, 'ebook_php_1.jpg', 0),
-(2, 2, NULL, 1, 'PhP: Learn PHP Programming Quick & Easy', 100000, 10, 'ebook_php_2.jpg', 0),
-(3, 2, NULL, 1, 'PHP and MySQL Web Development (4th Edition)', 99000, 10, 'ebook_php_3.jpg', 0),
-(4, 2, NULL, 1, 'PHP Cookbook: Solutions & Examples for PHP Programmers', 86500, 10, 'ebook_php_4.jpg', 0),
-(25, 5, NULL, 14, 'iPad Air 2 Cellular 16 GB', 12990000, 100000, 'ipad-mini-witb-gold-wif-201410.jpg', 0),
-(24, 1, NULL, 2, 'Máy ?nh Sony DSC WX220 - 18.2 Megapixel, Zoom 10x', 3450000, 100000, 'sony-2837-159831-1-zoom.jpg', 0),
-(23, 1, NULL, 2, 'Máy ?nh Sony WX500', 6490000, 100000, '632a391d86154e7c2e570b00bc7f4ed4.jpg', 0),
-(21, 5, NULL, 13, 'iPhone 6 16GB', 15600000, 100000, 'iphone-hong-1_1_1_11=.jpg', 0),
-(22, 10, NULL, 13, 'Samsung Galaxy S6', 18600000, 100000, 'gold1.jpg', 0),
-(9, 2, NULL, 3, 'Hamilton: The Revolution', 172000, 22, '20810558.jpg', 0),
-(10, 2, NULL, 3, 'The Rainbow Comes and Goes: A Mother and Son On Life, Love, and Loss', 28000, 2, 'e15f2d8e988bca99901aaeb16d4bec045143e690.f246x186.jpg', 0),
-(11, 2, NULL, 3, 'Oh, The Places You''ll Go!', 51000, 2, 'ebook_php.jpg', 0),
-(12, 2, NULL, 3, 'Cravings: Recipes for All the Food You Want to Eat', 116000, 2, 'ebook_php_1.jpg', 0),
-(13, 2, NULL, 4, 'Me Before You', 56000, 2, 'ebook_php_2.jpg', 0),
-(14, 2, NULL, 4, 'It''s All Easy: Delicious Weekday Recipes for the Super-Busy Home Cook', 88600, 2, 'ebook_php_3.jpg', 0),
-(15, 2, NULL, 4, 'The Tumor: A Non-Legal Thriller', 116000, 2, 'ebook_php_4.jpg', 0),
-(16, 2, NULL, 4, 'Left Alive #1: A Zombie Apocalypse Novel', 16000, 2, 'images.jpg', 0),
-(17, 2, NULL, 15, 'Seduction Wears Sapphires (The Jaded Gentlemen Book 2)', 26000, 2, 'list-explosion-plr-ebook-cover-246x186.jpg', 0),
-(18, 2, NULL, 16, 'Isle of Night (The Watchers Book 1)', 98000, 2, 'targeted-traffic-simplified-plr-ebook-cover-246x186.jpg', 0),
-(19, 2, NULL, 16, 'Come the Dawn (The Dangerous Delameres Book 2)', 76000, 2, 'your-perfect-right-plr-ebook-cover-246x186.jpg', 0),
-(20, 2, NULL, 16, 'Summer with a Star (Second Chances Book 1)', 99860, 2, 'ebook_php_4.jpg', 0),
-(26, 5, NULL, 11, 'Macbook Pro 15 MJLT2ZP/A', 54590000, 100000, 'mjlt2zpa (1).u425.d20160412.t125155.jpg', 0),
-(27, 5, NULL, 11, 'Macbook Pro 15 MJLT2ZP/A', 54590000, 100000, 'mjlt2zpa (1).u425.d20160412.t125155.jpg', 0),
-(28, 9, NULL, 11, 'Laptop Dell Latitude 7450 L4I77450 B?c', 32490000, 100000, 'latitude-7450-5.jpg', 0),
-(29, 11, NULL, 8, 'Tivi LED LG 42LF550T 42 inch', 8990000, 100000, 'tivi-toshiba-40l2550-40l2550vn-40-inches-4.jpg', 0),
-(30, 1, NULL, 9, 'Tivi LED Sony KDL-40R350C 40 inch', 7990000, 100000, 'kdl-40r350c.jpg', 0),
-(31, 10, NULL, 10, 'Tivi LED Samsung UA40J5100 40 inch', 6990000, 100000, 'tivi_samsung_ua40j5100akxxv_led.jpg', 0),
-(32, 1, NULL, 17, 'Loa Sony SRS-D8', 3650000, 100000, 'loa_sony_srs-d8.jpeg', 0),
-(33, 1, NULL, 17, 'Loa Bluetooth Sony SRS-X88 ', 9650000, 100000, '51geru8vckl._sl1200_.jpg', 0);
+INSERT INTO `item` (`ITEM_ID`, `MANUFACTURER_ID`, `PROMOTION_ID`, `CATEGORY_ID`, `ITEM_NAME`, `ITEM_PRICE`, `ITEM_QUANTITY`, `IMAGE`, `VIEWED`, `buyers`) VALUES
+(1, 2, NULL, 1, 'Modern PHP: New Features and Good Practices', 116000, 10, 'ebook_php_1.jpg', 23, 345),
+(2, 2, NULL, 1, 'PhP: Learn PHP Programming Quick & Easy', 100000, 10, 'ebook_php_2.jpg', 65, 34563),
+(3, 2, NULL, 1, 'PHP and MySQL Web Development (4th Edition)', 99000, 10, 'ebook_php_3.jpg', 56, 457),
+(4, 2, NULL, 1, 'PHP Cookbook: Solutions & Examples for PHP Programmers', 86500, 10, 'ebook_php_4.jpg', 456, 745),
+(25, 5, NULL, 14, 'iPad Air 2 Cellular 16 GB', 12990000, 100000, 'ipad-mini-witb-gold-wif-201410.jpg', 3453, 457),
+(24, 1, NULL, 2, 'Máy ảnh Sony DSC WX220 - 18.2 Megapixel, Zoom 10x', 3450000, 100000, 'sony-2837-159831-1-zoom.jpg', 1234, 5645),
+(23, 1, NULL, 2, 'Máy ảnh Sony WX500', 6490000, 100000, '632a391d86154e7c2e570b00bc7f4ed4.jpg', 7546, 5735),
+(21, 5, NULL, 13, 'iPhone 6 16GB', 15600000, 100000, 'iphone-hong-1_1_1_11=.jpg', 4574, 45745),
+(22, 10, NULL, 13, 'Samsung Galaxy S6', 18600000, 100000, 'gold1.jpg', 48, 6853),
+(9, 2, NULL, 3, 'Hamilton: The Revolution', 172000, 22, '20810558.jpg', 0, 0),
+(10, 2, NULL, 3, 'The Rainbow Comes and Goes: A Mother and Son On Life, Love, and Loss', 28000, 2, 'e15f2d8e988bca99901aaeb16d4bec045143e690.f246x186.jpg', 0, 0),
+(11, 2, NULL, 3, 'Oh, The Places You''ll Go!', 51000, 2, 'ebook_php.jpg', 0, 0),
+(12, 2, NULL, 3, 'Cravings: Recipes for All the Food You Want to Eat', 116000, 2, 'ebook_php_1.jpg', 0, 0),
+(13, 2, NULL, 4, 'Me Before You', 56000, 2, 'ebook_php_2.jpg', 0, 0),
+(14, 2, NULL, 4, 'It''s All Easy: Delicious Weekday Recipes for the Super-Busy Home Cook', 88600, 2, 'ebook_php_3.jpg', 0, 0),
+(15, 2, NULL, 4, 'The Tumor: A Non-Legal Thriller', 116000, 2, 'ebook_php_4.jpg', 0, 0),
+(16, 2, NULL, 4, 'Left Alive #1: A Zombie Apocalypse Novel', 16000, 2, 'images.jpg', 0, 0),
+(17, 2, NULL, 15, 'Seduction Wears Sapphires (The Jaded Gentlemen Book 2)', 26000, 2, 'list-explosion-plr-ebook-cover-246x186.jpg', 0, 0),
+(18, 2, NULL, 16, 'Isle of Night (The Watchers Book 1)', 98000, 1, 'targeted-traffic-simplified-plr-ebook-cover-246x186.jpg', 0, 0),
+(19, 2, NULL, 16, 'Come the Dawn (The Dangerous Delameres Book 2)', 76000, 2, 'your-perfect-right-plr-ebook-cover-246x186.jpg', 0, 0),
+(20, 2, NULL, 16, 'Summer with a Star (Second Chances Book 1)', 99860, 2, 'ebook_php_4.jpg', 0, 0),
+(26, 5, NULL, 11, 'Macbook Pro 15 MJLT2ZP/A', 54590000, 100000, 'mjlt2zpa (1).u425.d20160412.t125155.jpg', 0, 0),
+(27, 5, NULL, 11, 'Macbook Pro 15 MJLT2ZP/A', 54590000, 100000, 'mjlt2zpa (1).u425.d20160412.t125155.jpg', 0, 0),
+(28, 9, NULL, 11, 'Laptop Dell Latitude 7450 L4I77450 B?c', 32490000, 100000, 'latitude-7450-5.jpg', 0, 0),
+(29, 11, NULL, 8, 'Tivi LED LG 42LF550T 42 inch', 8990000, 100000, 'tivi-toshiba-40l2550-40l2550vn-40-inches-4.jpg', 0, 0),
+(30, 1, NULL, 9, 'Tivi LED Sony KDL-40R350C 40 inch', 7990000, 100000, 'kdl-40r350c.jpg', 0, 0),
+(31, 10, NULL, 10, 'Tivi LED Samsung UA40J5100 40 inch', 6990000, 100000, 'tivi_samsung_ua40j5100akxxv_led.jpg', 0, 0),
+(32, 1, NULL, 17, 'Loa Sony SRS-D8', 3650000, 99998, 'loa_sony_srs-d8.jpeg', 0, 0),
+(33, 1, NULL, 17, 'Loa Bluetooth Sony SRS-X88 ', 9650000, 99999, '51geru8vckl._sl1200_.jpg', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -371,7 +381,6 @@ INSERT INTO `item` (`ITEM_ID`, `MANUFACTURER_ID`, `PROMOTION_ID`, `CATEGORY_ID`,
 -- Table structure for table `item_supplier`
 --
 
-DROP TABLE IF EXISTS `item_supplier`;
 CREATE TABLE IF NOT EXISTS `item_supplier` (
   `SUPPLIER_ID` int(11) NOT NULL,
   `ITEM_ID` int(11) NOT NULL,
@@ -397,7 +406,6 @@ INSERT INTO `item_supplier` (`SUPPLIER_ID`, `ITEM_ID`) VALUES
 -- Table structure for table `login_attempts`
 --
 
-DROP TABLE IF EXISTS `login_attempts`;
 CREATE TABLE IF NOT EXISTS `login_attempts` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `ip_address` varchar(45) NOT NULL,
@@ -412,7 +420,6 @@ CREATE TABLE IF NOT EXISTS `login_attempts` (
 -- Table structure for table `manufacturer`
 --
 
-DROP TABLE IF EXISTS `manufacturer`;
 CREATE TABLE IF NOT EXISTS `manufacturer` (
   `MANUFACTURER_ID` int(11) NOT NULL AUTO_INCREMENT,
   `MANUFACTURER_NAME` varchar(50) NOT NULL,
@@ -442,7 +449,6 @@ INSERT INTO `manufacturer` (`MANUFACTURER_ID`, `MANUFACTURER_NAME`) VALUES
 -- Table structure for table `orders`
 --
 
-DROP TABLE IF EXISTS `orders`;
 CREATE TABLE IF NOT EXISTS `orders` (
   `ORDER_ID` int(11) NOT NULL AUTO_INCREMENT,
   `SHIPPING_TYPE_ID` int(11) NOT NULL,
@@ -453,7 +459,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `ORDER_STATUS` varchar(20) NOT NULL,
   `ORDER_DATE` datetime NOT NULL,
   `DELIVERY_DATE` datetime DEFAULT NULL,
-  `TOTAL` float(8,2) NOT NULL,
+  `TOTAL` float NOT NULL,
   `PAYMENT_KEY` varchar(20) DEFAULT NULL,
   `PAYMENT_CODE` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`ORDER_ID`),
@@ -462,7 +468,17 @@ CREATE TABLE IF NOT EXISTS `orders` (
   KEY `FK_ORDER_PAYMENTTYPE` (`PAYMENT_TYPE`),
   KEY `FK_ORDER_SHIPPING` (`SHIPPING_TYPE_ID`),
   KEY `FK_ORDER_USER` (`USER_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`ORDER_ID`, `SHIPPING_TYPE_ID`, `PAYMENT_TYPE`, `USER_ID`, `ADDRESS_ID`, `PAYMENT_ID`, `ORDER_STATUS`, `ORDER_DATE`, `DELIVERY_DATE`, `TOTAL`, `PAYMENT_KEY`, `PAYMENT_CODE`) VALUES
+(5, 1, 'direct', 1, NULL, NULL, 'PROCESSING', '2016-05-26 01:20:40', NULL, 98000, NULL, NULL),
+(6, 1, 'direct', 1, NULL, NULL, 'PROCESSING', '2016-05-26 03:35:14', NULL, 9650000, NULL, NULL),
+(7, 1, 'direct', 1, NULL, NULL, 'PROCESSING', '2016-05-26 03:36:16', NULL, 3650000, NULL, NULL),
+(8, 1, 'direct', 2, NULL, NULL, 'PROCESSING', '2016-05-26 03:53:06', NULL, 3650000, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -470,7 +486,6 @@ CREATE TABLE IF NOT EXISTS `orders` (
 -- Table structure for table `order_item`
 --
 
-DROP TABLE IF EXISTS `order_item`;
 CREATE TABLE IF NOT EXISTS `order_item` (
   `ITEM_ID` int(11) NOT NULL,
   `ORDER_ID` int(11) NOT NULL,
@@ -479,13 +494,22 @@ CREATE TABLE IF NOT EXISTS `order_item` (
   KEY `FK_ORDER_ITEM2` (`ORDER_ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `order_item`
+--
+
+INSERT INTO `order_item` (`ITEM_ID`, `ORDER_ID`, `AMOUNT`) VALUES
+(18, 5, 1),
+(33, 6, 1),
+(32, 7, 1),
+(32, 8, 1);
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `paymenttype`
 --
 
-DROP TABLE IF EXISTS `paymenttype`;
 CREATE TABLE IF NOT EXISTS `paymenttype` (
   `PAYMENT_TYPE_ID` tinyint(4) NOT NULL,
   `PAYMENT_TYPE_DESC` varchar(50) NOT NULL,
@@ -498,14 +522,13 @@ CREATE TABLE IF NOT EXISTS `paymenttype` (
 -- Table structure for table `permissions`
 --
 
-DROP TABLE IF EXISTS `permissions`;
 CREATE TABLE IF NOT EXISTS `permissions` (
   `permission_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `description` varchar(100) NOT NULL,
   `status` enum('active','inactive','deleted') NOT NULL DEFAULT 'active',
   PRIMARY KEY (`permission_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=50 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=74 ;
 
 --
 -- Dumping data for table `permissions`
@@ -555,7 +578,31 @@ INSERT INTO `permissions` (`permission_id`, `name`, `description`, `status`) VAL
 (42, 'Bonfire.Sysinfo.View', 'To view the System Information page.', 'active'),
 (43, 'Bonfire.Translate.Manage', 'To manage the Language Translation.', 'active'),
 (44, 'Bonfire.Translate.View', 'To view the Language Translate menu.', 'active'),
-(45, 'Bonfire.UI.View', 'To view the UI/Keyboard Shortcut menu.', 'active');
+(45, 'Bonfire.UI.View', 'To view the UI/Keyboard Shortcut menu.', 'active'),
+(50, 'Category.Content.View', 'View Category Content', 'active'),
+(51, 'Category.Content.Create', 'Create Category Content', 'active'),
+(52, 'Category.Content.Edit', 'Edit Category Content', 'active'),
+(53, 'Category.Content.Delete', 'Delete Category Content', 'active'),
+(54, 'Item.Content.View', 'View Item Content', 'active'),
+(55, 'Item.Content.Create', 'Create Item Content', 'active'),
+(56, 'Item.Content.Edit', 'Edit Item Content', 'active'),
+(57, 'Item.Content.Delete', 'Delete Item Content', 'active'),
+(58, 'Order.Content.View', 'View Order Content', 'active'),
+(59, 'Order.Content.Create', 'Create Order Content', 'active'),
+(60, 'Order.Content.Edit', 'Edit Order Content', 'active'),
+(61, 'Order.Content.Delete', 'Delete Order Content', 'active'),
+(62, 'Order.Reports.View', 'View Order Reports', 'active'),
+(63, 'Order.Reports.Create', 'Create Order Reports', 'active'),
+(64, 'Order.Reports.Edit', 'Edit Order Reports', 'active'),
+(65, 'Order.Reports.Delete', 'Delete Order Reports', 'active'),
+(66, 'Order.Settings.View', 'View Order Settings', 'active'),
+(67, 'Order.Settings.Create', 'Create Order Settings', 'active'),
+(68, 'Order.Settings.Edit', 'Edit Order Settings', 'active'),
+(69, 'Order.Settings.Delete', 'Delete Order Settings', 'active'),
+(70, 'Order.Developer.View', 'View Order Developer', 'active'),
+(71, 'Order.Developer.Create', 'Create Order Developer', 'active'),
+(72, 'Order.Developer.Edit', 'Edit Order Developer', 'active'),
+(73, 'Order.Developer.Delete', 'Delete Order Developer', 'active');
 
 -- --------------------------------------------------------
 
@@ -563,7 +610,6 @@ INSERT INTO `permissions` (`permission_id`, `name`, `description`, `status`) VAL
 -- Table structure for table `promotion`
 --
 
-DROP TABLE IF EXISTS `promotion`;
 CREATE TABLE IF NOT EXISTS `promotion` (
   `PROMOTION_ID` int(11) NOT NULL AUTO_INCREMENT,
   `START_DATE` datetime DEFAULT NULL,
@@ -572,7 +618,15 @@ CREATE TABLE IF NOT EXISTS `promotion` (
   `PROMOTION_CODE` varchar(15) DEFAULT NULL,
   `TYPE` varchar(45) DEFAULT 'percent',
   PRIMARY KEY (`PROMOTION_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `promotion`
+--
+
+INSERT INTO `promotion` (`PROMOTION_ID`, `START_DATE`, `END_DATE`, `DISCOUNT`, `PROMOTION_CODE`, `TYPE`) VALUES
+(2, '2016-05-26 08:58:39', '2016-06-26 08:58:39', 10, 'abc', 'percent'),
+(3, '2016-05-26 09:00:08', '2016-06-26 09:00:08', 10, 'abc', 'percent');
 
 -- --------------------------------------------------------
 
@@ -580,7 +634,6 @@ CREATE TABLE IF NOT EXISTS `promotion` (
 -- Table structure for table `returnstatus`
 --
 
-DROP TABLE IF EXISTS `returnstatus`;
 CREATE TABLE IF NOT EXISTS `returnstatus` (
   `RETURN_ID` int(11) NOT NULL,
   `USER_ID` int(11) NOT NULL,
@@ -597,7 +650,6 @@ CREATE TABLE IF NOT EXISTS `returnstatus` (
 -- Table structure for table `returnstatus_item`
 --
 
-DROP TABLE IF EXISTS `returnstatus_item`;
 CREATE TABLE IF NOT EXISTS `returnstatus_item` (
   `RETURN_ID` int(11) NOT NULL,
   `ITEM_ID` int(11) NOT NULL,
@@ -611,7 +663,6 @@ CREATE TABLE IF NOT EXISTS `returnstatus_item` (
 -- Table structure for table `reviews`
 --
 
-DROP TABLE IF EXISTS `reviews`;
 CREATE TABLE IF NOT EXISTS `reviews` (
   `REVIEW_ID` int(11) NOT NULL AUTO_INCREMENT,
   `USER_ID` int(11) NOT NULL,
@@ -629,7 +680,6 @@ CREATE TABLE IF NOT EXISTS `reviews` (
 -- Table structure for table `role`
 --
 
-DROP TABLE IF EXISTS `role`;
 CREATE TABLE IF NOT EXISTS `role` (
   `ROLE_ID` tinyint(4) NOT NULL,
   `ROLE_NAME` varchar(25) NOT NULL,
@@ -643,7 +693,6 @@ CREATE TABLE IF NOT EXISTS `role` (
 -- Table structure for table `roles`
 --
 
-DROP TABLE IF EXISTS `roles`;
 CREATE TABLE IF NOT EXISTS `roles` (
   `role_id` int(11) NOT NULL AUTO_INCREMENT,
   `role_name` varchar(60) NOT NULL,
@@ -672,7 +721,6 @@ INSERT INTO `roles` (`role_id`, `role_name`, `description`, `default`, `can_dele
 -- Table structure for table `role_permissions`
 --
 
-DROP TABLE IF EXISTS `role_permissions`;
 CREATE TABLE IF NOT EXISTS `role_permissions` (
   `role_id` int(11) NOT NULL,
   `permission_id` int(11) NOT NULL,
@@ -728,6 +776,30 @@ INSERT INTO `role_permissions` (`role_id`, `permission_id`) VALUES
 (1, 45),
 (1, 48),
 (1, 49),
+(1, 50),
+(1, 51),
+(1, 52),
+(1, 53),
+(1, 54),
+(1, 55),
+(1, 56),
+(1, 57),
+(1, 58),
+(1, 59),
+(1, 60),
+(1, 61),
+(1, 62),
+(1, 63),
+(1, 64),
+(1, 65),
+(1, 66),
+(1, 67),
+(1, 68),
+(1, 69),
+(1, 70),
+(1, 71),
+(1, 72),
+(1, 73),
 (2, 2),
 (2, 3),
 (6, 2),
@@ -750,7 +822,6 @@ INSERT INTO `role_permissions` (`role_id`, `permission_id`) VALUES
 -- Table structure for table `role_user`
 --
 
-DROP TABLE IF EXISTS `role_user`;
 CREATE TABLE IF NOT EXISTS `role_user` (
   `ROLE_ID` tinyint(4) NOT NULL,
   `USER_ID` int(11) NOT NULL,
@@ -764,7 +835,6 @@ CREATE TABLE IF NOT EXISTS `role_user` (
 -- Table structure for table `schema_version`
 --
 
-DROP TABLE IF EXISTS `schema_version`;
 CREATE TABLE IF NOT EXISTS `schema_version` (
   `type` varchar(40) NOT NULL,
   `version` int(4) NOT NULL DEFAULT '0',
@@ -776,7 +846,10 @@ CREATE TABLE IF NOT EXISTS `schema_version` (
 --
 
 INSERT INTO `schema_version` (`type`, `version`) VALUES
-('core', 43);
+('core', 43),
+('category_', 1),
+('item_', 1),
+('order_', 1);
 
 -- --------------------------------------------------------
 
@@ -784,7 +857,6 @@ INSERT INTO `schema_version` (`type`, `version`) VALUES
 -- Table structure for table `sessions`
 --
 
-DROP TABLE IF EXISTS `sessions`;
 CREATE TABLE IF NOT EXISTS `sessions` (
   `session_id` varchar(40) NOT NULL DEFAULT '0',
   `ip_address` varchar(45) NOT NULL DEFAULT '0',
@@ -800,7 +872,6 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 -- Table structure for table `settings`
 --
 
-DROP TABLE IF EXISTS `settings`;
 CREATE TABLE IF NOT EXISTS `settings` (
   `name` varchar(30) NOT NULL,
   `module` varchar(255) NOT NULL,
@@ -856,21 +927,21 @@ INSERT INTO `settings` (`name`, `module`, `value`) VALUES
 -- Table structure for table `shippingtype`
 --
 
-DROP TABLE IF EXISTS `shippingtype`;
 CREATE TABLE IF NOT EXISTS `shippingtype` (
-  `SHIPPING_TYPE_ID` int(11) NOT NULL,
+  `SHIPPING_TYPE_ID` int(11) NOT NULL AUTO_INCREMENT,
   `SHIPPING_TYPE_NAME` varchar(50) NOT NULL,
   `SHIPPING_COST` float(6,0) NOT NULL,
   `SHIPPING_DAYS` tinyint(4) NOT NULL,
   PRIMARY KEY (`SHIPPING_TYPE_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `shippingtype`
 --
 
 INSERT INTO `shippingtype` (`SHIPPING_TYPE_ID`, `SHIPPING_TYPE_NAME`, `SHIPPING_COST`, `SHIPPING_DAYS`) VALUES
-(0, 'free', 0, 3);
+(1, 'free', 0, 3),
+(2, 'local', 15, 1);
 
 -- --------------------------------------------------------
 
@@ -878,7 +949,6 @@ INSERT INTO `shippingtype` (`SHIPPING_TYPE_ID`, `SHIPPING_TYPE_NAME`, `SHIPPING_
 -- Table structure for table `supplier`
 --
 
-DROP TABLE IF EXISTS `supplier`;
 CREATE TABLE IF NOT EXISTS `supplier` (
   `SUPPLIER_ID` int(11) NOT NULL,
   `SUPPLIER_NAME` varchar(50) NOT NULL,
@@ -901,7 +971,6 @@ INSERT INTO `supplier` (`SUPPLIER_ID`, `SUPPLIER_NAME`, `SUPPLIER_TYPE`) VALUES
 -- Table structure for table `trackingtable`
 --
 
-DROP TABLE IF EXISTS `trackingtable`;
 CREATE TABLE IF NOT EXISTS `trackingtable` (
   `TRACKING_ID` int(11) NOT NULL AUTO_INCREMENT,
   `POSITION` varchar(200) NOT NULL,
@@ -915,7 +984,6 @@ CREATE TABLE IF NOT EXISTS `trackingtable` (
 -- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `USER_ID` int(11) NOT NULL AUTO_INCREMENT,
   `CART_ID` int(11) DEFAULT NULL,
@@ -935,7 +1003,6 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Table structure for table `userpayment`
 --
 
-DROP TABLE IF EXISTS `userpayment`;
 CREATE TABLE IF NOT EXISTS `userpayment` (
   `PAYMENT_ID` int(11) NOT NULL,
   `USER_ID` int(11) NOT NULL,
@@ -953,7 +1020,6 @@ CREATE TABLE IF NOT EXISTS `userpayment` (
 -- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `role_id` int(11) NOT NULL DEFAULT '4',
@@ -987,8 +1053,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `role_id`, `email`, `username`, `password_hash`, `reset_hash`, `last_login`, `last_ip`, `created_on`, `deleted`, `reset_by`, `banned`, `ban_message`, `display_name`, `display_name_changed`, `timezone`, `language`, `active`, `activate_hash`, `force_password_reset`, `phone`, `address`, `company`) VALUES
-(1, 1, 'admin@mybonfire.com', 'admin', '$2a$08$1CkDNHW6lcorpGKHyXEB4uAJAk31WmlG5oI5.VjZyLzWnlTQKikGS', NULL, '2016-05-26 01:16:48', '127.0.0.1', '2016-04-22 22:01:17', 0, NULL, 0, NULL, 'admin', NULL, 'UM6', 'english', 1, '', 0, '', '', ''),
-(2, 4, 'hcmut@gmail.com', 'hcmut', '$2a$08$1CkDNHW6lcorpGKHyXEB4uAJAk31WmlG5oI5.VjZyLzWnlTQKikGS', NULL, '2016-05-26 00:41:41', '127.0.0.1', '2016-05-26 00:41:30', 0, NULL, 0, NULL, 'hcmut', NULL, 'UM8', 'english', 1, '', 0, '0983237306', 'hcmut', 'hcmut');
+(1, 1, 'admin@gmail.com', 'admin', '$2a$08$1CkDNHW6lcorpGKHyXEB4uAJAk31WmlG5oI5.VjZyLzWnlTQKikGS', NULL, '2016-05-26 04:02:54', '127.0.0.1', '2016-04-22 22:01:17', 0, NULL, 0, NULL, 'admin', NULL, 'UM6', 'english', 1, '', 0, '0983237306', 'hcmut', 'hcmut'),
+(2, 4, 'hcmut@gmail.com', 'hcmut', '$2a$08$1CkDNHW6lcorpGKHyXEB4uAJAk31WmlG5oI5.VjZyLzWnlTQKikGS', NULL, '2016-05-26 03:52:42', '127.0.0.1', '2016-05-26 00:41:30', 0, NULL, 0, NULL, 'hcmut', NULL, 'UM8', 'english', 1, '', 0, '0983237306', 'hcmut', 'hcmut');
 
 -- --------------------------------------------------------
 
@@ -996,7 +1062,6 @@ INSERT INTO `users` (`id`, `role_id`, `email`, `username`, `password_hash`, `res
 -- Table structure for table `user_cookies`
 --
 
-DROP TABLE IF EXISTS `user_cookies`;
 CREATE TABLE IF NOT EXISTS `user_cookies` (
   `user_id` bigint(20) unsigned NOT NULL,
   `token` varchar(128) NOT NULL,
@@ -1010,7 +1075,6 @@ CREATE TABLE IF NOT EXISTS `user_cookies` (
 -- Table structure for table `user_item_favourite`
 --
 
-DROP TABLE IF EXISTS `user_item_favourite`;
 CREATE TABLE IF NOT EXISTS `user_item_favourite` (
   `USER_ID` int(11) NOT NULL,
   `ITEM_ID` int(11) NOT NULL,
@@ -1024,7 +1088,6 @@ CREATE TABLE IF NOT EXISTS `user_item_favourite` (
 -- Table structure for table `user_meta`
 --
 
-DROP TABLE IF EXISTS `user_meta`;
 CREATE TABLE IF NOT EXISTS `user_meta` (
   `meta_id` int(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) unsigned NOT NULL DEFAULT '0',
